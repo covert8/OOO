@@ -5,12 +5,12 @@ import java.util.ArrayList;
 /**
  * Created by louis on 21/09/2016.
  */
-public class Model {
+public class ShopModel {
 	private ArrayList<String> productTitles;
 	private ArrayList<String> productTypes;
 	private ArrayList<String> productIds;
 
-	public Model(ArrayList<String> productTitles, ArrayList<String> productTypes, ArrayList<String> productIds) {
+	public ShopModel(ArrayList<String> productTitles, ArrayList<String> productTypes, ArrayList<String> productIds) {
 		this.productTitles = productTitles;
 		this.productTypes = productTypes;
 		this.productIds = productIds;
