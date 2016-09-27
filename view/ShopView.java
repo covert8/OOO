@@ -1,11 +1,15 @@
 package view;
 
 import javax.swing.*;
+import controller.ShopController;
 
 /**
  * Created by louis on 21/09/2016.
  */
 public class ShopView {
+	
+	private ShopController controller = new ShopController();
+	
 	public double getPrice(int productidx, int days) {
 		
 	}
@@ -31,18 +35,16 @@ public class ShopView {
 		String id = JOptionPane.showInputDialog("Enter the id:");
 		String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game):");
 
-		shop.productTitles.add(title);
-		shop.productIds.add(id);
-		shop.productTypes.add(type);
+		controller.addProduct(title,id,type);
 	}
 
 	public static void showProduct(Shop shop){
 		String id = JOptionPane.showInputDialog("Enter the id:");
 		int idx = -1;
 		boolean found = false;
-		for(int i = 0; i < shop.productIds.size() && !found; i++)
+		for(int i = 0; i < controller.getProducts().size() && !found; i++)
 		{
-			if(shop.productIds.get(i).equals(id))
+			if(controller.getProducts().get(i).getProductIds().equals(id))
 			{
 				idx = i;
 				found = true;
@@ -50,7 +52,7 @@ public class ShopView {
 		}
 		if(found)
 		{
-			JOptionPane.showMessageDialog(null, shop.productTitles.get(idx));
+			JOptionPane.showMessageDialog(null, controller.getProducts().get(i).getProdutTitles());
 		}
 	}
 
