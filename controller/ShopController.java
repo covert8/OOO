@@ -1,13 +1,13 @@
 package controller;
 
-import model.ShopModel;
+import model.ProductRepo;
 
 /**
  * Created by louis on 21/09/2016.
  */
 
 public class ShopController {
-	private ShopModel model = new ShopModel();
+	private ProductRepo model = new ProductRepo();
 
 	public double getPrice(int productidx, int days) {
 		double price = 0;
