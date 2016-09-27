@@ -8,10 +8,18 @@ import controller.ShopController;
  */
 public class ShopView {
 	
-	private ShopController controller = new ShopController();
+	private static ShopController controller = new ShopController();
 	
+	public static ShopController getController() {
+		return controller;
+	}
+
+	public void setController(ShopController controller) {
+		ShopView.controller = controller;
+	}
+
 	public double getPrice(int productidx, int days) {
-		
+		return getController().getPrice(productidx, days);
 	}
 
 	public static void main(String[] args) {
@@ -21,24 +29,24 @@ public class ShopView {
 			String choiceString = JOptionPane.showInputDialog(menu);
 			choice = Integer.parseInt(choiceString);
 			if (choice == 1) {
-				addProduct(shop);
+				addProduct();
 			} else if (choice == 2) {
-				showProduct(shop);
+				showProduct();
 			} else if (choice == 3){
-				showPrice(shop);
+				showPrice();
 			}
 		}
 	}
 
-	public static void addProduct(Shop shop) {
+	public static void addProduct() {
 		String title = JOptionPane.showInputDialog("Enter the title:");
 		String id = JOptionPane.showInputDialog("Enter the id:");
 		String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game):");
 
-		controller.addProduct(title,id,type);
+		getController().addProduct(title,id,type);
 	}
 
-	public static void showProduct(Shop shop){
+	public static void showProduct(){
 		String id = JOptionPane.showInputDialog("Enter the id:");
 		int idx = -1;
 		boolean found = false;
@@ -52,16 +60,16 @@ public class ShopView {
 		}
 		if(found)
 		{
-			JOptionPane.showMessageDialog(null, controller.getProducts().get(i).getProdutTitles());
+			JOptionPane.showMessageDialog(null, controller.getProducts().get(idx).getProductTitles());
 		}
 	}
 
-	public static void showPrice(Shop shop){
+	public static void showPrice(){
 		String id = JOptionPane.showInputDialog("Enter the id:");
 		int idx = -1;
 		boolean found = false;
 		for(int i = 0; i <controller.getProducts().size() && !found; i++){
-			if(controller.getProducts().get(i).getProductIds().equals(id))
+			if(controller.getProducts().get(i).getProductIds().equals(id)){
 				idx = i;
 				found = true;
 			}
