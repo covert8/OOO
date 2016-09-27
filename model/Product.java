@@ -2,25 +2,22 @@ package model;
 
 import java.util.ArrayList;
 
-/**
- * Created by louis on 27/09/2016.
- */
 public class Product {
-	public Product(String productTitles, String productTypes, String productIds) {
+	Product(String productTitles, String productTypes, String productIds) {
 		this.productTitles = productTitles;
 		this.productTypes = productTypes;
 		this.productIds = productIds;
 	}
 
-	public String getProductTitles() {
+	String getProductTitles() {
 		return productTitles;
 	}
 
-	public String getProductTypes() {
+	String getProductTypes() {
 		return productTypes;
 	}
 
-	public String getProductIds() {
+	String getProductIds() {
 		return productIds;
 	}
 

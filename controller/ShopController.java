@@ -5,9 +5,6 @@ import model.ProductRepo;
 
 import java.util.List;
 
-/**
- * Created by louis on 21/09/2016.
- */
 
 public class ShopController {
 	private ProductRepo model = new ProductRepo();

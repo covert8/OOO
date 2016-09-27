@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by louis on 21/09/2016.
- */
 public class ProductRepo {
 	private ArrayList<Product> products = new ArrayList<>();
 
