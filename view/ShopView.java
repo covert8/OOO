@@ -60,8 +60,8 @@ public class ShopView {
 		String id = JOptionPane.showInputDialog("Enter the id:");
 		int idx = -1;
 		boolean found = false;
-		for(int i = 0; i < shop.productIds.size() && !found; i++){
-			if(shop.productIds.get(i).equals(id)){
+		for(int i = 0; i <controller.getProducts().size() && !found; i++){
+			if(controller.getProducts().get(i).getProductIds().equals(id))
 				idx = i;
 				found = true;
 			}
@@ -69,7 +69,7 @@ public class ShopView {
 		if(found){
 			String daysString = JOptionPane.showInputDialog("Enter the number of days:");
 			int days = Integer.parseInt(daysString);
-			JOptionPane.showMessageDialog(null, shop.getPrice(idx,days));
+			JOptionPane.showMessageDialog(null, controller.getPrice(idx,days));
 		}
 	}
 }
