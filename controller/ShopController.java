@@ -1,6 +1,9 @@
 package controller;
 
+import model.Product;
 import model.ProductRepo;
+
+import java.util.List;
 
 /**
  * Created by louis on 21/09/2016.
@@ -27,6 +30,11 @@ public class ShopController {
 	public void addProduct(String title, String id, String type)
 	{
 		model.addProduct(title,id,type);
+	}
+
+	public List<Product> getProducts()
+	{
+		return model.getProducts();
 	}
 
 }

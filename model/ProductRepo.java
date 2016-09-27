@@ -1,6 +1,8 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by louis on 21/09/2016.
@@ -38,5 +40,12 @@ public class ProductRepo {
 
 	public void addProduct(String title, String type, String id) {
 		products.add(new Product(title,type,id));
+	}
+
+	public List<Product> getProducts()
+	{
+		ArrayList<Product> temp = new ArrayList<>();
+		Collections.copy(products,temp);
+		return temp;
 	}
 }
