@@ -16,6 +16,11 @@ public class ShopModel {
 		this.productIds = productIds;
 	}
 
+	public ShopModel()
+	{
+
+	}
+
 	public String getProductTitles(int i)
 	{
 		return productTitles.get(i);
