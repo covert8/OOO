@@ -22,6 +22,11 @@ public class ShopController {
 			price = days * 3;
 		}
 		return price;
-	}	
+	}
+
+	public void addProduct(String title, String id, String type)
+	{
+		model.addProduct(title,id,type);
+	}
 
 }

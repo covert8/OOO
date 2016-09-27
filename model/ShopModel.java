@@ -1,5 +1,6 @@
 package model;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 /**
@@ -34,5 +35,11 @@ public class ShopModel {
 	public String getProductIds(int i)
 	{
 		return productIds.get(i);
+	}
+
+	public void addProduct(String title, String id, String type) {
+		productTitles.add(title);
+		productIds.add(id);
+		productTypes.add(type);
 	}
 }
