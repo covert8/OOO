@@ -1,13 +1,25 @@
 package view;
 
 import javax.swing.*;
+import controller.ShopController;
 
 /**
  * Created by louis on 21/09/2016.
  */
 public class ShopView {
+	
+	private static ShopController controller = new ShopController();
+	
+	public static ShopController getController() {
+		return controller;
+	}
+
+	public void setController(ShopController controller) {
+		ShopView.controller = controller;
+	}
+
 	public double getPrice(int productidx, int days) {
-		
+		return getController().getPrice(productidx, days);
 	}
 
 	public static void main(String[] args) {
@@ -17,32 +29,30 @@ public class ShopView {
 			String choiceString = JOptionPane.showInputDialog(menu);
 			choice = Integer.parseInt(choiceString);
 			if (choice == 1) {
-				addProduct(shop);
+				addProduct();
 			} else if (choice == 2) {
-				showProduct(shop);
+				showProduct();
 			} else if (choice == 3){
-				showPrice(shop);
+				showPrice();
 			}
 		}
 	}
 
-	public static void addProduct(Shop shop) {
+	public static void addProduct() {
 		String title = JOptionPane.showInputDialog("Enter the title:");
 		String id = JOptionPane.showInputDialog("Enter the id:");
 		String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game):");
 
-		shop.productTitles.add(title);
-		shop.productIds.add(id);
-		shop.productTypes.add(type);
+		getController().addProduct(title,id,type);
 	}
 
-	public static void showProduct(Shop shop){
+	public static void showProduct(){
 		String id = JOptionPane.showInputDialog("Enter the id:");
 		int idx = -1;
 		boolean found = false;
-		for(int i = 0; i < shop.productIds.size() && !found; i++)
+		for(int i = 0; i < controller.getProducts().size() && !found; i++)
 		{
-			if(shop.productIds.get(i).equals(id))
+			if(controller.getProducts().get(i).getProductIds().equals(id))
 			{
 				idx = i;
 				found = true;
@@ -50,16 +60,16 @@ public class ShopView {
 		}
 		if(found)
 		{
-			JOptionPane.showMessageDialog(null, shop.productTitles.get(idx));
+			JOptionPane.showMessageDialog(null, controller.getProducts().get(idx).getProductTitles());
 		}
 	}
 
-	public static void showPrice(Shop shop){
+	public static void showPrice(){
 		String id = JOptionPane.showInputDialog("Enter the id:");
 		int idx = -1;
 		boolean found = false;
-		for(int i = 0; i < shop.productIds.size() && !found; i++){
-			if(shop.productIds.get(i).equals(id)){
+		for(int i = 0; i <controller.getProducts().size() && !found; i++){
+			if(controller.getProducts().get(i).getProductIds().equals(id)){
 				idx = i;
 				found = true;
 			}
@@ -67,7 +77,7 @@ public class ShopView {
 		if(found){
 			String daysString = JOptionPane.showInputDialog("Enter the number of days:");
 			int days = Integer.parseInt(daysString);
-			JOptionPane.showMessageDialog(null, shop.getPrice(idx,days));
+			JOptionPane.showMessageDialog(null, controller.getPrice(idx,days));
 		}
 	}
 }
