@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 public class Product {
 	Product(String productTitles, String productTypes, String productIds) {
 		this.productTitles = productTitles;
@@ -9,15 +7,15 @@ public class Product {
 		this.productIds = productIds;
 	}
 
-	String getProductTitles() {
+	public String getProductTitles() {
 		return productTitles;
 	}
 
-	String getProductTypes() {
+	public String getProductTypes() {
 		return productTypes;
 	}
 
-	String getProductIds() {
+	public String getProductIds() {
 		return productIds;
 	}
 
