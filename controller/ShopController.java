@@ -3,7 +3,11 @@ package controller;
 import model.Product;
 import model.ProductRepo;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.lang.reflect.Array;
+import java.nio.file.FileSystemException;
 import java.util.List;
 
 
@@ -33,5 +37,15 @@ public class ShopController {
 	public List<Product> getProducts()
 	{
 		return model.getProducts();
+	}
+
+	public void reloadFromFile() throws FileSystemException
+	{
+		model.addFromFile(new File("shop.txt"));
+	}
+
+	public void saveToFile() throws FileNotFoundException
+	{
+		model.saveToFile(new PrintStream("shop.txt"));
 	}
 }
