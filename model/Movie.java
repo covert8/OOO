@@ -1,12 +1,7 @@
 package model;
 
-public class Movie extends Product{
+public class Movie extends Product implements Rentable{
 	Movie(String productTitles, String productTypes, String productIds) {
 		super(productTitles, productTypes, productIds);
-	}
-
-	public double getPrice(int iDag)
-	{
-		return 1.5*iDag;
 	}
 }
