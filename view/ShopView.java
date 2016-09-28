@@ -28,23 +28,27 @@ public class ShopView {
 		while (choice != 0) {
 			String choiceString = JOptionPane.showInputDialog(menu);
 			choice = Integer.parseInt(choiceString);
-			if (choice == 1) {
-				addProduct();
-			} else if (choice == 2) {
-				showProduct();
-			} else if (choice == 3){
-				showPrice();
-			} else if (choice == 4){
-				rentProduct();
-			} else if (choice == 5){
-				listProcducts();
-			} else if (choice == 6){
-				saveProducts();
-			} else if (choice == 7){
-				loanProduct();
-			} else if (choice == 8){
-				collectProduct();
+			switch (choice){
+				case 1: addProduct();
+						break;
+				case 2: showProduct();
+						break;
+				case 3: showPrice();
+						break;
+				case 4: rentProduct();
+						break;
+				case 5: listProcducts();
+						break;
+				case 6: saveProducts();
+						break;
+				case 7: saveProducts();
+						break;
+				case 8: collectProduct();
+						break;
+				default:
+						break;
 			}
+		
 		}
 	}
 	public static void rentProduct(){
