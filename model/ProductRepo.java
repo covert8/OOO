@@ -1,5 +1,6 @@
 package model;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -38,9 +39,23 @@ public class ProductRepo {
 	public void addProduct(String title, String type, String id) {
 		products.add(new Product(title,type,id));
 	}
+	public void addMovie(String title, String type, String id)
+	{
+		products.add(new Movie(title,type,id));
+	}
 
+	public void addCD(String title, String type, String id)
+	{
+		products.add(new CD(title,type,id));
+	}
+
+	public void addGame(String title, String type, String id)
+	{
+		products.add(new Game(title,type,id));
+	}
 	public List<Product> getProducts()
 	{
 		return products;
 	}
+
 }

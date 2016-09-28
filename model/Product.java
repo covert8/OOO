@@ -1,6 +1,8 @@
 package model;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable{
 	private String productTitles;
 	private String productTypes;
 	private String productIds;
@@ -32,4 +34,5 @@ public class Product {
 	public void setBeschikbaar(boolean bBeschikbaar) {
 		this.bBeschikbaar = bBeschikbaar;
 	}
+
 }
