@@ -55,6 +55,10 @@ public class ShopView {
 		boolean found = false;
 		for(int i = 0; i < controller.getProducts().size() && !found; i++)
 		{
+
+			System.out.println(controller.getProducts().get(i).getProductId());
+			if(controller.getProducts().get(i).getProductId().equals(id))
+
 			if(controller.getProducts().get(i).getProductId().equals(id))
 			{
 				idx = i;

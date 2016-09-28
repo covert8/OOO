@@ -35,4 +35,14 @@ public class Product implements Serializable{
 		this.bBeschikbaar = bBeschikbaar;
 	}
 
+	//TODO watch out any and all variables required
+	public String toString()
+	{
+		String output ="New Product\n";
+		output+=productTitles+"\n";
+		output+=productTypes+"\n";
+		output+=productIds+"\n";
+		output+=bBeschikbaar+"\n";
+		return output;
+	}
 }
