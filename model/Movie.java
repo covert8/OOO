@@ -1,7 +1,8 @@
 package model;
 
 public class Movie extends Product implements Rentable{
-	Movie(String productTitles, String productTypes, String productIds) {
-		super(productTitles, productTypes, productIds);
+	Movie(String productTitles, String productIds, String productTypes) {
+		super(productTitles, productIds, productTypes);
 	}
+
 }

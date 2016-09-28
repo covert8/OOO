@@ -8,21 +8,21 @@ public class Product implements Serializable{
 	private String productIds;
 	private boolean bBeschikbaar = false;
 
-	Product(String productTitles, String productTypes, String productIds) {
+	Product(String productTitles, String productIds, String productTypes) {
 		this.productTitles = productTitles;
 		this.productTypes = productTypes;
 		this.productIds = productIds;
 	}
 
-	public String getProductTitles() {
+	public String getProductTitle() {
 		return productTitles;
 	}
 
-	public String getProductTypes() {
+	public String getProductType() {
 		return productTypes;
 	}
 
-	public String getProductIds() {
+	public String getProductId() {
 		return productIds;
 	}
 

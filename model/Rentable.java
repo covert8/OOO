@@ -6,4 +6,7 @@ public interface Rentable {
 	{
 		return iPrijsPerDag*iDag;
 	}
+	static int maxRentableDays(){
+		return 5;
+	}
 }
