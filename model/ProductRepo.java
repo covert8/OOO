@@ -41,8 +41,6 @@ public class ProductRepo {
 
 	public List<Product> getProducts()
 	{
-		ArrayList<Product> temp = new ArrayList<>();
-		Collections.copy(products,temp);
-		return temp;
+		return products;
 	}
 }

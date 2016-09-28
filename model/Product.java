@@ -1,6 +1,11 @@
 package model;
 
 public class Product {
+	private String productTitles;
+	private String productTypes;
+	private String productIds;
+	private boolean bBeschikbaar = false;
+
 	Product(String productTitles, String productTypes, String productIds) {
 		this.productTitles = productTitles;
 		this.productTypes = productTypes;
@@ -19,7 +24,12 @@ public class Product {
 		return productIds;
 	}
 
-	private String productTitles;
-	private String productTypes;
-	private String productIds;
+
+	public boolean isbBeschikbaar() {
+		return bBeschikbaar;
+	}
+
+	public void setbBeschikbaar(boolean bBeschikbaar) {
+		this.bBeschikbaar = bBeschikbaar;
+	}
 }

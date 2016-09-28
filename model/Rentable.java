@@ -1,8 +1,9 @@
 package model;
 
 public interface Rentable {
+	static double iPrijsPerDag = 1.5;
 	static double getPrice(int iDag)
 	{
-		return 1.5*iDag;
+		return iPrijsPerDag*iDag;
 	}
 }
