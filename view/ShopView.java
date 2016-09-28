@@ -23,7 +23,7 @@ public class ShopView {
 	}
 
 	public static void main(String[] args) {
-		String menu = "1. Add product\n2. Show product\n3. Show rental price\n\n0. Quit";
+		String menu = "1. Add product\n2. Show product\n3. Show rental price\n4. Rent Prodocut\n 5. List all products \n6. Save all products \n7. Loan prodcut\n Collect product \n\n0. Quit";
 		int choice = -1;
 		while (choice != 0) {
 			String choiceString = JOptionPane.showInputDialog(menu);
@@ -34,10 +34,37 @@ public class ShopView {
 				showProduct();
 			} else if (choice == 3){
 				showPrice();
+			} else if (choice == 4){
+				rentProduct();
+			} else if (choice == 5){
+				listProcducts();
+			} else if (choice == 6){
+				saveProducts();
+			} else if (choice == 7){
+				loanProduct();
+			} else if (choice == 8){
+				collectProduct();
 			}
 		}
 	}
-
+	public static void rentProduct(){
+		// TODO: impl: rental product
+	}
+	public static void listProcducts(){
+		// TODO: impl list all products.
+	}
+	public static void saveProducts(){
+		//TODO impl saveProduct
+	}
+	public static void uploadProducts(){
+		//TODO impl uploadProduct
+	}
+	public static void loanProduct(){
+		//TODO impl loanProduct.
+	}
+	public static void collectProduct(){
+		//TODO collectProduct
+	}
 	public static void addProduct() {
 		String title = JOptionPane.showInputDialog("Enter the title:");
 		String id = JOptionPane.showInputDialog("Enter the id:");
