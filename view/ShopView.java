@@ -35,6 +35,9 @@ public class ShopView {
 	}
 	public void addProduct() {
 		String title = JOptionPane.showInputDialog("Enter the title:");
+		if(title.equals("")){
+			throw new IllegalArgumentException("Invalid title");
+		}
 		String id = JOptionPane.showInputDialog("Enter the id:");
 		String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game):");
 
@@ -78,5 +81,9 @@ public class ShopView {
 			int days = Integer.parseInt(daysString);
 			JOptionPane.showMessageDialog(null, controller.getPrice(idx,days));
 		}
+	}
+	
+	public void showError(Exception e){
+		JOptionPane.showMessageDialog(null, e.getMessage());
 	}
 }

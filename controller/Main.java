@@ -10,6 +10,7 @@ public class Main {
 		ShopView view = new ShopView();
 		while (choice != 0) {
 			String choiceString = JOptionPane.showInputDialog(menu);
+			try{
 			choice = Integer.parseInt(choiceString);
 			switch (choice){
 				case 1: view.addProduct();
@@ -28,10 +29,13 @@ public class Main {
 						break;
 				case 8: view.collectProduct();
 						break;
+				case 0: break;
 				default:
-						break;
+						throw new IllegalArgumentException("Invalid input");
 			}
-		
+			} catch(IllegalArgumentException e){
+				view.showError(e);
+			}
 		}
 	}
 
