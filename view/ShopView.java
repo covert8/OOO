@@ -1,15 +1,19 @@
 package view;
 
+import java.awt.List;
+import java.util.ArrayList;
+
 import javax.sound.sampled.Control;
 import javax.swing.*;
 import controller.ShopController;
+import model.Product;
 
 /**
  * Created by louis on 21/09/2016.
  */
 public class ShopView {
 	
-	private ShopController controller = new ShopController();
+	private static ShopController controller = new ShopController();
 
 	public double getPrice(int productidx, int days) {
 		return controller.getPrice(productidx, days);
@@ -19,7 +23,11 @@ public class ShopView {
 		// TODO: impl: rental product
 	}
 	public static void listProcducts(){
-		
+		String output ="";
+		for(Product product : controller.getProducts()){
+			output += product.getProductId() + ": " + product.getProductTitle() + "\n";
+		}
+		JOptionPane.showMessageDialog(null,output);
 	}
 	public static void saveProducts(){
 		//TODO impl saveProduct
@@ -39,7 +47,6 @@ public class ShopView {
 		String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game):");
 
 		controller.addProduct(title,id,type);
-		System.out.println(controller.getProducts().size());
 	}
 
 	public void showProduct(){
