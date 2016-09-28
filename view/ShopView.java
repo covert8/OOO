@@ -39,7 +39,6 @@ public class ShopView {
 		String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game):");
 
 		controller.addProduct(title,id,type);
-		System.out.println(controller.getProducts().size());
 	}
 
 	public void showProduct(){
