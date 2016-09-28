@@ -1,7 +1,5 @@
 package model;
 
-import com.sun.xml.internal.bind.v2.ClassFactory;
-
 import java.io.Serializable;
 
 public class Product implements Serializable{
@@ -10,18 +8,17 @@ public class Product implements Serializable{
 	private String productIds;
 	private boolean bBeschikbaar = false;
 
-	@Deprecated
-	Product(String productTitles, String productIds, String productTypes) {
-		this.productTitles = productTitles;
-		this.productTypes = productTypes;
-		this.productIds = productIds;
-	}
-
 	Product(String productTitles, String productIds, String productTypes,boolean beschikbaar) {
 		this.productTitles = productTitles;
 		this.productTypes = productTypes;
 		this.productIds = productIds;
 		this.bBeschikbaar = beschikbaar;
+	}
+	
+	Product(String productTitles, String productIds, String productTypes) {
+		this.productTitles = productTitles;
+		this.productTypes = productTypes;
+		this.productIds = productIds;
 	}
 
 	public String getProductTitle() {
