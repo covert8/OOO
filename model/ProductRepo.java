@@ -33,7 +33,7 @@ public class ProductRepo {
 
 	public String getProductIds(int i)
 	{
-		return products.get(i).getProductIds();
+		return products.get(i).getProductId();
 	}
 
 	public void addProduct(String title, String type, String id) {

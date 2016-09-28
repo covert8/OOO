@@ -55,7 +55,7 @@ public class ShopView {
 		// TODO: impl: rental product
 	}
 	public static void listProcducts(){
-		// TODO: impl list all products.
+		getController().listAllProducts();
 	}
 	public static void saveProducts(){
 		//TODO impl saveProduct

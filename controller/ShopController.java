@@ -3,6 +3,7 @@ package controller;
 import model.Product;
 import model.ProductRepo;
 
+import java.lang.reflect.Array;
 import java.util.List;
 
 
@@ -33,5 +34,4 @@ public class ShopController {
 	{
 		return model.getProducts();
 	}
-
 }

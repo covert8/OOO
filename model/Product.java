@@ -22,7 +22,7 @@ public class Product implements Serializable{
 		return productTypes;
 	}
 
-	public String getProductIds() {
+	public String getProductId() {
 		return productIds;
 	}
 
