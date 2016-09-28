@@ -1,5 +1,6 @@
 package view;
 
+import javax.sound.sampled.Control;
 import javax.swing.*;
 import controller.ShopController;
 
@@ -18,7 +19,7 @@ public class ShopView {
 		// TODO: impl: rental product
 	}
 	public static void listProcducts(){
-		// TODO: impl list all products.
+		
 	}
 	public static void saveProducts(){
 		//TODO impl saveProduct
@@ -47,8 +48,11 @@ public class ShopView {
 		boolean found = false;
 		for(int i = 0; i < controller.getProducts().size() && !found; i++)
 		{
-			System.out.println(controller.getProducts().get(i).getProductIds());
-			if(controller.getProducts().get(i).getProductIds().equals(id))
+
+			System.out.println(controller.getProducts().get(i).getProductId());
+			if(controller.getProducts().get(i).getProductId().equals(id))
+
+			if(controller.getProducts().get(i).getProductId().equals(id))
 			{
 				idx = i;
 				found = true;
@@ -56,7 +60,7 @@ public class ShopView {
 		}
 		if(found)
 		{
-			JOptionPane.showMessageDialog(null, controller.getProducts().get(idx).getProductTitles());
+			JOptionPane.showMessageDialog(null, controller.getProducts().get(idx).getProductTitle());
 		}
 	}
 
@@ -65,7 +69,7 @@ public class ShopView {
 		int idx = -1;
 		boolean found = false;
 		for(int i = 0; i <controller.getProducts().size() && !found; i++){
-			if(controller.getProducts().get(i).getProductIds().equals(id)){
+			if(controller.getProducts().get(i).getProductId().equals(id)){
 				idx = i;
 				found = true;
 			}

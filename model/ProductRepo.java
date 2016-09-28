@@ -23,17 +23,17 @@ public class ProductRepo {
 
 	public String getProductTitles(int i)
 	{
-		return products.get(i).getProductTitles();
+		return products.get(i).getProductTitle();
 	}
 
 	public String getProductTypes(int i)
 	{
-		return products.get(i).getProductTypes();
+		return products.get(i).getProductType();
 	}
 
 	public String getProductIds(int i)
 	{
-		return products.get(i).getProductIds();
+		return products.get(i).getProductId();
 	}
 
 	public void addProduct(String title, String id, String type) {

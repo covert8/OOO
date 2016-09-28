@@ -14,15 +14,15 @@ public class Product implements Serializable{
 		this.productIds = productIds;
 	}
 
-	public String getProductTitles() {
+	public String getProductTitle() {
 		return productTitles;
 	}
 
-	public String getProductTypes() {
+	public String getProductType() {
 		return productTypes;
 	}
 
-	public String getProductIds() {
+	public String getProductId() {
 		return productIds;
 	}
 
