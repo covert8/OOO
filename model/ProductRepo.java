@@ -8,11 +8,11 @@ import java.util.List;
 public class ProductRepo {
 	private ArrayList<Product> products = new ArrayList<>();
 
-	public ProductRepo(ArrayList<String> productTitles, ArrayList<String> productTypes, ArrayList<String> productIds) {
+	public ProductRepo(ArrayList<String> productTitles, ArrayList<String> productIds, ArrayList<String> productTypes) {
 		assert productIds.size() == productTitles.size() && productTitles.size() == productTypes.size();
 		for (int i = 0; i<productIds.size();i++)
 		{
-			products.add(new Product(productTitles.get(i),productTypes.get(i),productIds.get(i)));
+			products.add(new Product(productTitles.get(i),productIds.get(i),productTypes.get(i)));
 		}
 	}
 
@@ -36,22 +36,22 @@ public class ProductRepo {
 		return products.get(i).getProductId();
 	}
 
-	public void addProduct(String title, String type, String id) {
-		products.add(new Product(title,type,id));
+	public void addProduct(String title, String id, String type) {
+		products.add(new Product(title,id,type));
 	}
-	public void addMovie(String title, String type, String id)
+	public void addMovie(String title, String id, String type)
 	{
-		products.add(new Movie(title,type,id));
-	}
-
-	public void addCD(String title, String type, String id)
-	{
-		products.add(new CD(title,type,id));
+		products.add(new Movie(title,id,type));
 	}
 
-	public void addGame(String title, String type, String id)
+	public void addCD(String title, String id, String type)
 	{
-		products.add(new Game(title,type,id));
+		products.add(new CD(title,id,type));
+	}
+
+	public void addGame(String title, String id, String type)
+	{
+		products.add(new Game(title,id,type));
 	}
 	public List<Product> getProducts()
 	{
