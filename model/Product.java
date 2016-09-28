@@ -1,5 +1,7 @@
 package model;
 
+import com.sun.xml.internal.bind.v2.ClassFactory;
+
 import java.io.Serializable;
 
 public class Product implements Serializable{
@@ -51,6 +53,7 @@ public class Product implements Serializable{
 		output+=productTypes+"\n";
 		output+=productIds+"\n";
 		output+=bBeschikbaar+"\n";
+		output+=this.getClass() + "\n";
 		return output;
 	}
 }
