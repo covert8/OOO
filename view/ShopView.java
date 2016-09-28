@@ -43,11 +43,13 @@ public class ShopView {
 	}
 	public void addProduct() {
 		String title = JOptionPane.showInputDialog("Enter the title:");
-		if(title.equals("")){
+		if(title.isEmpty()){
 			throw new IllegalArgumentException("Invalid title");
+		} else if(Character.isLowerCase(title.charAt(0))){
+			throw new IllegalArgumentException("First character has to be uppercase");
 		}
 		String id = JOptionPane.showInputDialog("Enter the id:");
-		String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game):");
+		String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game/ C for CD):");
 
 		controller.addProduct(title,id,type);
 	}
@@ -58,8 +60,6 @@ public class ShopView {
 		boolean found = false;
 		for(int i = 0; i < controller.getProducts().size() && !found; i++)
 		{
-
-			System.out.println(controller.getProducts().get(i).getProductId());
 			if(controller.getProducts().get(i).getProductId().equals(id))
 
 			if(controller.getProducts().get(i).getProductId().equals(id))
