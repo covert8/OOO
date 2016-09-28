@@ -25,11 +25,11 @@ public class Product {
 	}
 
 
-	public boolean isbBeschikbaar() {
+	public boolean isBeschikbaar() {
 		return bBeschikbaar;
 	}
 
-	public void setbBeschikbaar(boolean bBeschikbaar) {
+	public void setBeschikbaar(boolean bBeschikbaar) {
 		this.bBeschikbaar = bBeschikbaar;
 	}
 }
