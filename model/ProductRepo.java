@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Stream;
 
 public class ProductRepo {
@@ -44,6 +45,11 @@ public class ProductRepo {
 	public void addProduct(String title, String id, String type) {
 		products.add(new Product(title,id,type));
 	}
+
+	public void addProduct(String title, String id, String type, boolean beschikbaar) {
+		products.add(new Product(title,id,type,beschikbaar));
+	}
+
 	public void addMovie(String title, String id, String type)
 	{
 		products.add(new Movie(title,id,type));
@@ -76,13 +82,14 @@ public class ProductRepo {
 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 			String line;
 			while ((line = br.readLine()) != null) {
-				if(line == "New Product")
+				if(Objects.equals(line, "New Product"))
 				{
 					assert ((line = br.readLine()) != null);
 					String productTitles = line;
 					String productTypes = br.readLine();
 					String productIds = br.readLine();
-					this.addProduct(productTitles,productTypes,productIds);
+					boolean beschikbaar = Boolean.parseBoolean(br.readLine());
+					this.addProduct(productTitles,productTypes,productIds,beschikbaar);
 				}
 			}
 		} catch (IOException e) {
