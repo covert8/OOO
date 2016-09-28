@@ -49,7 +49,7 @@ public class ShopView {
 			throw new IllegalArgumentException("First character has to be uppercase");
 		}
 		String id = JOptionPane.showInputDialog("Enter the id:");
-		String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game):");
+		String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game/ C for CD):");
 
 		controller.addProduct(title,id,type);
 	}
