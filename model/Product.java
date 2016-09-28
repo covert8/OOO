@@ -8,10 +8,18 @@ public class Product implements Serializable{
 	private String productIds;
 	private boolean bBeschikbaar = false;
 
+	@Deprecated
 	Product(String productTitles, String productIds, String productTypes) {
 		this.productTitles = productTitles;
 		this.productTypes = productTypes;
 		this.productIds = productIds;
+	}
+
+	Product(String productTitles, String productIds, String productTypes,boolean beschikbaar) {
+		this.productTitles = productTitles;
+		this.productTypes = productTypes;
+		this.productIds = productIds;
+		this.bBeschikbaar = beschikbaar;
 	}
 
 	public String getProductTitle() {
