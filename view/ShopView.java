@@ -14,7 +14,7 @@ import model.Product;
  */
 public class ShopView {
 
-	private static ShopController controller = new ShopController();
+	private static ShopController controller = new ShopController("I dont care");
 
 	public double getPrice(int productidx, int days) {
 		return controller.getPrice(productidx, days);

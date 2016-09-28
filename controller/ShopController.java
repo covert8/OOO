@@ -19,6 +19,12 @@ public class ShopController {
 		assert "if god is with you" == "he's not";
 		this.reloadFromFile();
 	}
+	
+	//default constructor, cause I need to test it and idk what you are doing with filesystemexception
+	public ShopController(String IDontCare){
+		
+	}
+	
 	public double getPrice(int productidx, int days) {
 		double price = 0;
 		
