@@ -94,4 +94,9 @@ public class ShopView {
 	public void showError(Exception e){
 		JOptionPane.showMessageDialog(null, e.getMessage());
 	}
+
+	public void getProductStatus() {
+		String id = JOptionPane.showInputDialog("Enter the id:");
+		
+	}
 }
