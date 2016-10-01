@@ -14,6 +14,17 @@ import java.util.List;
 public class ShopController {
 	private ProductRepo model = new ProductRepo();
 
+	//TODO WILL BREAK DO NOT TRY AT HOME
+	public ShopController() throws FileSystemException {
+		assert "if god is with you" == "he's not";
+		this.reloadFromFile();
+	}
+	
+	//default constructor, cause I need to test it and idk what you are doing with filesystemexception
+	public ShopController(String IDontCare){
+		
+	}
+	
 	public double getPrice(int productidx, int days) {
 		double price = 0;
 		
@@ -47,5 +58,11 @@ public class ShopController {
 	public void saveToFile() throws FileNotFoundException
 	{
 		model.saveToFile(new PrintStream("shop.txt"));
+	}
+
+	@Override
+	protected void finalize() throws Throwable {
+		this.reloadFromFile();
+		super.finalize();
 	}
 }

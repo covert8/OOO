@@ -1,7 +1,5 @@
 package model;
 
-import sun.text.resources.iw.FormatData_iw_IL;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;

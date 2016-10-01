@@ -1,6 +1,7 @@
 package controller;
 
 import javax.swing.JOptionPane;
+
 import view.ShopView;
 
 public class Main {
@@ -10,33 +11,47 @@ public class Main {
 		ShopView view = new ShopView();
 		while (choice != 0) {
 			String choiceString = JOptionPane.showInputDialog(menu);
-			try{
-			choice = Integer.parseInt(choiceString);
-			switch (choice){
-				case 1: view.addProduct();
+			if (choiceString == null || choiceString.isEmpty()) {
+				choice = 0;
+			} else {
+				try {
+					choice = Integer.parseInt(choiceString);
+					switch (choice) {
+					case 1:
+						view.addProduct();
 						break;
-				case 2: view.showProduct();
+					case 2:
+						view.showProduct();
 						break;
-				case 3: view.showPrice();
+					case 3:
+						view.showPrice();
 						break;
-				case 4: view.rentProduct();
+					case 4:
+						view.rentProduct();
 						break;
-				case 5: view.listProcducts();
+					case 5:
+						view.listProcducts();
 						break;
-				case 6: view.saveProducts();
+					case 6:
+						view.saveProducts();
 						break;
-				case 7: view.saveProducts();
+					case 7:
+						view.saveProducts();
 						break;
-				case 8: view.collectProduct();
+					case 8:
+						view.collectProduct();
 						break;
-				case 9: view.getProductStatus():
+				case 0:
 						break;
-				case 0: break;
+				case 9: view.getProductStatus();
+						break;
 				default:
 						throw new IllegalArgumentException("Invalid input");
-			}
-			} catch(IllegalArgumentException e){
-				view.showError(e);
+					}
+				} catch (IllegalArgumentException e) {
+					view.showError(e);
+				} catch (NullPointerException e) {
+				}
 			}
 		}
 	}
