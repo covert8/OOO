@@ -5,12 +5,14 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
 
 public class ProductRepo {
 	private ArrayList<Product> products = new ArrayList<>();
+	private HashMap<String, Product> productH = new HashMap<>();
 
 	public ProductRepo(ArrayList<String> productTitles, ArrayList<String> productIds, ArrayList<String> productTypes) {
 		assert productIds.size() == productTitles.size() && productTitles.size() == productTypes.size();
@@ -27,6 +29,7 @@ public class ProductRepo {
 
 	public String getProductTitles(int i)
 	{
+		System.out.println(i);
 		return products.get(i).getProductTitle();
 	}
 
@@ -41,30 +44,40 @@ public class ProductRepo {
 	}
 
 	public void addProduct(String title, String id, String type) {
-		products.add(new Product(title,id,type));
+		//products.add(new Product(title,id,type));
+		productH.put(id, new Product(title, id, type));
 	}
 
 	public void addProduct(String title, String id, String type, boolean beschikbaar) {
-		products.add(new Product(title,id,type,beschikbaar));
+		//products.add(new Product(title,id,type,beschikbaar));
+		productH.put(id, new Product(title, id, type));
 	}
 
 	public void addMovie(String title, String id, String type)
 	{
-		products.add(new Movie(title,id,type));
+		//products.add(new Movie(title,id,type));
+		productH.put(id,new Movie(title,id,type));
 	}
 
 	public void addCD(String title, String id, String type)
 	{
-		products.add(new CD(title,id,type));
+		//products.add(new CD(title,id,type));
+		productH.put(id,new CD(title,id,type));
+
 	}
 
 	public void addGame(String title, String id, String type)
 	{
 		products.add(new Game(title,id,type));
+		productH.put(id,new Game(title,id,type));
+
 	}
 	public List<Product> getProducts()
 	{
 		return products;
+	}
+	public HashMap<String, Product> getProductsHashMap(){
+		return productH;
 	}
 
 	public void saveToFile(PrintStream printStream)
