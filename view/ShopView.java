@@ -1,11 +1,9 @@
 package view;
 
-import java.awt.List;
-import java.util.ArrayList;
 import java.util.Random;
 
-import javax.sound.sampled.Control;
-import javax.swing.*;
+import javax.swing.JOptionPane;
+
 import controller.ShopController;
 import model.Product;
 
@@ -26,9 +24,6 @@ public class ShopView {
 
 	public static void listProcducts() {
 		String output = "";
-	/*	for (Product product : controller.getProducts()) {
-			output += product.getProductId() + ": " + product.getProductTitle() + "\n";
-		}*/
 		for(Product product : controller.getProductsHashMap().values()){
 			output += product.getProductId() + ": " + product.getProductTitle() + "\n";
 		}
@@ -70,60 +65,18 @@ public class ShopView {
 	}
 
 	public void showProduct() {
-		String idAsString = JOptionPane.showInputDialog("Enter the id:");
-		int id;
-		try{
-			id = Integer.parseInt(idAsString);
-			if(id < 0){
-				throw new IllegalArgumentException("Give a positive number");
-			}
-		} catch(NumberFormatException e){
-			throw new IllegalArgumentException("Give a number");
-		}
-		int idx = -1;
+		String idAsString = askProductId();
 		if(controller.getProductsHashMap().get(idAsString) != null){
 			JOptionPane.showMessageDialog(null, controller.getProductsHashMap().get(idAsString).getProductId() + ": " + controller.getProductsHashMap().get(idAsString).getProductTitle() + " - " + controller.getProductsHashMap().get(idAsString).getProductType());
 		}else{
 			JOptionPane.showMessageDialog(null, "Product not found, are you sure you did enter the right product id?");
 		}
-	/*	boolean found = false;
-		for (int i = 0; i < controller.getProducts().size() && !found; i++) {
-			if (controller.getProducts().get(i).getProductId().equals(""+id)) {
-				idx = i;
-				found = true;
-			}
-		}
-		if (found) {
-			JOptionPane.showMessageDialog(null, controller.getProducts().get(idx).getProductTitle());
-			
-		}else{
-			JOptionPane.showMessageDialog(null,"The numbers, Jason, what do they mean??");
-			JOptionPane.showMessageDialog(null,"Jk, Product not found");
-		} */
 	}
 
 	public void showPrice() {
-		String idAsString = JOptionPane.showInputDialog("Enter the id:");
-		int id;
-		try{
-			id = Integer.parseInt(idAsString);
-			if(id < 0){
-				throw new IllegalArgumentException("Give a positive number");
-			}
-		} catch(NumberFormatException e){
-			throw new IllegalArgumentException("Give a number");
-		}
-		int idx = -1;
-		String idString = id+"";
-		//boolean found = false;
-	/*	for (int i = 0; i < controller.getProducts().size() && !found; i++) {
-			if (controller.getProducts().get(i).getProductId().equals(""+id)) {
-				idx = i;
-				found = true;
-			}
-		} */
-		//if(found){
-		if(controller.getProductsHashMap().get(idString) != null){
+		String id = askProductId();
+		
+		if(controller.getProductsHashMap().get(id) != null){
 			String daysString = JOptionPane.showInputDialog("Give the amount of days");
 			int days;
 			try{
@@ -134,7 +87,7 @@ public class ShopView {
 			} catch(NumberFormatException e){
 				throw new IllegalArgumentException("Give a number");
 			}
-			JOptionPane.showMessageDialog(null, controller.getPrice(id, days));
+			JOptionPane.showMessageDialog(null, controller.getPrice(Integer.parseInt(id), days));
 		}//end if found
 		else{
 			JOptionPane.showMessageDialog(null,"Not found");
@@ -146,6 +99,13 @@ public class ShopView {
 	}
 
 	public void getProductStatus() {
+		String id = askProductId();
+		if(controller.getProductsHashMap().get(id) != null){
+			String status = controller.getProductsHashMap().get(id).isBeschikbaar() ? "Available": "Unavaileble";
+			JOptionPane.showMessageDialog(null, "The product status of " + controller.getProductsHashMap().get(id).getProductTitle() + " is " + status);
+		}
+	}
+	public String askProductId(){
 		String idAsString = JOptionPane.showInputDialog("Enter the id:");
 		int id;
 		try{
@@ -156,9 +116,7 @@ public class ShopView {
 		} catch(NumberFormatException e){
 			throw new IllegalArgumentException("Give a number");
 			
-		}if(controller.getProductsHashMap().get(id+"") != null){
-			String status = controller.getProductsHashMap().get(id+"").isBeschikbaar() ? "Available": "Unavaileble";
-			JOptionPane.showMessageDialog(null, "The product status of " + controller.getProductsHashMap().get(id+"").getProductTitle() + " is " + status);
 		}
+		return id+"";
 	}
 }
