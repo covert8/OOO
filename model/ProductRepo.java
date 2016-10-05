@@ -90,36 +90,25 @@ public class ProductRepo {
 		return productH;
 	}
 
-<<<<<<< HEAD
-	public void saveToFile(PrintStream printStream) {
-=======
 	public void saveToFile()
 	{
->>>>>>> 19e7bab1d8dfde2c3e503180db4fde93f60c99ac
 		File f = new File("shop.txt");
 		FileOutputStream fos;
 		try {
 			fos = new FileOutputStream(f);
-<<<<<<< HEAD
 			PrintWriter pw = new PrintWriter(fos);
 			for (Product product : getProductsHashMap().values()) {
 				pw.write(product.getProductId() + ";" + product.getProductTitle() + ";" + product.getProductType()
 						+ ";");
-=======
-		    PrintWriter pw = new PrintWriter(fos);
-		    for (Product product : getProductsHashMap().values()){
-				pw.write(product.getProductId() + "," + product.getProductTitle() +"," + product.getProductType() + ",");
->>>>>>> 19e7bab1d8dfde2c3e503180db4fde93f60c99ac
-			}
 			pw.flush();
 			fos.close();
 			pw.close();
+			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	public void addFromFile(File file) {
