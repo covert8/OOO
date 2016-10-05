@@ -18,7 +18,7 @@ import java.util.Objects;
 public class ProductRepo {
 	private ArrayList<Product> products = new ArrayList<>();
 	private HashMap<String, Product> productH = new HashMap<>();
-
+	
 	public ProductRepo(ArrayList<String> productTitles, ArrayList<String> productIds, ArrayList<String> productTypes) {
 		assert productIds.size() == productTitles.size() && productTitles.size() == productTypes.size();
 		for (int i = 0; i<productIds.size();i++)
@@ -88,32 +88,9 @@ public class ProductRepo {
 		return productH;
 	}
 
-	public void saveToFile()
-	{
-		File f = new File("shop.txt");
-	    FileOutputStream fos;
-		try {
-			fos = new FileOutputStream(f);
-		    PrintWriter pw = new PrintWriter(fos);
-		    for (Product product : getProductsHashMap().values()){
-				pw.write(product.getProductId() + "," + product.getProductTitle() +"," + product.getProductType() + ",");
-			}
-	        pw.flush();
-	        fos.close();
-	        pw.close();
-		} catch (FileNotFoundException e) {		
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-    
-
-		
-	}
-
 	public void addFromFile(File file)
 	{
-		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+	/*	try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 			String line;
 			while ((line = br.readLine()) != null) {
 				if(Objects.equals(line, "New Product"))
@@ -128,6 +105,6 @@ public class ProductRepo {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		} */
 	}
 }

@@ -7,6 +7,7 @@ public class Product implements Serializable{
 	private String productTypes;
 	private String productIds;
 	private boolean bBeschikbaar = false;
+	
 
 	Product(String productTitles, String productIds, String productTypes,boolean beschikbaar) {
 		this.productTitles = productTitles;

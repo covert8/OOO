@@ -1,12 +1,14 @@
 package controller;
 
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 
 import view.ShopView;
 
 public class Main {
 	public static void main(String[] args) {
-	
+		
 		String menu = "1. Add product\n2. Show product\n3. Show rental price\n4. Rent Prodocut\n 5. List all products \n6. Save all products \n7. Loan prodcut\n8. Collect product \n9. Check productstatus\n10 add from File\n\n0. Quit";
 		int choice = -1;
 		ShopView view = new ShopView();

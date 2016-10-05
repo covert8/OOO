@@ -1,11 +1,9 @@
 package controller;
 
+import model.Persistable;
 import model.Product;
 import model.ProductRepo;
-
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.PrintStream;
 import java.nio.file.FileSystemException;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +11,7 @@ import java.util.List;
 
 public class ShopController {
 	private ProductRepo model = new ProductRepo();
+	private Persistable persister;
 
 	//TODO WILL BREAK DO NOT TRY AT HOME
 	public ShopController() throws FileSystemException {
@@ -56,12 +55,12 @@ public class ShopController {
 	}
 	public void reloadFromFile() throws FileSystemException
 	{
-		model.addFromFile(new File("shop.txt"));
+		persister.load();
 	}
 
 	public void saveToFile() throws FileNotFoundException
 	{
-		model.saveToFile();
+		persister.save(model.getProductsHashMap());
 	}
 
 	@Override
