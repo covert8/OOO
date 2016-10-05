@@ -26,7 +26,7 @@ public class ShopView {
 
 	public static void listProcducts() {
 		String output = "";
-		for(Product product : controller.getProductsHashMap().values()){
+		for (Product product : controller.getProductsHashMap().values()) {
 			output += product.getProductId() + ": " + product.getProductTitle() + "\n";
 		}
 		JOptionPane.showMessageDialog(null, output);
@@ -62,42 +62,51 @@ public class ShopView {
 		}
 		String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game/ C for CD):");
 		if (type.isEmpty() || !(type.equals("M") || type.equals("G") || type.equals("C"))) {
-				throw new IllegalArgumentException("Invalid Type");
+			throw new IllegalArgumentException("Invalid Type");
 		}
 		Random rand = new Random();
-		int id = rand.nextInt(90000) + 10000;
-		controller.addProduct(title, ""+id, type);
-		JOptionPane.showMessageDialog(null,"The random generated ID is " + id);
-		
+		boolean added = false;
+		while (!added) {
+			try {
+				int id = rand.nextInt(90000) + 10000;
+				controller.addProduct(title, "" + id, type);
+				added = true;
+				JOptionPane.showMessageDialog(null, "The random generated ID is " + id);
+			} catch (IllegalArgumentException e) {
+			}
+		}
 	}
 
 	public void showProduct() {
 		String idAsString = askProductId();
-		if(controller.getProductsHashMap().get(idAsString) != null){
-			JOptionPane.showMessageDialog(null, controller.getProductsHashMap().get(idAsString).getProductId() + ": " + controller.getProductsHashMap().get(idAsString).getProductTitle() + " - " + controller.getProductsHashMap().get(idAsString).getProductType());
-		}else{
+		if (controller.getProductsHashMap().get(idAsString) != null) {
+			JOptionPane.showMessageDialog(null,
+					controller.getProductsHashMap().get(idAsString).getProductId() + ": "
+							+ controller.getProductsHashMap().get(idAsString).getProductTitle() + " - "
+							+ controller.getProductsHashMap().get(idAsString).getProductType());
+		} else {
 			JOptionPane.showMessageDialog(null, "Product not found, are you sure you did enter the right product id?");
 		}
 	}
 
 	public void showPrice() {
 		String id = askProductId();
-		
-		if(controller.getProductsHashMap().get(id) != null){
+
+		if (controller.getProductsHashMap().get(id) != null) {
 			String daysString = JOptionPane.showInputDialog("Give the amount of days");
 			int days;
-			try{
+			try {
 				days = Integer.parseInt(daysString);
-				if(days < 0){
+				if (days < 0) {
 					throw new IllegalArgumentException("Give a positive number");
 				}
-			} catch(NumberFormatException e){
+			} catch (NumberFormatException e) {
 				throw new IllegalArgumentException("Give a number");
 			}
 			JOptionPane.showMessageDialog(null, controller.getPrice(Integer.parseInt(id), days));
-		}//end if found
-		else{
-			JOptionPane.showMessageDialog(null,"Not found");
+		} // end if found
+		else {
+			JOptionPane.showMessageDialog(null, "Not found");
 		}
 	}
 
@@ -107,23 +116,25 @@ public class ShopView {
 
 	public void getProductStatus() {
 		String id = askProductId();
-		if(controller.getProductsHashMap().get(id) != null){
-			String status = controller.getProductsHashMap().get(id).isBeschikbaar() ? "Available": "Unavaileble";
-			JOptionPane.showMessageDialog(null, "The product status of " + controller.getProductsHashMap().get(id).getProductTitle() + " is " + status);
+		if (controller.getProductsHashMap().get(id) != null) {
+			String status = controller.getProductsHashMap().get(id).isBeschikbaar() ? "Available" : "Unavaileble";
+			JOptionPane.showMessageDialog(null, "The product status of "
+					+ controller.getProductsHashMap().get(id).getProductTitle() + " is " + status);
 		}
 	}
-	public String askProductId(){
+
+	public String askProductId() {
 		String idAsString = JOptionPane.showInputDialog("Enter the id:");
 		int id;
-		try{
+		try {
 			id = Integer.parseInt(idAsString);
-			if(id < 0){
+			if (id < 0) {
 				throw new IllegalArgumentException("Give a positive number");
 			}
-		} catch(NumberFormatException e){
+		} catch (NumberFormatException e) {
 			throw new IllegalArgumentException("Give a number");
-			
+
 		}
-		return id+"";
+		return id + "";
 	}
 }

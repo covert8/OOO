@@ -48,7 +48,11 @@ public class ProductRepo {
 
 	public void addProduct(String title, String id, String type) {
 		//products.add(new Product(title,id,type));
+		if(productH.get(id) == null){
 		productH.put(id, new Product(title, id, type));
+		} else {
+			throw new IllegalArgumentException();
+		}
 	}
 
 	public void addProduct(String title, String id, String type, boolean beschikbaar) {
