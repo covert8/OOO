@@ -27,7 +27,7 @@ public class ShopView {
 	public static void listProcducts() {
 		String output = "";
 		for (Product product : controller.getProductsHashMap().values()) {
-			output += product.getProductId() + ": " + product.getProductTitle() + "\n";
+			output += product.toString() + "\n";
 		}
 		JOptionPane.showMessageDialog(null, output);
 	}

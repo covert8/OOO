@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 
 public class Product implements Serializable{
+	private Readable rentable;
 	private String productTitles;
 	private String productTypes;
 	private String productIds;
@@ -45,12 +46,11 @@ public class Product implements Serializable{
 	//TODO watch out any and all variables required
 	public String toString()
 	{
-		String output ="New Product\n";
-		output+=productTitles+"\n";
-		output+=productTypes+"\n";
-		output+=productIds+"\n";
-		output+=bBeschikbaar+"\n";
-		output+=this.getClass() + "\n";
+		String output = "";
+		output+=productTitles+", ";
+		output+=this.getClass().getSimpleName()+", ";
+		output+=productIds+", ";
+		output+=bBeschikbaar;
 		return output;
 	}
 }
