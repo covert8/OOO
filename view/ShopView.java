@@ -1,7 +1,9 @@
 package view;
 
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.Random;
+import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 import javax.xml.bind.SchemaOutputResolver;
@@ -42,7 +44,24 @@ public class ShopView {
 	}
 
 	public static void uploadProducts() {
-		// TODO impl uploadProduct
+		try {
+			String id, type, title;
+			
+			Scanner in = new Scanner(new FileReader("shop.txt"));
+			while(in.hasNext()){
+				String line = in.nextLine();
+				for(int i = 1; i < line.length(); i++){
+					if(line.substring(i-1, i).equals(",")){
+						
+					}
+				}
+				controller.addProduct("", "", "");
+			}
+			in.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	public static void loanProduct() {
