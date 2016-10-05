@@ -16,10 +16,9 @@ public class ShopController {
 	private Persistable persister;
 
 	//TODO WILL BREAK DO NOT TRY AT HOME
-	public ShopController() throws FileSystemException {
-		assert "if god is with you" == "he's not";
-		this.reloadFromFile();
+	public ShopController() {
 		persister = new ToFile();
+		//this.reloadFromFile();
 	}
 	
 	//default constructor, cause I need to test it and idk what you are doing with filesystemexception
@@ -49,10 +48,6 @@ public class ShopController {
 		model.addProduct(title,id,type);
 	}
 
-	public List<Product> getProducts()
-	{
-		return model.getProducts();
-	}
 	public HashMap<String, Product> getProductsHashMap(){
 		return model.getProductsHashMap();
 	}
@@ -61,7 +56,7 @@ public class ShopController {
 		persister.load(model.getProductsHashMap());
 	}
 
-	public void saveToFile() throws FileNotFoundException
+	public void saveToFile()
 	{
 		persister.save(model.getProductsHashMap());
 	}

@@ -6,7 +6,6 @@ public class ToDatabase implements Persistable{
 
 	@Override
 	public void save(HashMap<String, Product> productList) {
-		//TODO: setup derby db save
 		
 	}
 

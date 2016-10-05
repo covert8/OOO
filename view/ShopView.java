@@ -13,7 +13,7 @@ import model.Product;
  */
 public class ShopView {
 
-	private static ShopController controller = new ShopController("a");
+	private static ShopController controller = new ShopController();
 
 	public double getPrice(int productidx, int days) {
 		return controller.getPrice(productidx, days);
@@ -32,12 +32,7 @@ public class ShopView {
 	}
 
 	public static void saveProducts() {
-		try {
 			controller.saveToFile();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		
 	}
 
 	public static void uploadProducts() {

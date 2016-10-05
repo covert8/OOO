@@ -13,6 +13,7 @@ public class ToFile implements Persistable {
 
 	@Override
 	public void save(HashMap<String, Product> productList) {
+		System.out.println("testje");
 		File f = new File("shop.txt");
 	    FileOutputStream fos;
 		try {
