@@ -28,7 +28,7 @@ public class ShopController {
 	
 	public double getPrice(int productidx, int days) {
 		double price = 0;
-		
+		/*
 		if(model.getProductIds(productidx).equals("M")){
 			price = 5;
 			int daysLeft = days - 3;
@@ -41,6 +41,9 @@ public class ShopController {
 			price = days * 1.5;
 		}
 		return price;
+		*/
+		//TODO: move this to rentableCD/DBD/...
+		return 0;
 	}
 
 	public void addProduct(String title, String id, String type)
@@ -51,7 +54,7 @@ public class ShopController {
 	public HashMap<String, Product> getProductsHashMap(){
 		return model.getProductsHashMap();
 	}
-	public void reloadFromFile() throws FileSystemException
+	public void reloadFromFile()
 	{
 		persister.load(model.getProductsHashMap());
 	}

@@ -36,7 +36,7 @@ public class ShopView {
 	}
 
 	public static void uploadProducts() {
-		
+		controller.reloadFromFile();
 	}
 
 	public static void loanProduct() {
