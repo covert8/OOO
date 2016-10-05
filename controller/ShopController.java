@@ -36,6 +36,8 @@ public class ShopController {
 			}
 		} else if(model.getProductIds(productidx) == "G"){
 			price = days * 3;
+		} else if (model.getProductIds(productidx) == "C"){
+			price = days * 1.5;
 		}
 		return price;
 	}
