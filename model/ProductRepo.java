@@ -3,6 +3,7 @@ package model;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -89,21 +90,24 @@ public class ProductRepo {
 
 	public void saveToFile(PrintStream printStream)
 	{
-		//assert printStream.checkError();
-		//getProductsHashMap()).parallelStream().forEach(product ->  printStream.print(product.toString()));
-		//printStream.flush();
-		//printStream.close();
-		PrintWriter writer;
+		File f = new File("shop.txt");
+	    FileOutputStream fos;
 		try {
-			writer = new PrintStream("shop.txt", "Utf-8");
-			writer.println("The first line");
-			writer.println("The second line");
-			writer.close();
-		} catch (FileNotFoundException e) {
+			fos = new FileOutputStream(f);
+		    PrintWriter pw = new PrintWriter(fos);
+		    for (Product product : getProductsHashMap().values()){
+				pw.write(product.getProductId() + ";" + product.getProductTitle() +";" + product.getProductType() + ";");
+			}
+	        pw.flush();
+	        fos.close();
+	        pw.close();
+		} catch (FileNotFoundException e) {		
 			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
+    
+
 		
 	}
 
