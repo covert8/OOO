@@ -59,7 +59,7 @@ public class ShopController {
 
 	public void saveToFile() throws FileNotFoundException
 	{
-		model.saveToFile(new PrintStream("shop.txt"));
+		model.saveToFile();
 	}
 
 	@Override

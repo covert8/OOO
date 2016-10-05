@@ -88,7 +88,7 @@ public class ProductRepo {
 		return productH;
 	}
 
-	public void saveToFile(PrintStream printStream)
+	public void saveToFile()
 	{
 		File f = new File("shop.txt");
 	    FileOutputStream fos;
@@ -96,7 +96,7 @@ public class ProductRepo {
 			fos = new FileOutputStream(f);
 		    PrintWriter pw = new PrintWriter(fos);
 		    for (Product product : getProductsHashMap().values()){
-				pw.write(product.getProductId() + ";" + product.getProductTitle() +";" + product.getProductType() + ";");
+				pw.write(product.getProductId() + "," + product.getProductTitle() +"," + product.getProductType() + ",");
 			}
 	        pw.flush();
 	        fos.close();
