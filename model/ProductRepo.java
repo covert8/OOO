@@ -1,14 +1,18 @@
 package model;
 
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Stream;
 
 public class ProductRepo {
 	private ArrayList<Product> products = new ArrayList<>();
@@ -29,7 +33,6 @@ public class ProductRepo {
 
 	public String getProductTitles(int i)
 	{
-		System.out.println(i);
 		return products.get(i).getProductTitle();
 	}
 
@@ -68,7 +71,7 @@ public class ProductRepo {
 
 	public void addGame(String title, String id, String type)
 	{
-		products.add(new Game(title,id,type));
+		//products.add(new Game(title,id,type));
 		productH.put(id,new Game(title,id,type));
 
 	}
@@ -82,10 +85,22 @@ public class ProductRepo {
 
 	public void saveToFile(PrintStream printStream)
 	{
-		assert printStream.checkError();
-		products.parallelStream().forEach(product ->  printStream.print(product.toString()));
-		printStream.flush();
-		printStream.close();
+		//assert printStream.checkError();
+		//getProductsHashMap()).parallelStream().forEach(product ->  printStream.print(product.toString()));
+		//printStream.flush();
+		//printStream.close();
+		PrintWriter writer;
+		try {
+			writer = new PrintStream("shop.txt", "Utf-8");
+			writer.println("The first line");
+			writer.println("The second line");
+			writer.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	public void addFromFile(File file)

@@ -36,7 +36,7 @@ public class Main {
 						view.saveProducts();
 						break;
 					case 7:
-						view.saveProducts();
+						view.loanProduct();
 						break;
 					case 8:
 						view.collectProduct();

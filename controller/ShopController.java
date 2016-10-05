@@ -6,7 +6,6 @@ import model.ProductRepo;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
-import java.lang.reflect.Array;
 import java.nio.file.FileSystemException;
 import java.util.HashMap;
 import java.util.List;

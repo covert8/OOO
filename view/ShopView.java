@@ -1,8 +1,10 @@
 package view;
 
+import java.io.FileNotFoundException;
 import java.util.Random;
 
 import javax.swing.JOptionPane;
+import javax.xml.bind.SchemaOutputResolver;
 
 import controller.ShopController;
 import model.Product;
@@ -12,7 +14,7 @@ import model.Product;
  */
 public class ShopView {
 
-	private static ShopController controller = new ShopController("I dont care");
+	private static ShopController controller = new ShopController("a");
 
 	public double getPrice(int productidx, int days) {
 		return controller.getPrice(productidx, days);
@@ -31,7 +33,12 @@ public class ShopView {
 	}
 
 	public static void saveProducts() {
-		// TODO impl saveProductg
+		try {
+			controller.saveToFile();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	public static void uploadProducts() {
