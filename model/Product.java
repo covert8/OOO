@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 
 public class Product implements Serializable{
+	private Readable rentable;
 	private String productTitles;
 	private String productTypes;
 	private String productIds;
@@ -10,6 +11,7 @@ public class Product implements Serializable{
 	
 
 	Product(String productTitles, String productIds, String productTypes,boolean beschikbaar) {
+		//TODO id, and type not as variables but with the hashmaps
 		this.productTitles = productTitles;
 		this.productTypes = productTypes;
 		this.productIds = productIds;
@@ -17,6 +19,7 @@ public class Product implements Serializable{
 	}
 	
 	Product(String productTitles, String productIds, String productTypes) {
+		//TODO id, and type not as variables but with the hashmaps
 		this.productTitles = productTitles;
 		this.productTypes = productTypes;
 		this.productIds = productIds;
@@ -45,12 +48,11 @@ public class Product implements Serializable{
 
 	public String toString()
 	{
-		String output ="New Product\n";
-		output+=productTitles+"\n";
-		output+=productTypes+"\n";
-		output+=productIds+"\n";
-		output+=bBeschikbaar+"\n";
-		output+=this.getClass() + "\n";
+		String output = "";
+		output+=productTitles+", ";
+		output+=this.getClass().getSimpleName()+", ";
+		output+=productIds+", ";
+		output+=bBeschikbaar;
 		return output;
 	}
 }

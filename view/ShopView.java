@@ -4,10 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Random;
 import java.util.Scanner;
-
 import javax.swing.JOptionPane;
-import javax.xml.bind.SchemaOutputResolver;
-
 import controller.ShopController;
 import model.Product;
 
@@ -29,7 +26,7 @@ public class ShopView {
 	public static void listProcducts() {
 		String output = "";
 		for (Product product : controller.getProductsHashMap().values()) {
-			output += product.getProductId() + ": " + product.getProductTitle() + "\n";
+			output += product.toString() + "\n";
 		}
 		JOptionPane.showMessageDialog(null, output);
 	}
@@ -44,24 +41,7 @@ public class ShopView {
 	}
 
 	public static void uploadProducts() {
-		try {
-			String id, type, title;
-			
-			Scanner in = new Scanner(new FileReader("shop.txt"));
-			while(in.hasNext()){
-				String line = in.nextLine();
-				for(int i = 1; i < line.length(); i++){
-					if(line.substring(i-1, i).equals(",")){
-						
-					}
-				}
-				controller.addProduct("", "", "");
-			}
-			in.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-
+		
 	}
 
 	public static void loanProduct() {
@@ -155,5 +135,9 @@ public class ShopView {
 
 		}
 		return id + "";
+	}
+	public String askPersistentOption(){
+		//TODO ask user for wich persistent option
+		return "1";
 	}
 }

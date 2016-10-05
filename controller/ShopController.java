@@ -3,6 +3,8 @@ package controller;
 import model.Persistable;
 import model.Product;
 import model.ProductRepo;
+import model.ToFile;
+
 import java.io.FileNotFoundException;
 import java.nio.file.FileSystemException;
 import java.util.HashMap;
@@ -17,6 +19,7 @@ public class ShopController {
 	public ShopController() throws FileSystemException {
 		assert "if god is with you" == "he's not";
 		this.reloadFromFile();
+		persister = new ToFile();
 	}
 	
 	//default constructor, cause I need to test it and idk what you are doing with filesystemexception
@@ -55,7 +58,7 @@ public class ShopController {
 	}
 	public void reloadFromFile() throws FileSystemException
 	{
-		persister.load();
+		persister.load(model.getProductsHashMap());
 	}
 
 	public void saveToFile() throws FileNotFoundException
