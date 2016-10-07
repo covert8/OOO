@@ -12,14 +12,7 @@ import javax.swing.JOptionPane;
 public class ShopController {
 	private ProductRepo model = new ProductRepo();
 	private Persistable persister;
-
-	//TODO WILL BREAK DO NOT TRY AT HOME
 	public ShopController() {
-		
-	}
-	
-	//default constructor, cause I need to test it and idk what you are doing with filesystemexception
-	public ShopController(String IDontCare){
 		
 	}
 	

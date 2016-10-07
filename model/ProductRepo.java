@@ -9,10 +9,7 @@ public class ProductRepo {
 	private HashMap<String, Product> productH = new HashMap<>();
 	
 	public ProductRepo(ArrayList<String> productTitles, ArrayList<String> productIds, ArrayList<String> productTypes) {
-		assert productIds.size() == productTitles.size() && productTitles.size() == productTypes.size();
-		for (int i = 0; i < productIds.size(); i++) {
-			products.add(new Product(productTitles.get(i), productIds.get(i), productTypes.get(i)));
-		}
+		
 	}
 
 	public ProductRepo() {
@@ -35,10 +32,11 @@ public class ProductRepo {
 			throw new IllegalArgumentException();
 		}
 	}
-
+	/*
 	public void addProduct(String title, String id, String type, boolean beschikbaar) {
-		productH.put(id, new Product(title, id, type));
+		productH.put(id, new CD(title, id, type));
 	}
+	*/
 
 	public void addMovie(String title, String id, String type) {
 		productH.put(id, new Movie(title, id, type));

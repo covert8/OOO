@@ -54,11 +54,9 @@ public class ToFile implements Persistable {
 					}
 					type = line.substring(j,line.length());
 				
-				//	System.out.println(id);
-					//System.out.println(title);
-					//System.out.println(type);
-					//System.out.println(line.substring(j,line.length()));
-					productList.put(id, new Product(title, id, type));
+				
+					//TODO change to product type
+					productList.put(id, new CD(title, id, type));
 				}		
 			in.close();
 		} catch (FileNotFoundException e) {

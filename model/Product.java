@@ -2,41 +2,31 @@ package model;
 
 import java.io.Serializable;
 
-public class Product implements Serializable{
+public abstract class Product implements Serializable{
 	private Readable rentable;
 	private String productTitles;
-	private String productTypes;
-	private String productIds;
+	private String productId;
 	private boolean bBeschikbaar = false;
 	
 
-	Product(String productTitles, String productIds, String productTypes,boolean beschikbaar) {
-		//TODO id, and type not as variables but with the hashmaps
+	Product(String productTitles, String productIds,boolean beschikbaar) {
 		this.productTitles = productTitles;
-		this.productTypes = productTypes;
-		this.productIds = productIds;
+		this.productId = productIds;
 		this.bBeschikbaar = beschikbaar;
 	}
 	
-	Product(String productTitles, String productIds, String productTypes) {
-		//TODO id, and type not as variables but with the hashmaps
+	Product(String productTitles, String productIds) {
 		this.productTitles = productTitles;
-		this.productTypes = productTypes;
-		this.productIds = productIds;
+		this.productId = productIds;
 	}
 
 	public String getProductTitle() {
 		return productTitles;
 	}
 
-	public String getProductType() {
-		return productTypes;
-	}
-
-	public String getProductId() {
-		return productIds;
-	}
-
+	 public String getProductType(){
+		 return this.getClass().getSimpleName();
+	 }
 
 	public boolean isBeschikbaar() {
 		return bBeschikbaar;
@@ -51,8 +41,16 @@ public class Product implements Serializable{
 		String output = "";
 		output+=productTitles+", ";
 		output+=this.getClass().getSimpleName()+", ";
-		output+=productIds+", ";
+		output+=productId+", ";
 		output+=bBeschikbaar;
 		return output;
+	}
+	public double getPrice(){
+		//TODO impl getPrice
+			return 0;
+	}
+
+	public String getProductId() {
+		return productId;
 	}
 }
