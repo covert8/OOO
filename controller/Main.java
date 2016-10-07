@@ -1,9 +1,6 @@
 package controller;
 
-import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
-
 import view.ShopView;
 
 public class Main {

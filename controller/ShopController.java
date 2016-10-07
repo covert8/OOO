@@ -4,11 +4,7 @@ import model.Persistable;
 import model.Product;
 import model.ProductRepo;
 import model.ToFile;
-
-import java.io.FileNotFoundException;
-import java.nio.file.FileSystemException;
 import java.util.HashMap;
-import java.util.List;
 
 
 public class ShopController {
@@ -42,7 +38,7 @@ public class ShopController {
 		}
 		return price;
 		*/
-		//TODO: move this to rentableCD/DBD/...
+		//TODO: move this to rentableCD/DjBD/...
 		return 0;
 	}
 
@@ -62,11 +58,5 @@ public class ShopController {
 	public void saveToFile()
 	{
 		persister.save(model.getProductsHashMap());
-	}
-
-	@Override
-	protected void finalize() throws Throwable {
-		this.reloadFromFile();
-		super.finalize();
 	}
 }
