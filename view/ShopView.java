@@ -131,8 +131,18 @@ public class ShopView {
 		}
 		return id + "";
 	}
-	public String askPersistentOption(){
-		//TODO ask user for wich persistent option
-		return "1";
+	public void askPersistentOption(){
+		String selectedString = "";
+		String[] values = {"Database","Text file"};
+
+		Object selected = JOptionPane.showInputDialog(null, "Which persitible option doe you want to use?","Selection", JOptionPane.DEFAULT_OPTION, null, values, "Database");
+		if ( selected != null ){
+		     selectedString = selected.toString();
+		    System.out.println(selectedString);
+		}else{
+			JOptionPane.showMessageDialog(null, "You need to select an option!");
+			askPersistentOption();
+		}
+		controller.setPersitible(selectedString);
 	}
 }

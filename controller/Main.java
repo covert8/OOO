@@ -1,14 +1,17 @@
 package controller;
 
+import java.sql.Savepoint;
+
 import javax.swing.JOptionPane;
 import view.ShopView;
 
 public class Main {
 	public static void main(String[] args) {
 		
-		String menu = "1. Add product\n2. Show product\n3. Show rental price\n4. Rent Prodocut\n 5. List all products \n6. Save all products \n7. Loan prodcut\n8. Collect product \n9. Check productstatus\n10 add from File\n\n0. Quit";
+		String menu = "1. Add product\n2. Show product\n3. Show rental price\n4. Rent Prodocut\n 5. List all products \n6. Change persitible option \n7. Loan prodcut\n8. Collect product \n9. Check productstatus\n\n0. Quit";
 		int choice = -1;
 		ShopView view = new ShopView();
+		view.askPersistentOption();
 		while (choice != 0) {
 			String choiceString = JOptionPane.showInputDialog(menu);
 			if (choiceString == null || choiceString.isEmpty()) {
@@ -33,7 +36,7 @@ public class Main {
 						view.listProcducts();
 						break;
 					case 6:
-						view.saveProducts();
+						view.askPersistentOption();
 						break;
 					case 7:
 						view.loanProduct();
@@ -42,10 +45,9 @@ public class Main {
 						view.collectProduct();
 						break;
 					case 9: view.getProductStatus();
-					break;
-					case 10: view.uploadProducts();
 						break;
 				case 0:
+						view.saveProducts();
 						break;		
 				default:
 						throw new IllegalArgumentException("Invalid input");

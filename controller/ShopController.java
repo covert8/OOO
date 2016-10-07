@@ -6,6 +6,8 @@ import model.ProductRepo;
 import model.ToFile;
 import java.util.HashMap;
 
+import javax.swing.JOptionPane;
+
 
 public class ShopController {
 	private ProductRepo model = new ProductRepo();
@@ -13,8 +15,7 @@ public class ShopController {
 
 	//TODO WILL BREAK DO NOT TRY AT HOME
 	public ShopController() {
-		persister = new ToFile();
-		//this.reloadFromFile();
+		
 	}
 	
 	//default constructor, cause I need to test it and idk what you are doing with filesystemexception
@@ -58,5 +59,15 @@ public class ShopController {
 	public void saveToFile()
 	{
 		persister.save(model.getProductsHashMap());
+	}
+
+	public void setPersitible(String option) {
+		if(option.equals("Database")){
+			JOptionPane.showMessageDialog(null, "This option isn't suppoted yet");
+		}else{
+			persister = new ToFile();
+		}
+		//TODO: remove if derbydb works
+		persister = new ToFile();
 	}
 }
