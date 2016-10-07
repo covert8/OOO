@@ -53,10 +53,14 @@ public class ToFile implements Persistable {
 						}
 					}
 					type = line.substring(j,line.length());
-				
-				
-					//TODO change to product type
-					productList.put(id, new CD(title, id, type));
+					if(type.equals("CD")){
+						productList.put(id, new CD(title, id));
+					}else if(type.equals("Movie")){
+						productList.put(id, new Movie(title, id));
+					}else if(type.equals("CD")){
+						productList.put(id, new CD(title, id));
+					}
+					
 				}		
 			in.close();
 		} catch (FileNotFoundException e) {

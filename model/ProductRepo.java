@@ -5,7 +5,6 @@ import java.util.HashMap;
 
 
 public class ProductRepo {
-	private ArrayList<Product> products = new ArrayList<>();
 	private HashMap<String, Product> productH = new HashMap<>();
 	
 	public ProductRepo(ArrayList<String> productTitles, ArrayList<String> productIds, ArrayList<String> productTypes) {
@@ -19,36 +18,28 @@ public class ProductRepo {
 	public void addProduct(String title, String id, String type) {
 		if (productH.get(id) == null) {
 			if (type.equals("M")) {
-				Movie movie = new Movie(title, id, type);
-				productH.put(id, movie);
+				addMovie(title, id);
 			} else if (type.equals("G")) {
-				Game game = new Game(title, id, type);
-				productH.put(id, game);
+				addGame(title, id);
 			} else if (type.equals("C")){
-				CD cd = new CD(title, id, type);
-				productH.put(id, cd);
+				addCD(title, id);
 			}
 		} else {
 			throw new IllegalArgumentException();
 		}
 	}
-	/*
-	public void addProduct(String title, String id, String type, boolean beschikbaar) {
-		productH.put(id, new CD(title, id, type));
-	}
-	*/
 
-	public void addMovie(String title, String id, String type) {
-		productH.put(id, new Movie(title, id, type));
+	public void addMovie(String title, String id) {
+		productH.put(id, new Movie(title, id));
 	}
 
-	public void addCD(String title, String id, String type) {
-		productH.put(id, new CD(title, id, type));
+	public void addCD(String title, String id) {
+		productH.put(id, new CD(title, id));
 
 	}
 
-	public void addGame(String title, String id, String type) {
-		productH.put(id, new Game(title, id, type));
+	public void addGame(String title, String id) {
+		productH.put(id, new Game(title, id));
 
 	}
 
