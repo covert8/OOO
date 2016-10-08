@@ -68,4 +68,9 @@ public class ToFile implements Persistable {
 		}
 	}
 
+	@Override
+	public void init() {
+		//Shouldn't do anything 
+	}
+
 }

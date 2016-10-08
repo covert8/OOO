@@ -14,4 +14,10 @@ public class ToDatabase implements Persistable{
 		// TODO setup derby db load
 	}
 
+	@Override
+	public void init() {
+		//TODO create database tables
+		
+	}
+
 }
