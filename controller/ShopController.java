@@ -1,33 +1,24 @@
 package controller;
 
+import model.Persistable;
 import model.Product;
 import model.ProductRepo;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
-import java.nio.file.FileSystemException;
+import model.ToFile;
 import java.util.HashMap;
-import java.util.List;
+
+import javax.swing.JOptionPane;
 
 
 public class ShopController {
 	private ProductRepo model = new ProductRepo();
-
-	//TODO WILL BREAK DO NOT TRY AT HOME
-	public ShopController() throws FileSystemException {
-		assert "if god is with you" == "he's not";
-		this.reloadFromFile();
-	}
-	
-	//default constructor, cause I need to test it and idk what you are doing with filesystemexception
-	public ShopController(String IDontCare){
+	private Persistable persister;
+	public ShopController() {
 		
 	}
 	
 	public double getPrice(int productidx, int days) {
 		double price = 0;
-		
+		/*
 		if(model.getProductIds(productidx).equals("M")){
 			price = 5;
 			int daysLeft = days - 3;
@@ -40,6 +31,9 @@ public class ShopController {
 			price = days * 1.5;
 		}
 		return price;
+		*/
+		//TODO: move this to rentableCD/DjBD/...
+		return 0;
 	}
 
 	public void addProduct(String title, String id, String type)
@@ -47,26 +41,26 @@ public class ShopController {
 		model.addProduct(title,id,type);
 	}
 
-	public List<Product> getProducts()
-	{
-		return model.getProducts();
-	}
 	public HashMap<String, Product> getProductsHashMap(){
 		return model.getProductsHashMap();
 	}
-	public void reloadFromFile() throws FileSystemException
+	public void reloadFromFile()
 	{
-		model.addFromFile(new File("shop.txt"));
+		persister.load(model.getProductsHashMap());
 	}
 
-	public void saveToFile() throws FileNotFoundException
+	public void saveToFile()
 	{
-		model.saveToFile();
+		persister.save(model.getProductsHashMap());
 	}
 
-	@Override
-	protected void finalize() throws Throwable {
-		this.reloadFromFile();
-		super.finalize();
+	public void setPersitible(String option) {
+		if(option.equals("Database")){
+			JOptionPane.showMessageDialog(null, "This option isn't suppoted yet");
+		}else{
+			persister = new ToFile();
+		}
+		//TODO: remove if derbydb works
+		persister = new ToFile();
 	}
 }

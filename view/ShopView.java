@@ -4,10 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Random;
 import java.util.Scanner;
-
 import javax.swing.JOptionPane;
-import javax.xml.bind.SchemaOutputResolver;
-
 import controller.ShopController;
 import model.Product;
 
@@ -16,7 +13,7 @@ import model.Product;
  */
 public class ShopView {
 
-	private static ShopController controller = new ShopController("a");
+	private static ShopController controller = new ShopController();
 
 	public double getPrice(int productidx, int days) {
 		return controller.getPrice(productidx, days);
@@ -35,33 +32,11 @@ public class ShopView {
 	}
 
 	public static void saveProducts() {
-		try {
 			controller.saveToFile();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		
 	}
 
 	public static void uploadProducts() {
-		try {
-			String id, type, title;
-			
-			Scanner in = new Scanner(new FileReader("shop.txt"));
-			while(in.hasNext()){
-				String line = in.nextLine();
-				for(int i = 1; i < line.length(); i++){
-					if(line.substring(i-1, i).equals(",")){
-						
-					}
-				}
-				controller.addProduct("", "", "");
-			}
-			in.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-
+		controller.reloadFromFile();
 	}
 
 	public static void loanProduct() {
@@ -155,5 +130,19 @@ public class ShopView {
 
 		}
 		return id + "";
+	}
+	public void askPersistentOption(){
+		String selectedString = "";
+		String[] values = {"Database","Text file"};
+
+		Object selected = JOptionPane.showInputDialog(null, "Which persitible option doe you want to use?","Selection", JOptionPane.DEFAULT_OPTION, null, values, "Database");
+		if ( selected != null ){
+		     selectedString = selected.toString();
+		    System.out.println(selectedString);
+		}else{
+			JOptionPane.showMessageDialog(null, "You need to select an option!");
+			askPersistentOption();
+		}
+		controller.setPersitible(selectedString);
 	}
 }
