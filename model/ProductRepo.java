@@ -1,6 +1,6 @@
 package model;
 
-<<<<<<< HEAD
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,8 +10,6 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;	
 import java.io.UnsupportedEncodingException;
-=======
->>>>>>> f07a6b97ced54dedb833b1783a65e1a818c666b8
 import java.util.ArrayList;
 import java.util.HashMap;
 

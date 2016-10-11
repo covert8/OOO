@@ -3,11 +3,10 @@ package model;
 import java.io.Serializable;
 
 public abstract class Product implements Serializable{
-	private Readable rentable;
 	private String productTitles;
 	private String productId;
 	private boolean bBeschikbaar = false;
-	
+	private Productstate state;
 
 	Product(String productTitles, String productIds,boolean beschikbaar) {
 		this.productTitles = productTitles;
@@ -52,5 +51,11 @@ public abstract class Product implements Serializable{
 
 	public String getProductId() {
 		return productId;
+	}
+	public Productstate getCurrentProductState(){
+		return state;
+	}
+	public void setCurrentProductState(Productstate state){
+		this.state = state;
 	}
 }
