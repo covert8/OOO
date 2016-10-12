@@ -3,7 +3,7 @@ package model;
 public class RentableGame  implements Rentable{
 	//TODO implement rentableGame
 	@Override
-	public void getPRice() {
+	public void getPrice() {
 		
 	}
 
