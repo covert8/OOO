@@ -14,17 +14,18 @@ public class ToFile implements Persistable {
 	@Override
 	public void save(HashMap<String, Product> productList) {
 		File f = new File("shop.txt");
-	    FileOutputStream fos;
+		FileOutputStream fos;
 		try {
 			fos = new FileOutputStream(f);
-		    PrintWriter pw = new PrintWriter(fos);
-		    for (Product product : productList.values()){
-				pw.write(product.getProductId() + "," + product.getProductTitle() +"," + product.getProductType() + ",");
+			PrintWriter pw = new PrintWriter(fos);
+			for (Product product : productList.values()) {
+				pw.write(product.getProductId() + "," + product.getProductTitle() + "," + product.getProductType()
+						+ "\n");
 			}
-	        pw.flush();
-	        fos.close();
-	        pw.close();
-		} catch (FileNotFoundException e) {		
+			pw.flush();
+			fos.close();
+			pw.close();
+		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -32,45 +33,39 @@ public class ToFile implements Persistable {
 	}
 
 	@Override
-	public void load(HashMap<String, Product> productList) {
+	public HashMap<String, Product> load() {
+		HashMap<String, Product> productList = new HashMap<String, Product>();
 		try {
-			String id="", type="", title ="";
-			
+			String id = "", type = "", title = "";
+
 			Scanner in = new Scanner(new FileReader("shop.txt"));
-			int i,j;
-			while(in.hasNext()){
-				String line = in.nextLine();
-				for(i = 1; i < line.length(); i++){
-					if(line.substring(i-1, i).equals(",")){
-						id = line.substring(0,i-1);
-						
-					}
+			Scanner line = null;
+
+			while (in.hasNext()) {
+				line = new Scanner(in.nextLine());
+				line.useDelimiter(",");
+				id = line.next();
+				title = line.next();
+				type = line.next();
+				if (type.equals("CD")) {
+					productList.put(id, new CD(title, id));
+				} else if (type.equals("Movie")) {
+					productList.put(id, new Movie(title, id));
+				} else if (type.equals("Game")) {
+					productList.put(id, new Game(title, id));
 				}
-					for(j = i; j <line.length();j++){
-						if(line.substring(j-1,j).equals(",")){
-							title = line.substring(i,j-1);
-							break;
-						}
-					}
-					type = line.substring(j,line.length());
-					if(type.equals("CD")){
-						productList.put(id, new CD(title, id));
-					}else if(type.equals("Movie")){
-						productList.put(id, new Movie(title, id));
-					}else if(type.equals("CD")){
-						productList.put(id, new CD(title, id));
-					}
-					
-				}		
+			}
 			in.close();
+			line.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		return productList;
 	}
 
 	@Override
 	public void init() {
-		//Shouldn't do anything 
+		// Shouldn't do anything
 	}
 
 }

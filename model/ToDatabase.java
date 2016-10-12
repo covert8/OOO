@@ -10,8 +10,9 @@ public class ToDatabase implements Persistable{
 	}
 
 	@Override
-	public void load(HashMap<String, Product> productList) {
+	public HashMap<String, Product> load() {
 		// TODO setup derby db load
+		return null;
 	}
 
 	@Override

@@ -8,7 +8,7 @@ import view.ShopView;
 public class Main {
 	public static void main(String[] args) {
 		
-		String menu = "1. Add product\n2. Show product\n3. Show rental price\n4. Rent Prodocut\n 5. List all products \n6. Change persitible option \n7. Loan prodcut\n8. Collect product \n9. Check productstatus\n\n0. Quit";
+		String menu = "1. Add product\n2. Show product\n3. Show rental price\n4. Rent Product\n 5. List all products \n6. Change persitible option \n7. Loan prodcut\n8. Collect product \n9. Check productstatus\n\n0. Quit";
 		int choice = -1;
 		ShopView view = new ShopView();
 		view.askPersistentOption();
@@ -33,7 +33,7 @@ public class Main {
 						view.rentProduct();
 						break;
 					case 5:
-						view.listProcducts();
+						view.listProducts();
 						break;
 					case 6:
 						view.askPersistentOption();

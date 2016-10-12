@@ -46,7 +46,9 @@ public class ShopController {
 	}
 	public void reloadFromFile()
 	{
-		persister.load(model.getProductsHashMap());
+		//model.setProductsHashMap(persister.load(model.getProductsHashMap()));
+		model.setProductsHashMap(new ToFile().load());
+		//System.out.println(model.getProductsHashMap().size());
 	}
 
 	public void saveToFile()

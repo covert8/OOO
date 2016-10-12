@@ -20,7 +20,7 @@ public class ProductRepo {
 	public ProductRepo(ArrayList<String> productTitles, ArrayList<String> productIds, ArrayList<String> productTypes) {
 		
 	}
-
+	
 	public ProductRepo() {
 
 	}
@@ -56,4 +56,9 @@ public class ProductRepo {
 	public HashMap<String, Product> getProductsHashMap() {
 		return productH;
 	}
+	
+	public void setProductsHashMap(HashMap<String, Product> productList) {
+		productH = productList;
+	}
+	
 }

@@ -23,7 +23,7 @@ public class ShopView {
 		// TODO: impl: rental product
 	}
 
-	public static void listProcducts() {
+	public static void listProducts() {
 		String output = "";
 		for (Product product : controller.getProductsHashMap().values()) {
 			output += product.toString() + "\n";
@@ -139,6 +139,15 @@ public class ShopView {
 		if ( selected != null ){
 		     selectedString = selected.toString();
 		    System.out.println(selectedString);
+		    switch (selectedString) {
+			case "Text file":
+				controller.reloadFromFile();
+				break;
+			case "Database":
+				break;
+			default:
+				break;
+			}
 		}else{
 			JOptionPane.showMessageDialog(null, "You need to select an option!");
 			askPersistentOption();

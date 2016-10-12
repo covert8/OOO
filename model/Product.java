@@ -5,7 +5,7 @@ import java.io.Serializable;
 public abstract class Product implements Serializable{
 	private String productTitles;
 	private String productId;
-	private boolean bBeschikbaar = false;
+	private boolean bBeschikbaar = true;
 	private Productstate state;
 
 	Product(String productTitles, String productIds,boolean beschikbaar) {
