@@ -1,4 +1,6 @@
-package model;
+package model.product;
+
+import model.state.Productstate;
 
 import java.io.Serializable;
 

@@ -1,14 +1,14 @@
-package model;
+package model.state;
 
 import javax.swing.JOptionPane;
 
-public class BrokenState  implements Productstate{
+public class RentedState implements Productstate {
 
 	@Override
 	public void rent() {
-		JOptionPane.showInternalMessageDialog(null,"This product is damaged, you can't rent it.");
+		JOptionPane.showInternalMessageDialog(null, "This product is already rentend so you can't rent this again.");
+		
 	}
-
 
 	@Override
 	public void repair() {
@@ -24,7 +24,11 @@ public class BrokenState  implements Productstate{
 
 	@Override
 	public void bringback(boolean isDamaged) {
-		// TODO Auto-generated method stub
+		if(isDamaged){
+			
+		}else{
+
+		}
 		
 	}
 

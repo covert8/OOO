@@ -1,12 +1,9 @@
 package view;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.Random;
-import java.util.Scanner;
 import javax.swing.JOptionPane;
 import controller.ShopController;
-import model.Product;
+import model.product.Product;
 
 /**
  * Created by louis on 21/09/2016.

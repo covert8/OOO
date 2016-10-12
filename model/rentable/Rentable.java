@@ -1,4 +1,4 @@
-package model;
+package model.rentable;
 
 public interface Rentable {
 	public boolean isRented = false;

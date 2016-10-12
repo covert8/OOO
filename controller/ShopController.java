@@ -1,9 +1,9 @@
 package controller;
 
-import model.Persistable;
-import model.Product;
+import model.persistance.Persistable;
+import model.product.Product;
 import model.ProductRepo;
-import model.ToFile;
+import model.persistance.ToFile;
 import java.util.HashMap;
 
 import javax.swing.JOptionPane;
@@ -17,22 +17,7 @@ public class ShopController {
 	}
 	
 	public double getPrice(int productidx, int days) {
-		double price = 0;
-		/*
-		if(model.getProductIds(productidx).equals("M")){
-			price = 5;
-			int daysLeft = days - 3;
-			if (daysLeft > 0) {
-				price += (daysLeft * 2);
-			}
-		} else if(model.getProductIds(productidx) == "G"){
-			price = days * 3;
-		} else if (model.getProductIds(productidx) == "C"){
-			price = days * 1.5;
-		}
-		return price;
-		*/
-		//TODO: move this to rentableCD/DjBD/...
+		//TODO refactor
 		return 0;
 	}
 

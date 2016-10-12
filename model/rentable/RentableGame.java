@@ -1,7 +1,7 @@
-package model;
+package model.rentable;
 
-public class RentableMovie implements Rentable {
-	//TODO impl rentableMovie
+public class RentableGame  implements Rentable{
+	//TODO implement rentableGame
 	@Override
 	public void getPrice() {
 		

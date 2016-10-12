@@ -1,4 +1,6 @@
-package model;
+package model.state;
+
+import model.product.Product;
 
 public class RemovedState implements Productstate{
 

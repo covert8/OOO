@@ -1,4 +1,9 @@
-package model;
+package model.persistance;
+
+import model.product.CD;
+import model.product.Game;
+import model.product.Movie;
+import model.product.Product;
 
 import java.io.File;
 import java.io.FileNotFoundException;

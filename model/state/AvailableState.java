@@ -1,13 +1,12 @@
-package model;
+package model.state;
 
 import javax.swing.JOptionPane;
 
-public class HiredState implements Productstate {
+public class AvailableState implements Productstate{
 
 	@Override
 	public void rent() {
-		JOptionPane.showMessageDialog(null, "This product is already hired, you can't rent it again/.");
-		
+		JOptionPane.showMessageDialog(null, "This product is available, you have sucessfully retend this product.");
 	}
 
 	@Override
@@ -27,5 +26,7 @@ public class HiredState implements Productstate {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 	
 }

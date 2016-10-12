@@ -1,4 +1,6 @@
-package model;
+package model.persistance;
+
+import model.product.Product;
 
 import java.util.HashMap;
 
