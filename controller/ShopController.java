@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 
 public class ShopController {
-	private ProductRepo model = new ProductRepo();
+	private final ProductRepo model = new ProductRepo();
 	private Persistable persister;
 	public ShopController() {
 		

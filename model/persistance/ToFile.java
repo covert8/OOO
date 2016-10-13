@@ -6,7 +6,6 @@ import model.product.CD;
 import model.product.Game;
 import model.product.Movie;
 import model.product.Product;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,7 +14,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class ToFile implements Persistable {
 
@@ -46,7 +44,7 @@ public class ToFile implements Persistable {
 	public HashMap<String, Product> loadProducts() {
 		HashMap<String, Product> productList = new HashMap<>();
 		try {
-			String id = "", type = "", title = "";
+			String id, type, title;
 
 			Scanner in = new Scanner(new FileReader("shop.txt"));
 			Scanner line = null;
@@ -84,7 +82,7 @@ public class ToFile implements Persistable {
 	{
 		HashMap<String, Customer> customerList = new HashMap<>();
 		try {
-			String name = "", type = "", email = "";
+			String name, type, email;
 
 			Scanner in = new Scanner(new FileReader("shop.txt"));
 			Scanner line = null;

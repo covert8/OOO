@@ -5,8 +5,8 @@ import model.state.ProductState;
 
 public abstract class Product implements Dumpable
 {
-	private String productTitles;
-	private String productId;
+	private final String productTitles;
+	private final String productId;
 	private boolean bBeschikbaar = true;
 	private ProductState state;
 

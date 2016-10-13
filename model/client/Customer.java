@@ -4,8 +4,8 @@ import model.persistance.Dumpable;
 
 public class Customer implements Dumpable
 {
-	private String name;
-	private String email;
+	private final String name;
+	private final String email;
 
 	public Customer(String name, String email)
 	{

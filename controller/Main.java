@@ -1,7 +1,5 @@
 package controller;
 
-import java.sql.Savepoint;
-
 import javax.swing.JOptionPane;
 import view.ShopView;
 
@@ -30,31 +28,31 @@ public class Main {
 						view.showPrice();
 						break;
 					case 4:
-						view.rentProduct();
+						ShopView.rentProduct();
 						break;
 					case 5:
-						view.listProducts();
+						ShopView.listProducts();
 						break;
 					case 6:
 						view.askPersistentOption();
 						break;
 					case 7:
-						view.loanProduct();
+						ShopView.loanProduct();
 						break;
 					case 8:
-						view.collectProduct();
+						ShopView.collectProduct();
 						break;
 					case 9: view.getProductStatus();
 						break;
 				case 0:
-						view.saveProducts();
+						ShopView.saveProducts();
 						break;		
 				default:
 						throw new IllegalArgumentException("Invalid input");
 					}
 				} catch (IllegalArgumentException e) {
 					view.showError(e);
-				} catch (NullPointerException e) {
+				} catch (NullPointerException ignored) {
 				}
 			}
 		}
