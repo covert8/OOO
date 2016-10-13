@@ -1,5 +1,6 @@
 package controller;
 
+import model.client.Customer;
 import model.persistance.Persistable;
 import model.product.Product;
 import model.ProductRepo;
@@ -29,6 +30,7 @@ public class ShopController {
 	public HashMap<String, Product> getProductsHashMap(){
 		return model.getProductsHashMap();
 	}
+	public HashMap<String, Customer> getCustomerHashMap() { return model.getCustomerHashMap();}
 	public void reloadFromFile()
 	{
 		//model.setProductsHashMap(persister.loadProducts(model.getProductsHashMap()));

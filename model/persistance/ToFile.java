@@ -21,7 +21,7 @@ public class ToFile implements Persistable {
 	public void save(ShopController shopController) {
 		List<Dumpable> dumpableList = new ArrayList<>();
 		dumpableList.addAll(shopController.getProductsHashMap().values());
-		dumpableList.addAll(shopController.getProductsHashMap().values());
+		dumpableList.addAll(shopController.getCustomerHashMap().values());
 		File f = new File("shop.txt");
 		FileOutputStream fos;
 		try {
