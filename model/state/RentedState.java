@@ -2,7 +2,8 @@ package model.state;
 
 import javax.swing.JOptionPane;
 
-public class RentedState implements Productstate {
+public class RentedState implements ProductState
+{
 
 	@Override
 	public void rent() {

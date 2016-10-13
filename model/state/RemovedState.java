@@ -2,7 +2,8 @@ package model.state;
 
 import model.product.Product;
 
-public class RemovedState implements Productstate{
+public class RemovedState implements ProductState
+{
 
 	public  RemovedState(Product product) {
 		

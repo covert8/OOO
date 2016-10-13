@@ -1,6 +1,7 @@
 package model.state;
 
-public interface Productstate {
+public interface ProductState
+{
 	
 
 	public void rent();

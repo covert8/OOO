@@ -1,14 +1,14 @@
 package model.product;
 
-import model.state.Productstate;
+import model.state.ProductState;
 
 import java.io.Serializable;
 
-public abstract class Product implements Serializable{
+public abstract class Product implements Serializable, ProductState{
 	private String productTitles;
 	private String productId;
 	private boolean bBeschikbaar = true;
-	private Productstate state;
+	private ProductState state;
 
 	Product(String productTitles, String productIds,boolean beschikbaar) {
 		this.productTitles = productTitles;
@@ -54,10 +54,10 @@ public abstract class Product implements Serializable{
 	public String getProductId() {
 		return productId;
 	}
-	public Productstate getCurrentProductState(){
+	public ProductState getCurrentProductState(){
 		return state;
 	}
-	public void setCurrentProductState(Productstate state){
+	public void setCurrentProductState(ProductState state){
 		this.state = state;
 	}
 }
