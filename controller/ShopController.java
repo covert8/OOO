@@ -31,14 +31,14 @@ public class ShopController {
 	}
 	public void reloadFromFile()
 	{
-		//model.setProductsHashMap(persister.load(model.getProductsHashMap()));
-		model.setProductsHashMap(new ToFile().load());
+		//model.setProductsHashMap(persister.loadProducts(model.getProductsHashMap()));
+		model.setProductsHashMap(new ToFile().loadProducts());
 		//System.out.println(model.getProductsHashMap().size());
 	}
 
 	public void saveToFile()
 	{
-		persister.save(model.getProductsHashMap());
+		persister.save(this);
 	}
 
 	public void setPersitible(String option) {

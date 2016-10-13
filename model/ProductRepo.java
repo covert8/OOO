@@ -1,6 +1,7 @@
 package model;
 
 
+import model.client.Customer;
 import model.product.CD;
 import model.product.Game;
 import model.product.Movie;
@@ -12,15 +13,21 @@ import java.util.HashMap;
 
 public class ProductRepo {
 	private HashMap<String, Product> productH = new HashMap<>();
-	
+	private HashMap<String,Customer> customerH = new HashMap<>();
+	@Deprecated
 	public ProductRepo(ArrayList<String> productTitles, ArrayList<String> productIds, ArrayList<String> productTypes) {
 		
 	}
 	
 	public ProductRepo() {
-
 	}
 
+	public void addCustomer(Customer customer)
+	{
+		customerH.put(customer.getName(),customer);
+	}
+
+	//TODO enum misschien
 	public void addProduct(String title, String id, String type) {
 		if (productH.get(id) == null) {
 			switch (type)
