@@ -1,7 +1,7 @@
 package model.product;
 
 public class Movie extends Product {
-	Movie(String productTitles, String productIds) {
+	public Movie(String productTitles, String productIds) {
 		super(productTitles, productIds);
 	}
 }

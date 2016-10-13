@@ -23,12 +23,17 @@ public class ProductRepo {
 
 	public void addProduct(String title, String id, String type) {
 		if (productH.get(id) == null) {
-			if (type.equals("M")) {
-				addMovie(title, id);
-			} else if (type.equals("G")) {
-				addGame(title, id);
-			} else if (type.equals("C")){
-				addCD(title, id);
+			switch (type)
+			{
+				case "M":
+					addMovie(title, id);
+					break;
+				case "G":
+					addGame(title, id);
+					break;
+				case "C":
+					addCD(title, id);
+					break;
 			}
 		} else {
 			throw new IllegalArgumentException();
