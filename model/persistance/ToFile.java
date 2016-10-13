@@ -23,6 +23,7 @@ public class ToFile implements Persistable {
 	public void save(ShopController shopController) {
 		List<Dumpable> dumpableList = new ArrayList<>();
 		dumpableList.addAll(shopController.getProductsHashMap().values());
+		dumpableList.addAll(shopController.getProductsHashMap().values());
 		File f = new File("shop.txt");
 		FileOutputStream fos;
 		try {
@@ -56,12 +57,17 @@ public class ToFile implements Persistable {
 				id = line.next();
 				title = line.next();
 				type = line.next();
-				if (type.equals("CD")) {
-					productList.put(id, new CD(title, id));
-				} else if (type.equals("Movie")) {
-					productList.put(id, new Movie(title, id));
-				} else if (type.equals("Game")) {
-					productList.put(id, new Game(title, id));
+				switch (type)
+				{
+					case "CD":
+						productList.put(id, new CD(title, id));
+						break;
+					case "Movie":
+						productList.put(id, new Movie(title, id));
+						break;
+					case "Game":
+						productList.put(id, new Game(title, id));
+						break;
 				}
 			}
 			in.close();
@@ -76,8 +82,33 @@ public class ToFile implements Persistable {
 	@Override
 	public HashMap<String, Customer> loadCustomers()
 	{
-		throw new NotImplementedException();
+		HashMap<String, Customer> customerList = new HashMap<>();
+		try {
+			String name = "", type = "", email = "";
+
+			Scanner in = new Scanner(new FileReader("shop.txt"));
+			Scanner line = null;
+
+			while (in.hasNext()) {
+				line = new Scanner(in.nextLine());
+				line.useDelimiter(",");
+				name = line.next();
+				email = line.next();
+				type = line.next();
+				if (Objects.equals(type, "customer"))
+				{
+					customerList.put(name, new Customer(name, email));
+				}
+			}
+			in.close();
+			assert line != null;
+			line.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return customerList;
 	}
+
 
 	@Override
 	public void init() {

@@ -8,10 +8,10 @@ import java.util.HashMap;
 
 public interface Persistable {
 	
-	public void init();
-	public void save(ShopController shopController);
+	void init();
+	void save(ShopController shopController);
 	//TODO perhaps merge load functions
-	public HashMap<String, Product> loadProducts();
-	public HashMap<String,Customer> loadCustomers();
+	HashMap<String, Product> loadProducts();
+	HashMap<String,Customer> loadCustomers();
 
 }

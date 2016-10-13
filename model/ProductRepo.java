@@ -61,12 +61,24 @@ public class ProductRepo {
 
 	}
 
+	public Customer findOrAddCustomer(Customer customer)
+	{
+		if(!customerH.containsKey(customer.getName()))
+			customerH.put(customer.getName(),customer);
+		return customerH.get(customer.getName());
+	}
+
 	public HashMap<String, Product> getProductsHashMap() {
 		return productH;
 	}
-	
+	public HashMap<String, Customer> getCustomerHashMap() { return customerH; }
+
 	public void setProductsHashMap(HashMap<String, Product> productList) {
 		productH = productList;
+	}
+	public void setCustomerHashMap(HashMap<String, Customer> customerH)
+	{
+		this.customerH = customerH;
 	}
 	
 }

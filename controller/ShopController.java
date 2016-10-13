@@ -33,6 +33,7 @@ public class ShopController {
 	{
 		//model.setProductsHashMap(persister.loadProducts(model.getProductsHashMap()));
 		model.setProductsHashMap(new ToFile().loadProducts());
+		model.setCustomerHashMap(new ToFile().loadCustomers());
 		//System.out.println(model.getProductsHashMap().size());
 	}
 

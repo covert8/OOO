@@ -4,5 +4,5 @@ import java.util.ArrayList;
 
 public interface Dumpable
 {
-	public String dump();
+	String dump();
 }
