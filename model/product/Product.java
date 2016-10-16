@@ -60,4 +60,13 @@ public abstract class Product implements Serializable{
 	public void setCurrentProductState(Productstate state){
 		this.state = state;
 	}
+	public void repair(){
+		getCurrentProductState().repair();
+	}
+	public void remove(){
+		getCurrentProductState().remove();
+	}
+	public void rent(){
+		getCurrentProductState().rent();
+	}
 }
