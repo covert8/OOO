@@ -19,12 +19,14 @@ public class BrokenState  implements ProductState
 
 	@Override
 	public void repair() {
-		
+		JOptionPane.showMessageDialog(null, "This product is repaired. You can rent this product again.");
+		getProduct().setCurrentProductState(new AvailableState(getProduct()));
 	}
 
 	@Override
 	public void remove() {
-		
+		JOptionPane.showMessageDialog(null, "This product is totally broken, we are going to dispose it.");
+		getProduct().setCurrentProductState(new RemovedState(getProduct()));
 	}
 
 	@Override

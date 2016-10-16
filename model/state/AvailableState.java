@@ -16,6 +16,7 @@ public class AvailableState implements ProductState
 	@Override
 	public void rent() {
 		JOptionPane.showMessageDialog(null, "This product is available, you have sucessfully retend this product.");
+		getProduct().setCurrentProductState(new RentedState(getProduct()));
 	}
 
 	@Override
@@ -25,13 +26,14 @@ public class AvailableState implements ProductState
 
 	@Override
 	public void repair() {
-		
+		JOptionPane.showMessageDialog(null, "You can't repair a product that is available.");
 	}
 
 	@Override
 	public void remove() {
-		
-	}
+		JOptionPane.showMessageDialog(null, "You have successfully moved this product.");
+
+	getProduct().setCurrentProductState(new RemovedState(getProduct()));}
 	public Product getProduct(){
 		return product;
 	}
