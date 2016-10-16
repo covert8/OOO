@@ -1,5 +1,6 @@
 package controller;
 
+import model.client.Customer;
 import model.persistance.Persistable;
 import model.product.Product;
 import model.ProductRepo;
@@ -10,7 +11,7 @@ import javax.swing.JOptionPane;
 
 
 public class ShopController {
-	private ProductRepo model = new ProductRepo();
+	private final ProductRepo model = new ProductRepo();
 	private Persistable persister;
 	public ShopController() {
 		
@@ -29,16 +30,18 @@ public class ShopController {
 	public HashMap<String, Product> getProductsHashMap(){
 		return model.getProductsHashMap();
 	}
+	public HashMap<String, Customer> getCustomerHashMap() { return model.getCustomerHashMap();}
 	public void reloadFromFile()
 	{
-		//model.setProductsHashMap(persister.load(model.getProductsHashMap()));
-		model.setProductsHashMap(new ToFile().load());
+		//model.setProductsHashMap(persister.loadProducts(model.getProductsHashMap()));
+		model.setProductsHashMap(new ToFile().loadProducts());
+		model.setCustomerHashMap(new ToFile().loadCustomers());
 		//System.out.println(model.getProductsHashMap().size());
 	}
 
 	public void saveToFile()
 	{
-		persister.save(model.getProductsHashMap());
+		persister.save(this);
 	}
 
 	public void setPersitible(String option) {

@@ -3,7 +3,9 @@ package model.rentable;
 public class RentableCD implements Rentable {
 	//TODO impl rentable
 	@Override
-	public void getPrice() {
+	public double getPrice(int iAantalDagen)
+	{
+		return 1.5*iAantalDagen;
 	}
 
 	@Override

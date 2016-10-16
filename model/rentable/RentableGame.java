@@ -2,9 +2,11 @@ package model.rentable;
 
 public class RentableGame  implements Rentable{
 	//TODO implement rentableGame
+
 	@Override
-	public void getPrice() {
-		
+	public double getPrice(int iAantalDagen)
+	{
+		return 0;
 	}
 
 	@Override

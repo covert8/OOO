@@ -1,21 +1,22 @@
 package model.product;
 
-import model.state.Productstate;
+import model.persistance.Dumpable;
+import model.state.ProductState;
 
-import java.io.Serializable;
-
-public abstract class Product implements Serializable{
-	private String productTitles;
-	private String productId;
+public abstract class Product implements Dumpable
+{
+	private final String productTitles;
+	private final String productId;
 	private boolean bBeschikbaar = true;
-	private Productstate state;
+	private ProductState state;
 
 	Product(String productTitles, String productIds,boolean beschikbaar) {
 		this.productTitles = productTitles;
 		this.productId = productIds;
 		this.bBeschikbaar = beschikbaar;
 	}
-	
+
+	@Deprecated
 	Product(String productTitles, String productIds) {
 		this.productTitles = productTitles;
 		this.productId = productIds;
@@ -37,13 +38,13 @@ public abstract class Product implements Serializable{
 		this.bBeschikbaar = bBeschikbaar;
 	}
 
-	public String toString()
+	public String dump()
 	{
 		String output = "";
-		output+=productTitles+", ";
-		output+=this.getClass().getSimpleName()+", ";
-		output+=productId+", ";
-		output+=bBeschikbaar;
+		output+=getProductId()+",";
+		output+=getProductTitle()+",";
+		output+=getProductType()+",";
+		output+="\n";
 		return output;
 	}
 	public double getPrice(){
@@ -54,10 +55,10 @@ public abstract class Product implements Serializable{
 	public String getProductId() {
 		return productId;
 	}
-	public Productstate getCurrentProductState(){
+	public ProductState getCurrentProductState(){
 		return state;
 	}
-	public void setCurrentProductState(Productstate state){
+	public void setCurrentProductState(ProductState state){
 		this.state = state;
 	}
 	public void repair(){
