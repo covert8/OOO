@@ -54,6 +54,7 @@ public class ToFile implements Persistable {
 				line.useDelimiter(",");
 				id = line.next();
 				title = line.next();
+				//TODO: breaks the program.
 				type = line.next();
 				switch (type)
 				{

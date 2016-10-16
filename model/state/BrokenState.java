@@ -2,8 +2,14 @@ package model.state;
 
 import javax.swing.JOptionPane;
 
+import model.product.Product;
+
 public class BrokenState  implements ProductState
 {
+	private Product product;
+	public BrokenState(Product product){
+		this.product = product;
+	}
 
 	@Override
 	public void rent() {
@@ -13,20 +19,20 @@ public class BrokenState  implements ProductState
 
 	@Override
 	public void repair() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void remove() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void bringback(boolean isDamaged) {
-		// TODO Auto-generated method stub
-		
+		JOptionPane.showMessageDialog(null, "You can't bring a poduct back that is already in our prossesion.");
+	}
+	public Product getProduct(){
+		return product;
 	}
 
 }

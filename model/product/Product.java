@@ -1,6 +1,7 @@
 package model.product;
 
 import model.persistance.Dumpable;
+import model.state.AvailableState;
 import model.state.ProductState;
 
 public abstract class Product implements Dumpable
@@ -10,18 +11,19 @@ public abstract class Product implements Dumpable
 	private boolean bBeschikbaar = true;
 	private ProductState state;
 
-	Product(String productTitles, String productIds,boolean beschikbaar) {
+	Product(String productTitles, String productIds) {
 		this.productTitles = productTitles;
 		this.productId = productIds;
-		this.bBeschikbaar = beschikbaar;
+		//this.bBeschikbaar = beschikbaar;
+		this.setCurrentProductState(new AvailableState(this));
 	}
-
+/**
 	@Deprecated
 	Product(String productTitles, String productIds) {
 		this.productTitles = productTitles;
 		this.productId = productIds;
 	}
-
+*/
 	public String getProductTitle() {
 		return productTitles;
 	}
@@ -68,6 +70,9 @@ public abstract class Product implements Dumpable
 		getCurrentProductState().remove();
 	}
 	public void rent(){
+		getCurrentProductState().rent();
+	}
+	public void bringBack(boolean broken){
 		getCurrentProductState().rent();
 	}
 }

@@ -28,7 +28,7 @@ public class Main {
 						view.showPrice();
 						break;
 					case 4:
-						ShopView.rentProduct();
+						view.rentProduct();
 						break;
 					case 5:
 						ShopView.listProducts();

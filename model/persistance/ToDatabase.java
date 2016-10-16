@@ -3,10 +3,7 @@ package model.persistance;
 import controller.ShopController;
 import model.client.Customer;
 import model.product.Product;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class ToDatabase implements Persistable{
 

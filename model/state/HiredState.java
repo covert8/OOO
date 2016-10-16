@@ -2,8 +2,14 @@ package model.state;
 
 import javax.swing.JOptionPane;
 
+import model.product.Product;
+
 public class HiredState implements ProductState
 {
+	private Product product;
+	public HiredState(Product product){
+		this.product = product;
+	}
 
 	@Override
 	public void rent() {
@@ -13,20 +19,26 @@ public class HiredState implements ProductState
 
 	@Override
 	public void bringback(boolean isDamaged) {
-		// TODO Auto-generated method stub
-		
+		if(isDamaged){
+			JOptionPane.showMessageDialog(null, "You broke this product!");
+			getProduct().setCurrentProductState(new BrokenState(getProduct()));
+		}
+		else{
+			JOptionPane.showMessageDialog(null, "You have successfully returned this product");
+			getProduct().setCurrentProductState(new AvailableState(getProduct()));
+		}
 	}
-
 	@Override
 	public void repair() {
-		// TODO Auto-generated method stub
-		
+		JOptionPane.showMessageDialog(null, "You can't repair a product that is Rented by someone.");
 	}
 
 	@Override
 	public void remove() {
-		// TODO Auto-generated method stub
-		
+		JOptionPane.showMessageDialog(null, "You can't remove a product that is Rented by someone.");
+	}
+	public Product getProduct(){
+		return product;
 	}
 	
 }

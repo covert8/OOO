@@ -16,8 +16,13 @@ public class ShopView {
 		return controller.getPrice(productidx, days);
 	}
 
-	public static void rentProduct() {
-		// TODO: impl: rental product
+	public void rentProduct() {
+		String id = askProductId();
+		if(controller.getProductsHashMap().get(id) != null){
+			controller.getProductsHashMap().get(id).rent();
+		}else{
+			JOptionPane.showMessageDialog(null, "This id doesn't match with a product.");
+		}
 	}
 
 	public static void listProducts() {

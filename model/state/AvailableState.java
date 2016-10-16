@@ -2,8 +2,16 @@ package model.state;
 
 import javax.swing.JOptionPane;
 
+import org.apache.derby.catalog.GetProcedureColumns;
+
+import model.product.Product;
+
 public class AvailableState implements ProductState
 {
+	private Product product;
+	public AvailableState(Product product){
+		this.product = product;
+	}
 
 	@Override
 	public void rent() {
@@ -12,22 +20,21 @@ public class AvailableState implements ProductState
 
 	@Override
 	public void bringback(boolean isDamaged) {
-		// TODO Auto-generated method stub
-		
+		JOptionPane.showMessageDialog(null, "You can't bring a product back a product that is availabe to rent.");
 	}
 
 	@Override
 	public void repair() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void remove() {
-		// TODO Auto-generated method stub
 		
 	}
-
+	public Product getProduct(){
+		return product;
+	}
 	
 	
 }
