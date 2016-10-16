@@ -7,7 +7,6 @@ public class RemovedState implements ProductState
 
 	public  RemovedState(Product product) {
 		
-		product.setCurrentProductState(this);
 	}
 	
 	@Override

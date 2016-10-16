@@ -1,9 +1,9 @@
 package controller;
 
-import model.client.Customer;
 import model.persistance.Persistable;
 import model.product.Product;
 import model.ProductRepo;
+import model.client.Customer;
 import model.persistance.ToFile;
 import java.util.HashMap;
 

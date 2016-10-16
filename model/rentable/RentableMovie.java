@@ -3,8 +3,8 @@ package model.rentable;
 public class RentableMovie implements Rentable {
 	//TODO impl rentableMovie
 	@Override
-	public void getPrice() {
-		
+	public double getPrice(int aantaldagen) {
+		return 0;
 	}
 
 	@Override
