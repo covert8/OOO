@@ -18,8 +18,7 @@ public class ShopController {
 	}
 	
 	public double getPrice(int productidx, int days) {
-		//TODO refactor
-		return 0;
+		return 1.5*days;
 	}
 
 	public void addProduct(String title, String id, String type)
@@ -33,10 +32,8 @@ public class ShopController {
 	public HashMap<String, Customer> getCustomerHashMap() { return model.getCustomerHashMap();}
 	public void reloadFromFile()
 	{
-		//model.setProductsHashMap(persister.loadProducts(model.getProductsHashMap()));
 		model.setProductsHashMap(new ToFile().loadProducts());
 		model.setCustomerHashMap(new ToFile().loadCustomers());
-		//System.out.println(model.getProductsHashMap().size());
 	}
 
 	public void saveToFile()

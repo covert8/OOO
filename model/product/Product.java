@@ -17,7 +17,7 @@ public abstract class Product implements Dumpable
 		//this.bBeschikbaar = beschikbaar;
 		this.setCurrentProductState(new AvailableState(this));
 	}
-/**
+/*
 	@Deprecated
 	Product(String productTitles, String productIds) {
 		this.productTitles = productTitles;
@@ -28,9 +28,7 @@ public abstract class Product implements Dumpable
 		return productTitles;
 	}
 
-	 public String getProductType(){
-		 return this.getClass().getSimpleName();
-	 }
+	 public abstract String getProductType();
 
 	public boolean isBeschikbaar() {
 		return bBeschikbaar;
@@ -74,5 +72,9 @@ public abstract class Product implements Dumpable
 	}
 	public void bringBack(boolean broken){
 		getCurrentProductState().rent();
+	}
+	public String toString(){
+		return getProductTitle();
+		
 	}
 }
