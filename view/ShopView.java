@@ -1,171 +1,67 @@
 package view;
 
-import java.util.Random;
 import javax.swing.JOptionPane;
+
 import controller.ShopController;
-import model.product.Product;
-import model.state.HiredState;
-import model.state.RentedState;
 
 /**
  * Created by louis on 21/09/2016.
  */
-public class ShopView {
+public class ShopView extends UI {
 
-	private static ShopController controller = new ShopController();
-
-	public double getPrice(int productidx, int days) {
-		return controller.getPrice(productidx, days);
+	public ShopView(ShopController controller) {
+		super(controller);
 	}
 
-	public void rentProduct() {
-		String id = askProductId();
-		if(controller.getProductsHashMap().get(id) != null){
-			controller.getProductsHashMap().get(id).rent();
-		}else{
-			JOptionPane.showMessageDialog(null, "This id doesn't match with a product.");
-		}
-	}
-
-	public static void listProducts() {
-		String output = "";
-		for (Product product : controller.getProductsHashMap().values()) {
-			output += product.toString() + "\n";
-		}
-		JOptionPane.showMessageDialog(null, output);
-	}
-
-	public static void saveProducts() {
-			controller.saveToFile();
-	}
-
-	public static void uploadProducts() {
-		controller.reloadFromFile();
-	}
-
-	public void loanProduct() {
-		String id = askProductId();
-		if (controller.getProductsHashMap().get(id) != null) {
-			Product product = controller.getProductsHashMap().get(id);
-			product.rent();
-		}
-	}
-
-	public void collectProduct() {
-		String id = askProductId();
-		if (controller.getProductsHashMap().get(id) != null) {
-			Product product = controller.getProductsHashMap().get(id);
-			JOptionPane.showConfirmDialog(null, "Is this product broken?");
-			
-			//product.bringBack(broken);
-		}
-	} 
-
-	public void addProduct() {
-		String title = JOptionPane.showInputDialog("Enter the title:");
-		if (title.isEmpty()) {
-			throw new IllegalArgumentException("Invalid Title");
-		} else if (Character.isLowerCase(title.charAt(0))) {
-			throw new IllegalArgumentException("First character has to be uppercase");
-		}
-		String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game/ C for CD):");
-		if (type.isEmpty() || !(type.equals("M") || type.equals("G") || type.equals("C"))) {
-			throw new IllegalArgumentException("Invalid Type");
-		}
-		Random rand = new Random();
-		boolean added = false;
-		while (!added) {
-			try {
-				int id = rand.nextInt(90000) + 10000;
-				controller.addProduct(title, "" + id, type);
-				added = true;
-				JOptionPane.showMessageDialog(null, "The random generated ID is " + id);
-			} catch (IllegalArgumentException e) {
-			}
-		}
-	}
-
-	public void showProduct() {
-		String idAsString = askProductId();
-		if (controller.getProductsHashMap().get(idAsString) != null) {
-			JOptionPane.showMessageDialog(null,
-					controller.getProductsHashMap().get(idAsString).getProductId() + ": "
-							+ controller.getProductsHashMap().get(idAsString).getProductTitle() + " - "
-							+ controller.getProductsHashMap().get(idAsString).getProductType() + " - " + controller.getProductsHashMap().get(idAsString).isBeschikbaar());
-		} else {
-			JOptionPane.showMessageDialog(null, "Product not found, are you sure you did enter the right product id?");
-		}
-	}
-
-	public void showPrice() {
-		String id = askProductId();
-
-		if (controller.getProductsHashMap().get(id) != null) {
-			String daysString = JOptionPane.showInputDialog("Give the amount of days");
-			int days;
-			try {
-				days = Integer.parseInt(daysString);
-				if (days < 0) {
-					throw new IllegalArgumentException("Give a positive number");
+	public void run() {
+		String menu = "1. Add product\n2. Show product\n3. Show rental price\n4. Rent Product\n 5. List all products \n6. Change persitible option \n7. Loan prodcut\n8. Collect product \n9. Check productstatus\n\n0. Quit";
+		int choice = -1;
+		while (choice != 0) {
+			String choiceString = JOptionPane.showInputDialog(menu);
+			if (choiceString == null || choiceString.isEmpty()) {
+				choice = 0;
+			} else {
+				try {
+					choice = Integer.parseInt(choiceString);
+					switch (choice) {
+					case 1:
+						addProduct();
+						break;
+					case 2:
+						showProduct();
+						break;
+					case 3:
+						showPrice();
+						break;
+					case 4:
+						rentProduct();
+						break;
+					case 5:
+						listProducts();
+						break;
+					case 6:
+						// askPersistentOption();
+						break;
+					case 7:
+						loanProduct();
+						break;
+					case 8:
+						collectProduct();
+						break;
+					case 9:
+						getProductStatus();
+						break;
+					case 0:
+						ShopView.saveProducts();
+						break;
+					default:
+						throw new IllegalArgumentException("Invalid input");
+					}
+				} catch (IllegalArgumentException e) {
+					System.out.println(e.getMessage());
+				} catch (NullPointerException ignored) {
 				}
-			} catch (NumberFormatException e) {
-				throw new IllegalArgumentException("Give a number");
 			}
-			JOptionPane.showMessageDialog(null, controller.getPrice(Integer.parseInt(id), days));
-		} // end if found
-		else {
-			JOptionPane.showMessageDialog(null, "Not found");
 		}
-	}
-
-	public void showError(Exception e) {
-		JOptionPane.showMessageDialog(null, e.getMessage());
-	}
-
-	public void getProductStatus() {
-		String id = askProductId();
-		if (controller.getProductsHashMap().get(id) != null) {
-			String status = controller.getProductsHashMap().get(id).isBeschikbaar() ? "Available" : "Unavaileble";
-			JOptionPane.showMessageDialog(null, "The product status of "
-					+ controller.getProductsHashMap().get(id).getProductTitle() + " is " + status);
-		}
-	}
-
-	public String askProductId() {
-		String idAsString = JOptionPane.showInputDialog("Enter the id:");
-		int id;
-		try {
-			id = Integer.parseInt(idAsString);
-			if (id < 0) {
-				throw new IllegalArgumentException("Give a positive number");
-			}
-		} catch (NumberFormatException e) {
-			throw new IllegalArgumentException("Give a number");
-
-		}
-		return id + "";
-	}
-	public void askPersistentOption(){
-		String selectedString = "";
-		String[] values = {"Database","Text file"};
-
-		Object selected = JOptionPane.showInputDialog(null, "Which persitible option doe you want to use?","Selection", JOptionPane.DEFAULT_OPTION, null, values, "Database");
-		if ( selected != null ){
-		     selectedString = selected.toString();
-		    System.out.println(selectedString);
-		    switch (selectedString) {
-			case "Text file":
-				controller.reloadFromFile();
-				break;
-			case "Database":
-				break;
-			default:
-				break;
-			}
-		}else{
-			JOptionPane.showMessageDialog(null, "You need to select an option!");
-			askPersistentOption();
-		}
-		controller.setPersitible(selectedString);
 	}
 }

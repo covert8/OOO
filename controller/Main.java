@@ -1,64 +1,33 @@
 package controller;
 
-import javax.swing.JOptionPane;
-
 import view.ShopUI;
 import view.ShopView;
+import view.StartupOptions;
 
 public class Main {
+	private static ShopController controller;
+
 	public static void main(String[] args) {
-		ShopView view = new ShopView();
-		view.askPersistentOption();
-		ShopUI ui = new ShopUI();
-		String menu = "1. Add product\n2. Show product\n3. Show rental price\n4. Rent Product\n 5. List all products \n6. Change persitible option \n7. Loan prodcut\n8. Collect product \n9. Check productstatus\n\n0. Quit";
-		int choice = -1;
-		while (choice != 0) {
-			String choiceString = JOptionPane.showInputDialog(menu);
-			if (choiceString == null || choiceString.isEmpty()) {
-				choice = 0;
-			} else {
-				try {
-					choice = Integer.parseInt(choiceString);
-					switch (choice) {
-					case 1:
-						view.addProduct();
-						break;
-					case 2:
-						view.showProduct();
-						break;
-					case 3:
-						view.showPrice();
-						break;
-					case 4:
-						view.rentProduct();
-						break;
-					case 5:
-						ShopView.listProducts();
-						break;
-					case 6:
-						view.askPersistentOption();
-						break;
-					case 7:
-						view.loanProduct();
-						break;
-					case 8:
-						view.collectProduct();
-						break;
-					case 9: view.getProductStatus();
-						break;
-				case 0:
-						ShopView.saveProducts();
-						break;		
-				default:
-						throw new IllegalArgumentException("Invalid input");
-					}
-				} catch (IllegalArgumentException e) {
-					view.showError(e);
-				} catch (NullPointerException ignored) {
-				}
-			}
+
+		controller = new ShopController();
+		StartupOptions startup = new StartupOptions(controller);
+		startup.askPersistentOption();
+		String inputOption = startup.askInputOption();
+		ShopUI ui;
+		ShopView view;
+		switch (inputOption) {
+		case "UI":
+			ui = new ShopUI();
+			break;
+		case "OptionPane":
+			view = new ShopView(controller);
+			view.run();
+			break;
+		default:
+			break;
+
+		// ui.dispose();
 		}
-		ui.dispose();
 	}
 
 }
