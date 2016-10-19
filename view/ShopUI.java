@@ -1,9 +1,6 @@
 package view;
 
 import java.awt.GridLayout;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,10 +11,12 @@ import javax.swing.JPanel;
  * @author yanice
  *
  */
-public class ShopUI extends JFrame{	
+public class ShopUI extends JFrame{
+	
 	private JPanel content;
+	
 	private JButton addProduct;
-	private JButton ShowProduct;
+	private JButton showProduct;
 	private JButton showProducts;
 	private JButton showRentalPrice;
 	private JButton rentProduct;
@@ -35,38 +34,47 @@ public class ShopUI extends JFrame{
 
 	private void createElements() {	
 		content = new JPanel();
-		content.setLayout(new GridLayout(6, 1));
+		content.setLayout(new GridLayout(9, 1));
 		addProduct = new JButton("Add Product");
-		ShowProduct = new JButton("Show Product");
+		showProduct = new JButton("Show Product");
 		showProducts = new JButton("Show Products");
-		showProducts.addActionListener(new ShopHandler());
 		showRentalPrice = new JButton("Show rental price");
 		rentProduct = new JButton("Show rental price");
 		returnProduct = new JButton("Show rental price");
-		showRentalPrice.addActionListener(new ShopHandler());
 		subscribe = new JButton("Subscripe to newsletter");
 		unsubscribe = new JButton("Unsubscribe");
+		quit =  new JButton("Quit");
 	}
 	
 	private void addHandlers(){
 		addProduct.addActionListener(new ShopHandler());
-		ShowProduct.addActionListener(new ShopHandler());
+		showProduct.addActionListener(new ShopHandler());
+		showProducts.addActionListener(new ShopHandler());
 		showRentalPrice.addActionListener(new ShopHandler());
+		rentProduct.addActionListener(new ShopHandler());
+		returnProduct.addActionListener(new ShopHandler());
+		subscribe.addActionListener(new ShopHandler());
+		unsubscribe.addActionListener(new ShopHandler());
+		quit.addActionListener(new ShopHandler());
 	}
 	
 	private void addElements(){
 		content.add(addProduct);
-		content.add(ShowProduct);
+		content.add(showProduct);
+		content.add(showProducts);
 		content.add(showRentalPrice);
+		content.add(rentProduct);
+		content.add(returnProduct);
 		content.add(subscribe);
 		content.add(unsubscribe);
-		JButton quit = new JButton("Quit");
-		quit.addActionListener(new ShopHandler());
 		content.add(quit);
 		add(content);
 	}
+	
 	private void create(){
-		this.pack();
-		this.setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		pack();
+		setLocationRelativeTo(null);
+		setVisible(true);
 	}
 }

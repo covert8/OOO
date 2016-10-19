@@ -74,7 +74,7 @@ public class ToFile implements Persistable {
 			line.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-		}
+		} catch (NullPointerException e){}
 		return productList;
 	}
 
@@ -104,7 +104,7 @@ public class ToFile implements Persistable {
 			line.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-		}
+		} catch (NullPointerException e){}
 		return customerList;
 	}
 
