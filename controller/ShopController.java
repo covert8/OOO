@@ -1,6 +1,7 @@
 package controller;
 
 import model.persistance.Persistable;
+import model.persistance.ToDatabase;
 import model.product.Product;
 import model.ProductRepo;
 import model.client.Customer;
@@ -32,8 +33,8 @@ public class ShopController {
 	public HashMap<String, Customer> getCustomerHashMap() { return model.getCustomerHashMap();}
 	public void reloadFromFile()
 	{
-		model.setProductsHashMap(new ToFile().loadProducts());
-		model.setCustomerHashMap(new ToFile().loadCustomers());
+		model.setProductsHashMap(persister.loadProducts());
+		model.setCustomerHashMap(persister.loadCustomers());
 	}
 
 	public void saveToFile()
@@ -43,11 +44,20 @@ public class ShopController {
 
 	public void setPersitible(String option) {
 		if(option.equals("Database")){
-			JOptionPane.showMessageDialog(null, "This option isn't suppoted yet");
+			persister = new ToDatabase();
+			//JOptionPane.showMessageDialog(null, "This option isn't suppoted yet");
 		}else{
 			persister = new ToFile();
 		}
-		//TODO: remove if derbydb works
-		persister = new ToFile();
+	}
+
+	public void loadProducts()
+	{
+		persister.loadProducts();
+	}
+
+	public void loadCustomers()
+	{
+		persister.loadCustomers();
 	}
 }
