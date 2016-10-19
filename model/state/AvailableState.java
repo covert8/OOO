@@ -35,6 +35,8 @@ public class AvailableState implements ProductState
 	public Product getProduct(){
 		return product;
 	}
-	
-	
+	public String toString()
+	{
+		return "AvailableState";
+	}
 }

@@ -6,7 +6,9 @@ import view.StartupOptions;
 
 public class Main {
 	private static ShopController controller;
+
 	public static void main(String[] args) {
+
 		controller = new ShopController();
 		StartupOptions startup = new StartupOptions(controller);
 		startup.askPersistentOption();
@@ -23,8 +25,9 @@ public class Main {
 			break;
 		default:
 			break;
+
+		// ui.dispose();
 		}
-		//ui.dispose();
 	}
 
 }

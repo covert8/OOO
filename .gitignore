@@ -63,3 +63,7 @@ local.properties
 
 # Code Recommenders
 .recommenders/
+OOODB/
+target/
+derby.log
+out/

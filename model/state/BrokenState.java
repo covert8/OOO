@@ -36,5 +36,8 @@ public class BrokenState  implements ProductState
 	public Product getProduct(){
 		return product;
 	}
-
+	public String toString()
+	{
+		return "BrokenState";
+	}
 }

@@ -40,5 +40,9 @@ public class HiredState implements ProductState
 	public Product getProduct(){
 		return product;
 	}
+	public String toString()
+	{
+		return "HiredState";
+	}
 	
 }

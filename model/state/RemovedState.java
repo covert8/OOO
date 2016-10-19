@@ -33,6 +33,9 @@ public class RemovedState implements ProductState
 	public Product getProduct(){
 		return product;
 	}
-	
+	public String toString()
+	{
+		return "RemovedState";
+	}
 
 }

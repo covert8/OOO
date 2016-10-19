@@ -111,13 +111,23 @@ public class UI {
 		JOptionPane.showMessageDialog(null, output);
 	}
 
-	public static void loanProduct() {
-		// TODO impl loanProduct.
+	public void loanProduct() {
+		String id = askProductId();
+		if (controller.getProductsHashMap().get(id) != null) {
+			Product product = controller.getProductsHashMap().get(id);
+			product.rent();
+		}
 	}
 
-	public static void collectProduct() {
-		// TODO collectProduct
-	}
+	public void collectProduct() {
+		String id = askProductId();
+		if (controller.getProductsHashMap().get(id) != null) {
+			Product product = controller.getProductsHashMap().get(id);
+			JOptionPane.showConfirmDialog(null, "Is this product broken?");
+			
+			//product.bringBack(broken);
+		}
+	} 
 
 	public void getProductStatus() {
 		String id = askProductId();
