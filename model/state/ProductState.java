@@ -9,5 +9,9 @@ public interface ProductState
 	public void repair();
 	
 	public void remove();
+	
+	public String toString(){
+		return "";
+	}
 
 }
