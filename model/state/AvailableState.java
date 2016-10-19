@@ -2,8 +2,6 @@ package model.state;
 
 import javax.swing.JOptionPane;
 
-import org.apache.derby.catalog.GetProcedureColumns;
-
 import model.product.Product;
 
 public class AvailableState implements ProductState
