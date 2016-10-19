@@ -3,8 +3,6 @@ package model.persistance;
 import controller.ShopController;
 import model.client.Customer;
 import model.product.Product;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.HashMap;
 
 public class ToDatabase implements Persistable{
