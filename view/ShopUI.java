@@ -1,10 +1,6 @@
 package view;
 
 import java.awt.GridLayout;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,39 +11,69 @@ import javax.swing.JPanel;
  *
  */
 public class ShopUI extends JFrame{
+	
+	private JPanel content;
+	
+	private JButton addProduct;
+	private JButton showProduct;
+	private JButton showProducts;
+	private JButton showRentalPrice;
+	private JButton rentProduct;
+	private JButton returnProduct;
+	private JButton subscribe;
+	private JButton unsubscribe;
+	private JButton quit;
 		
 	public ShopUI(){
+		createElements();
+		addHandlers();
 		addElements();
+		create();
 	}
-	public void addElements() {	
-		JPanel content = new JPanel();
-		content.setLayout(new GridLayout(6, 1));
-		JButton addProduct = new JButton("Add Product");
+
+	private void createElements() {	
+		content = new JPanel();
+		content.setLayout(new GridLayout(9, 1));
+		addProduct = new JButton("Add Product");
+		showProduct = new JButton("Show Product");
+		showProducts = new JButton("Show Products");
+		showRentalPrice = new JButton("Show rental price");
+		rentProduct = new JButton("Show rental price");
+		returnProduct = new JButton("Show rental price");
+		subscribe = new JButton("Subscripe to newsletter");
+		unsubscribe = new JButton("Unsubscribe");
+		quit =  new JButton("Quit");
+	}
+	
+	private void addHandlers(){
 		addProduct.addActionListener(new ShopHandler());
-		content.add(addProduct);
-		JButton ShowProduct = new JButton("Show Product");
-		ShowProduct.addActionListener(new ShopHandler());
-		content.add(ShowProduct);
-		JButton showProducts = new JButton("Show Products");
+		showProduct.addActionListener(new ShopHandler());
 		showProducts.addActionListener(new ShopHandler());
-		JButton showRentalPrice = new JButton("Show rental price");
 		showRentalPrice.addActionListener(new ShopHandler());
-		content.add(showRentalPrice);
-		JButton rentProduct = new JButton("Show rental price");
-		showRentalPrice.addActionListener(new ShopHandler());
-		content.add(showRentalPrice);
-		JButton returnProduct = new JButton("Show rental price");
-		showRentalPrice.addActionListener(new ShopHandler());
-		content.add(showRentalPrice);
-		JButton subscribe = new JButton("Subscripe to newsletter");
+		rentProduct.addActionListener(new ShopHandler());
+		returnProduct.addActionListener(new ShopHandler());
 		subscribe.addActionListener(new ShopHandler());
-		content.add(subscribe);
-		JButton unsubscribe = new JButton("Unsubscribe");
 		unsubscribe.addActionListener(new ShopHandler());
+		quit.addActionListener(new ShopHandler());
+	}
+	
+	private void addElements(){
+		content.add(addProduct);
+		content.add(showProduct);
+		content.add(showProducts);
+		content.add(showRentalPrice);
+		content.add(rentProduct);
+		content.add(returnProduct);
+		content.add(subscribe);
 		content.add(unsubscribe);
+		content.add(quit);
 		add(content);
-		this.pack();
-		this.setVisible(true);
-		
+	}
+	
+	private void create(){
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		pack();
+		setLocationRelativeTo(null);
+		setVisible(true);
 	}
 }

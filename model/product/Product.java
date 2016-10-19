@@ -8,13 +8,11 @@ public abstract class Product implements Dumpable
 {
 	private final String productTitles;
 	private final String productId;
-	private boolean bBeschikbaar = true;
 	private ProductState state;
 
 	Product(String productTitles, String productIds) {
 		this.productTitles = productTitles;
 		this.productId = productIds;
-		//this.bBeschikbaar = beschikbaar;
 		this.setCurrentProductState(new AvailableState(this));
 	}
 /*
@@ -29,14 +27,6 @@ public abstract class Product implements Dumpable
 	}
 
 	 public abstract String getProductType();
-
-	public boolean isBeschikbaar() {
-		return bBeschikbaar;
-	}
-
-	public void setBeschikbaar(boolean bBeschikbaar) {
-		this.bBeschikbaar = bBeschikbaar;
-	}
 
 	public String dump()
 	{
@@ -76,5 +66,11 @@ public abstract class Product implements Dumpable
 	public String toString(){
 		return getProductTitle();
 		
+	}
+	public boolean isBeschikbaar() {
+		if(state.toString().equals("AvailableState")){
+			return true;
+		}
+		return false;
 	}
 }
