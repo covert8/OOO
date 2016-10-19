@@ -13,12 +13,13 @@ public class ToDatabase implements Persistable{
 	@Override
 	public void init()
 	{
-		throw new NotImplementedException();
+		dbInterface.createTables();
 	}
 
 	@Override
 	public void save(ShopController shopController)
 	{
+		init();
 		shopController.getProductsHashMap().values().parallelStream().forEach(dbInterface::addProduct);
 		shopController.getCustomerHashMap().values().parallelStream().forEach(dbInterface::addCustomer);
 	}
