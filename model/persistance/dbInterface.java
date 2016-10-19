@@ -17,6 +17,7 @@ final class dbInterface
 					+ "( productid INT NOT NULL primary key GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), "
 					+ " producttitle VARCHAR(100) NOT NULL, "
 					+ " producttype VARCHAR(1) NOT NULL, "
+					+ " productid VARCHAR(1) NOT NULL,"
 					+ " creationdate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ) " ;
 	private static String createTableCustomerScript =
 			"CREATE TABLE customers "
@@ -71,10 +72,11 @@ final class dbInterface
 		{
 			makeConnection();
 			String requeteAddItem =
-					"insert into products(producttitle,producttype) values (?,?)";
+					"insert into products(producttitle,producttype,productid) values (?,?)";
 			PreparedStatement pst = connexion.prepareStatement(requeteAddItem);
 			pst.setString(1, product.getProductTitle());
 			pst.setString(2, product.getProductType());
+			pst.setString(3, product.getProductId());
 			pst.executeUpdate();
 			JOptionPane.showMessageDialog(null, "Item added");
 			pst.close();
@@ -115,7 +117,7 @@ final class dbInterface
 			{
 				//id title and type
 				LinkedList<Product> temp = new LinkedList<>();
-				String id = results.getString(1);
+				String id = results.getString(4);
 				String title = results.getString(2);
 				String type = results.getString(3);
 				switch (type)
