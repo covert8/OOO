@@ -29,8 +29,9 @@ public class ToFile implements Persistable {
 			PrintWriter pw = new PrintWriter(fos);
 			for (Dumpable dump : dumpableList) {
 				pw.write(dump.dump());
-				//pw.write(product.getProductId() + "," + product.getProductTitle() + "," + product.getProductType()
-				//		+ "\n");
+				// pw.write(product.getProductId() + "," +
+				// product.getProductTitle() + "," + product.getProductType()
+				// + "\n");
 			}
 			pw.flush();
 			fos.close();
@@ -54,19 +55,18 @@ public class ToFile implements Persistable {
 				line.useDelimiter(",");
 				id = line.next();
 				title = line.next();
-				//TODO: breaks the program.
+				// TODO: breaks the program.
 				type = line.next();
-				switch (type)
-				{
-					case "CD":
-						productList.put(id, new CD(title, id));
-						break;
-					case "Movie":
-						productList.put(id, new Movie(title, id));
-						break;
-					case "Game":
-						productList.put(id, new Game(title, id));
-						break;
+				switch (type) {
+				case "CD":
+					productList.put(id, new CD(title, id));
+					break;
+				case "Movie":
+					productList.put(id, new Movie(title, id));
+					break;
+				case "Game":
+					productList.put(id, new Game(title, id));
+					break;
 				}
 			}
 			in.close();
@@ -74,13 +74,13 @@ public class ToFile implements Persistable {
 			line.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-		} catch (NullPointerException e){}
+		} catch (NullPointerException e) {
+		}
 		return productList;
 	}
 
 	@Override
-	public HashMap<String, Customer> loadCustomers()
-	{
+	public HashMap<String, Customer> loadCustomers() {
 		HashMap<String, Customer> customerList = new HashMap<>();
 		try {
 			String name, type, email;
@@ -94,8 +94,7 @@ public class ToFile implements Persistable {
 				name = line.next();
 				email = line.next();
 				type = line.next();
-				if (Objects.equals(type, "customer"))
-				{
+				if (Objects.equals(type, "customer")) {
 					customerList.put(name, new Customer(name, email));
 				}
 			}
@@ -104,10 +103,10 @@ public class ToFile implements Persistable {
 			line.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-		} catch (NullPointerException e){}
+		} catch (NullPointerException e) {
+		}
 		return customerList;
 	}
-
 
 	@Override
 	public void init() {
