@@ -15,39 +15,57 @@ import javax.swing.JPanel;
  *
  */
 public class ShopUI extends JFrame{
+	
+	private JPanel content;
+	private JButton addProduct;
+	private JButton ShowProduct;
+	private JButton showProducts;
+	private JButton showRentalPrice;
+	private JButton rentProduct;
+	private JButton returnProduct;
+	private JButton subscribe;
+	private JButton unsubscribe;
+	
 		
 	public ShopUI(){
+		createElements();
+		addHandlers();
 		addElements();
+		create();
 	}
-	public void addElements() {	
-		JPanel content = new JPanel();
+	private void createElements() {	
+		content = new JPanel();
 		content.setLayout(new GridLayout(6, 1));
-		JButton addProduct = new JButton("Add Product");
-		addProduct.addActionListener(new ShopHandler());
-		content.add(addProduct);
-		JButton ShowProduct = new JButton("Show Product");
-		ShowProduct.addActionListener(new ShopHandler());
-		content.add(ShowProduct);
-		JButton showProducts = new JButton("Show Products");
+		addProduct = new JButton("Add Product");
+		ShowProduct = new JButton("Show Product");
+		showProducts = new JButton("Show Products");
 		showProducts.addActionListener(new ShopHandler());
-		JButton showRentalPrice = new JButton("Show rental price");
+		showRentalPrice = new JButton("Show rental price");
+		rentProduct = new JButton("Show rental price");
+		returnProduct = new JButton("Show rental price");
 		showRentalPrice.addActionListener(new ShopHandler());
-		content.add(showRentalPrice);
-		JButton rentProduct = new JButton("Show rental price");
+		subscribe = new JButton("Subscripe to newsletter");
+		unsubscribe = new JButton("Unsubscribe");
+	}
+	
+	private void addHandlers(){
+		addProduct.addActionListener(new ShopHandler());
+		ShowProduct.addActionListener(new ShopHandler());
 		showRentalPrice.addActionListener(new ShopHandler());
-		content.add(showRentalPrice);
-		JButton returnProduct = new JButton("Show rental price");
-		showRentalPrice.addActionListener(new ShopHandler());
-		content.add(showRentalPrice);
-		JButton subscribe = new JButton("Subscripe to newsletter");
 		subscribe.addActionListener(new ShopHandler());
-		content.add(subscribe);
-		JButton unsubscribe = new JButton("Unsubscribe");
 		unsubscribe.addActionListener(new ShopHandler());
+	}
+	
+	private void addElements(){
+		content.add(addProduct);
+		content.add(ShowProduct);
+		content.add(showRentalPrice);
+		content.add(subscribe);
 		content.add(unsubscribe);
 		add(content);
+	}
+	private void create(){
 		this.pack();
 		this.setVisible(true);
-		
 	}
 }
