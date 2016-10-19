@@ -15,13 +15,14 @@ import javax.swing.JPanel;
  *
  */
 public class ShopUI extends JFrame{
+	private JButton quit;
 		
 	public ShopUI(){
 		addElements();
 	}
 	public void addElements() {	
 		JPanel content = new JPanel();
-		content.setLayout(new GridLayout(6, 1));
+		content.setLayout(new GridLayout(8, 1));
 		JButton addProduct = new JButton("Add Product");
 		addProduct.addActionListener(new ShopHandler());
 		content.add(addProduct);
@@ -33,18 +34,21 @@ public class ShopUI extends JFrame{
 		JButton showRentalPrice = new JButton("Show rental price");
 		showRentalPrice.addActionListener(new ShopHandler());
 		content.add(showRentalPrice);
-		JButton rentProduct = new JButton("Show rental price");
-		showRentalPrice.addActionListener(new ShopHandler());
-		content.add(showRentalPrice);
-		JButton returnProduct = new JButton("Show rental price");
-		showRentalPrice.addActionListener(new ShopHandler());
-		content.add(showRentalPrice);
+		JButton rentProduct = new JButton("Rent prodcut");
+		rentProduct.addActionListener(new ShopHandler());
+		content.add(rentProduct);
+		JButton returnProduct = new JButton("Return product");
+		returnProduct.addActionListener(new ShopHandler());
+		content.add(returnProduct);
 		JButton subscribe = new JButton("Subscripe to newsletter");
 		subscribe.addActionListener(new ShopHandler());
 		content.add(subscribe);
 		JButton unsubscribe = new JButton("Unsubscribe");
 		unsubscribe.addActionListener(new ShopHandler());
 		content.add(unsubscribe);
+		JButton quit = new JButton("Quit");
+		quit.addActionListener(new ShopHandler());
+		content.add(quit);
 		add(content);
 		this.pack();
 		this.setVisible(true);
