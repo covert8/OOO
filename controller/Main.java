@@ -39,10 +39,10 @@ public class Main {
 						view.askPersistentOption();
 						break;
 					case 7:
-						ShopView.loanProduct();
+						view.loanProduct();
 						break;
 					case 8:
-						ShopView.collectProduct();
+						view.collectProduct();
 						break;
 					case 9: view.getProductStatus();
 						break;

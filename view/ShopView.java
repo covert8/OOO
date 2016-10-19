@@ -4,6 +4,8 @@ import java.util.Random;
 import javax.swing.JOptionPane;
 import controller.ShopController;
 import model.product.Product;
+import model.state.HiredState;
+import model.state.RentedState;
 
 /**
  * Created by louis on 21/09/2016.
@@ -41,13 +43,23 @@ public class ShopView {
 		controller.reloadFromFile();
 	}
 
-	public static void loanProduct() {
-		// TODO impl loanProduct.
+	public void loanProduct() {
+		String id = askProductId();
+		if (controller.getProductsHashMap().get(id) != null) {
+			Product product = controller.getProductsHashMap().get(id);
+			product.rent();
+		}
 	}
 
-	public static void collectProduct() {
-		// TODO collectProduct
-	}
+	public void collectProduct() {
+		String id = askProductId();
+		if (controller.getProductsHashMap().get(id) != null) {
+			Product product = controller.getProductsHashMap().get(id);
+			JOptionPane.showConfirmDialog(null, "Is this product broken?");
+			
+			//product.bringBack(broken);
+		}
+	} 
 
 	public void addProduct() {
 		String title = JOptionPane.showInputDialog("Enter the title:");
@@ -79,7 +91,7 @@ public class ShopView {
 			JOptionPane.showMessageDialog(null,
 					controller.getProductsHashMap().get(idAsString).getProductId() + ": "
 							+ controller.getProductsHashMap().get(idAsString).getProductTitle() + " - "
-							+ controller.getProductsHashMap().get(idAsString).getProductType());
+							+ controller.getProductsHashMap().get(idAsString).getProductType() + " - " + controller.getProductsHashMap().get(idAsString).isBeschikbaar());
 		} else {
 			JOptionPane.showMessageDialog(null, "Product not found, are you sure you did enter the right product id?");
 		}
