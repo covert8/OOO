@@ -15,6 +15,7 @@ import javax.swing.JPanel;
  *
  */
 public class ShopUI extends JFrame{
+<<<<<<< HEAD
 	
 	private JPanel content;
 	private JButton addProduct;
@@ -26,6 +27,9 @@ public class ShopUI extends JFrame{
 	private JButton subscribe;
 	private JButton unsubscribe;
 	
+=======
+	private JButton quit;
+>>>>>>> bab5490937725df13371364e0341af243e6f90e6
 		
 	public ShopUI(){
 		createElements();
@@ -33,6 +37,7 @@ public class ShopUI extends JFrame{
 		addElements();
 		create();
 	}
+<<<<<<< HEAD
 	private void createElements() {	
 		content = new JPanel();
 		content.setLayout(new GridLayout(6, 1));
@@ -52,6 +57,29 @@ public class ShopUI extends JFrame{
 		addProduct.addActionListener(new ShopHandler());
 		ShowProduct.addActionListener(new ShopHandler());
 		showRentalPrice.addActionListener(new ShopHandler());
+=======
+	public void addElements() {	
+		JPanel content = new JPanel();
+		content.setLayout(new GridLayout(8, 1));
+		JButton addProduct = new JButton("Add Product");
+		addProduct.addActionListener(new ShopHandler());
+		content.add(addProduct);
+		JButton ShowProduct = new JButton("Show Product");
+		ShowProduct.addActionListener(new ShopHandler());
+		content.add(ShowProduct);
+		JButton showProducts = new JButton("Show Products");
+		showProducts.addActionListener(new ShopHandler());
+		JButton showRentalPrice = new JButton("Show rental price");
+		showRentalPrice.addActionListener(new ShopHandler());
+		content.add(showRentalPrice);
+		JButton rentProduct = new JButton("Rent prodcut");
+		rentProduct.addActionListener(new ShopHandler());
+		content.add(rentProduct);
+		JButton returnProduct = new JButton("Return product");
+		returnProduct.addActionListener(new ShopHandler());
+		content.add(returnProduct);
+		JButton subscribe = new JButton("Subscripe to newsletter");
+>>>>>>> bab5490937725df13371364e0341af243e6f90e6
 		subscribe.addActionListener(new ShopHandler());
 		unsubscribe.addActionListener(new ShopHandler());
 	}
@@ -62,6 +90,9 @@ public class ShopUI extends JFrame{
 		content.add(showRentalPrice);
 		content.add(subscribe);
 		content.add(unsubscribe);
+		JButton quit = new JButton("Quit");
+		quit.addActionListener(new ShopHandler());
+		content.add(quit);
 		add(content);
 	}
 	private void create(){
