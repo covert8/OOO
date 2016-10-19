@@ -10,8 +10,6 @@ public interface ProductState
 	
 	public void remove();
 	
-	public String toString(){
-		return "";
-	}
+	
 
 }
