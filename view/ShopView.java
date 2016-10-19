@@ -13,8 +13,8 @@ public class ShopView extends UI {
 		super(controller);
 	}
 
-	public void run() {
-		String menu = "1. Add product\n2. Show product\n3. Show rental price\n4. Rent Product\n 5. List all products \n6. Change persitible option \n7. Loan prodcut\n8. Collect product \n9. Check productstatus\n\n0. Quit";
+	public void run(){
+		String menu = "1. Add product\n2. Show product\n3. Show rental price\n4. Rent Product\n5. List all products \n6. Change persitible option \n7. Loan prodcut\n8. Collect product \n9. Check productstatus\n\n0. Quit";
 		int choice = -1;
 		while (choice != 0) {
 			String choiceString = JOptionPane.showInputDialog(menu);
@@ -40,7 +40,7 @@ public class ShopView extends UI {
 						listProducts();
 						break;
 					case 6:
-						// askPersistentOption();
+						//askPersistentOption();
 						break;
 					case 7:
 						loanProduct();
@@ -48,13 +48,13 @@ public class ShopView extends UI {
 					case 8:
 						collectProduct();
 						break;
-					case 9:
+					case 9: 
 						getProductStatus();
 						break;
-					case 0:
+				case 0:
 						ShopView.saveProducts();
-						break;
-					default:
+						break;		
+				default:
 						throw new IllegalArgumentException("Invalid input");
 					}
 				} catch (IllegalArgumentException e) {
@@ -62,6 +62,7 @@ public class ShopView extends UI {
 				} catch (NullPointerException ignored) {
 				}
 			}
-		}
-	}
+				}
+	}	
 }
+

@@ -20,6 +20,7 @@ public class StartupOptions {
 				JOptionPane.DEFAULT_OPTION, null, values, "Database");
 		if (selected != null) {
 			selectedString = selected.toString();
+			controller.setPersitible(selectedString);
 			System.out.println(selectedString);
 			switch (selectedString) {
 			case "Text file":
@@ -34,7 +35,7 @@ public class StartupOptions {
 			JOptionPane.showMessageDialog(null, "You need to select an option!");
 			askPersistentOption();
 		}
-		controller.setPersitible(selectedString);
+		
 	}
 	
 	public String askInputOption(){

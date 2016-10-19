@@ -25,8 +25,6 @@ public class Main {
 			break;
 		default:
 			break;
-
-		// ui.dispose();
 		}
 	}
 

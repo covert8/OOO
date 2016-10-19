@@ -19,7 +19,7 @@ public class UI {
 		UI.controller = controller;
 	}
 
-	public UI(ShopController colntroller) {
+	public UI(ShopController controller) {
 		setController(controller);
 	}
 
@@ -105,10 +105,17 @@ public class UI {
 
 	public static void listProducts() {
 		String output = "";
-		for (Product product : getController().getProductsHashMap().values()) {
-			output += product.toString() + "\n";
+		try {
+			for (Product product : getController().getProductsHashMap().values()) {
+				output += product.toString() + "\n";
+			}
+			if(output.equals("")){
+				throw new NullPointerException();
+			}
+			JOptionPane.showMessageDialog(null, output);
+		} catch (NullPointerException e) {
+			JOptionPane.showMessageDialog(null, "Geen producten aanwezig.");
 		}
-		JOptionPane.showMessageDialog(null, output);
 	}
 
 	public void loanProduct() {
@@ -124,10 +131,10 @@ public class UI {
 		if (controller.getProductsHashMap().get(id) != null) {
 			Product product = controller.getProductsHashMap().get(id);
 			JOptionPane.showConfirmDialog(null, "Is this product broken?");
-			
-			//product.bringBack(broken);
+
+			// product.bringBack(broken);
 		}
-	} 
+	}
 
 	public void getProductStatus() {
 		String id = askProductId();
