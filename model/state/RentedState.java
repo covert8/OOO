@@ -29,10 +29,14 @@ public class RentedState implements ProductState
 	@Override
 	public void bringback(boolean isDamaged) {
 		if(isDamaged){
-			JOptionPane.showMessageDialog(null, "This product is damaged.");
-		}else{
-
+			JOptionPane.showMessageDialog(null, "You broke this product!");
+			getProduct().setCurrentProductState(new BrokenState(getProduct()));
 		}
+		else{
+			JOptionPane.showMessageDialog(null, "You have successfully returned this product");
+			getProduct().setCurrentProductState(new AvailableState(getProduct()));
+		}
+			
 		
 	}
 	public Product getProduct(){

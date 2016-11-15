@@ -61,7 +61,7 @@ public abstract class Product implements Dumpable
 		getCurrentProductState().rent();
 	}
 	public void bringBack(boolean broken){
-		getCurrentProductState().rent();
+		getCurrentProductState().bringback(broken);
 	}
 	public String toString(){
 		return getProductTitle() + "-" + getProductId() + "-" + getProductType() + "-" + getCurrentProductState().toString();

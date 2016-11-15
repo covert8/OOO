@@ -46,7 +46,7 @@ public class ShopView extends UI {
 						loanProduct();
 						break;
 					case 8:
-						collectProduct();
+						returnProduct();
 						break;
 					case 9: 
 						getProductStatus();

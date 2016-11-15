@@ -87,7 +87,7 @@ public class ShopUI extends UI{
 		returnProduct.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				rentProduct();
+				returnProduct();
 			}
 		});
 		subscribe.addActionListener(new ActionListener() {

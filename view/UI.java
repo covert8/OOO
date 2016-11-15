@@ -129,13 +129,13 @@ public class UI {
 		}
 	}
 
-	public void collectProduct() {
+	public void returnProduct() {
 		String id = askProductId();
 		if (controller.getProductsHashMap().get(id) != null) {
 			Product product = controller.getProductsHashMap().get(id);
-			JOptionPane.showConfirmDialog(null, "Is this product broken?");
-
-			// product.bringBack(broken);
+			int broken = JOptionPane.showConfirmDialog(null, "Is this product broken?", null, JOptionPane.YES_NO_OPTION);
+			Boolean status = broken == 0? true : false;
+			 product.bringBack(status);
 		}
 	}
 
