@@ -1,15 +1,14 @@
 package controller;
 
-import model.persistance.Persistable;
-import model.persistance.ToDatabase;
-import model.product.Product;
-import model.ProductRepo;
-import model.client.Customer;
-import model.persistance.ToFile;
-
-import java.awt.Dialog.ModalExclusionType;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import model.ProductRepo;
+import model.client.Customer;
+import model.persistance.Persistable;
+import model.persistance.ToDatabase;
+import model.persistance.ToFile;
+import model.product.Product;
 
 public class ShopController {
 	private final ProductRepo model = new ProductRepo();

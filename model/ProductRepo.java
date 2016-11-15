@@ -1,13 +1,13 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import model.client.Customer;
 import model.product.CD;
 import model.product.Game;
 import model.product.Movie;
 import model.product.Product;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ProductRepo {
 	private HashMap<String, Product> productH = new HashMap<>();

@@ -1,10 +1,10 @@
 package model.persistance;
 
+import java.util.HashMap;
+
 import controller.ShopController;
 import model.client.Customer;
 import model.product.Product;
-
-import java.util.HashMap;
 
 public interface Persistable {
 	
