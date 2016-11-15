@@ -26,12 +26,15 @@ public class UI {
 	public void addProduct() {
 		String title = JOptionPane.showInputDialog("Enter the title:");
 		if (title.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "You should enter a title!");
 			throw new IllegalArgumentException("Invalid Title");
 		} else if (Character.isLowerCase(title.charAt(0))) {
+			JOptionPane.showMessageDialog(null, "The first character should be uppercase!");
 			throw new IllegalArgumentException("First character has to be uppercase");
 		}
 		String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game/ C for CD):");
 		if (type.isEmpty() || !(type.equals("M") || type.equals("G") || type.equals("C"))) {
+			JOptionPane.showMessageDialog(null, "You should enter a valid type!");
 			throw new IllegalArgumentException("Invalid Type");
 		}
 		Random rand = new Random();

@@ -38,6 +38,6 @@ public class BrokenState  implements ProductState
 	}
 	public String toString()
 	{
-		return "BrokenState";
+		return "Broken";
 	}
 }

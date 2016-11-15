@@ -37,6 +37,6 @@ public class AvailableState implements ProductState
 	}
 	public String toString()
 	{
-		return "AvailableState";
+		return "Available";
 	}
 }

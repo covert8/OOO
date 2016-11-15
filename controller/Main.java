@@ -17,7 +17,7 @@ public class Main {
 		ShopView view;
 		switch (inputOption) {
 		case "UI":
-			ui = new ShopUI();
+			ui = new ShopUI(controller);
 			break;
 		case "OptionPane":
 			view = new ShopView(controller);

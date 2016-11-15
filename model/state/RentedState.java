@@ -38,4 +38,4 @@ public class RentedState implements ProductState
 	public Product getProduct(){
 		return product;
 	}
-}
+	}

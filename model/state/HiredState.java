@@ -42,7 +42,7 @@ public class HiredState implements ProductState
 	}
 	public String toString()
 	{
-		return "HiredState";
+		return "Hired";
 	}
 	
 }

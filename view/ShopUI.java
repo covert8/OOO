@@ -6,17 +6,20 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import controller.ShopController;
 
 /**
  * 
  * @author yanice
  *
  */
-public class ShopUI extends JFrame {
+public class ShopUI extends UI{
 
 	private JPanel content;
-
+	private ShopController controller;
 	private JButton addProduct;
 	private JButton showProduct;
 	private JButton showProducts;
@@ -26,8 +29,9 @@ public class ShopUI extends JFrame {
 	private JButton subscribe;
 	private JButton unsubscribe;
 	private JButton quit;
-
-	public ShopUI() {
+	private JFrame frame;
+	public ShopUI(ShopController controller) {
+		super(controller);
 		createElements();
 		addHandlers();
 		addElements();
@@ -35,6 +39,7 @@ public class ShopUI extends JFrame {
 	}
 
 	private void createElements() {
+		frame = new JFrame();
 		content = new JPanel();
 		content.setLayout(new GridLayout(9, 1));
 		addProduct = new JButton("Add Product");
@@ -52,43 +57,43 @@ public class ShopUI extends JFrame {
 		addProduct.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("hello");
+				addProduct();
 			}
 		});
 		showProduct.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("hello");
+				showProduct();
 			}
 		});
 		showProducts.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("hello");
+				listProducts();
 			}
 		});
 		showRentalPrice.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("hello");
+				showPrice();
 			}
 		});
 		rentProduct.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("hello");
+				loanProduct();
 			}
 		});
 		returnProduct.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("hello");
+				rentProduct();
 			}
 		});
 		subscribe.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("hello");
+				System.out.println("nop");
 			}
 		});
 		unsubscribe.addActionListener(new ActionListener() {
@@ -100,7 +105,8 @@ public class ShopUI extends JFrame {
 		quit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("hello");
+				ShopView.saveProducts();
+				frame.dispose();
 			}
 		});
 	}
@@ -115,13 +121,13 @@ public class ShopUI extends JFrame {
 		content.add(subscribe);
 		content.add(unsubscribe);
 		content.add(quit);
-		add(content);
+		frame.add(content);
 	}
 
 	private void create() {
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		pack();
-		setLocationRelativeTo(null);
-		setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.pack();
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
 	}
 }
