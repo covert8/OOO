@@ -19,9 +19,16 @@ public class ShopController {
 	}
 	
 	public double getPrice(int productidx, int days) {
-		return 1.5*days;
+		double fine = getFine(days);
+		return fine + 1.5*days;
 	}
-
+	public double getFine(int days){
+		if(days >=5){
+			return 5*3;
+		}
+		return 0;
+	}
+	
 	public void addProduct(String title, String id, String type)
 	{
 		model.addProduct(title,id,type);
@@ -45,7 +52,6 @@ public class ShopController {
 	public void setPersitible(String option) {
 		if(option.equals("Database")){
 			persister = new ToDatabase();
-			//JOptionPane.showMessageDialog(null, "This option isn't suppoted yet");
 		}else{
 			persister = new ToFile();
 		}

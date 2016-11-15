@@ -64,7 +64,7 @@ public abstract class Product implements Dumpable
 		getCurrentProductState().rent();
 	}
 	public String toString(){
-		return getProductTitle();
+		return getProductTitle() + "-" + getProductId() + "-" + getProductType() + "-" + getCurrentProductState().toString();
 		
 	}
 	public boolean isBeschikbaar() {
