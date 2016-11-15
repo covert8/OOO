@@ -46,8 +46,8 @@ public class ShopUI extends UI{
 		showProduct = new JButton("Show Product");
 		showProducts = new JButton("Show Products");
 		showRentalPrice = new JButton("Show rental price");
-		rentProduct = new JButton("Show rental price");
-		returnProduct = new JButton("Show rental price");
+		rentProduct = new JButton("Rent product");
+		returnProduct = new JButton("Return product");
 		subscribe = new JButton("Subscripe to newsletter");
 		unsubscribe = new JButton("Unsubscribe");
 		quit = new JButton("Quit");

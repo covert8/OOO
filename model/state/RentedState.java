@@ -12,7 +12,7 @@ public class RentedState implements ProductState
 	}
 	@Override
 	public void rent() {
-		JOptionPane.showInternalMessageDialog(null, "This product is already rentend so you can't rent this again.");	
+		JOptionPane.showMessageDialog(null, "This product is already rentend so you can't rent this again.");	
 	}
 
 	@Override
@@ -37,5 +37,9 @@ public class RentedState implements ProductState
 	}
 	public Product getProduct(){
 		return product;
+	}
+	public String toString()
+	{
+		return "Rented";
 	}
 }

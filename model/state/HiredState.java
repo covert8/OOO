@@ -3,7 +3,7 @@ package model.state;
 import javax.swing.JOptionPane;
 
 import model.product.Product;
-
+@Deprecated
 public class HiredState implements ProductState
 {
 	private Product product;
