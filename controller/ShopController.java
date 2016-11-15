@@ -8,12 +8,13 @@ import model.client.Customer;
 import model.persistance.ToFile;
 import java.util.HashMap;
 
-import javax.swing.JOptionPane;
-
-
 public class ShopController {
 	private final ProductRepo model = new ProductRepo();
 	private Persistable persister;
+	public HashMap<String, Customer> getCustomerHashMap() { 
+		return model.getCustomerHashMap();
+	}
+
 	public ShopController() {
 		
 	}
@@ -37,7 +38,6 @@ public class ShopController {
 	public HashMap<String, Product> getProductsHashMap(){
 		return model.getProductsHashMap();
 	}
-	public HashMap<String, Customer> getCustomerHashMap() { return model.getCustomerHashMap();}
 	public void reloadFromFile()
 	{
 		model.setProductsHashMap(persister.loadProducts());
@@ -65,5 +65,8 @@ public class ShopController {
 	public void loadCustomers()
 	{
 		persister.loadCustomers();
+	}
+	public void addCustumor(String name, String email){
+		model.AddCustomer(name,email);
 	}
 }

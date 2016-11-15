@@ -58,6 +58,7 @@ public abstract class Product implements Dumpable
 		getCurrentProductState().remove();
 	}
 	public void rent(){
+		
 		getCurrentProductState().rent();
 	}
 	public void bringBack(boolean broken){

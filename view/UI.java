@@ -125,8 +125,18 @@ public class UI {
 		String id = askProductId();
 		if (controller.getProductsHashMap().get(id) != null) {
 			Product product = controller.getProductsHashMap().get(id);
+			String name = AskCustumorsName();
+			if(controller.getCustomerHashMap().containsKey(name)){
+				String email = JOptionPane.showInputDialog("What is the cutomers email?");
+				controller.addCustumor(name,email);
+
+			}
 			product.rent();
 		}
+	}
+	public String AskCustumorsName(){
+		String name = JOptionPane.showInputDialog("What is the customers name?");
+		return name;
 	}
 
 	public void returnProduct() {
@@ -150,6 +160,9 @@ public class UI {
 
 	public static void saveProducts() {
 		getController().saveToFile();
+	}
+	public String askPersitibleOption(){
+		return JOptionPane.showInputDialog("Which persitible type should you use? Database/file");
 	}
 
 }

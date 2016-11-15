@@ -40,7 +40,8 @@ public class ShopView extends UI {
 						listProducts();
 						break;
 					case 6:
-						//askPersistentOption();
+						//TODO ask for persitent options.
+						getController().setPersitible(askPersitibleOption());
 						break;
 					case 7:
 						loanProduct();
