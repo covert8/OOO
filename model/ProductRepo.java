@@ -12,6 +12,7 @@ import java.util.HashMap;
 public class ProductRepo {
 	private HashMap<String, Product> productH = new HashMap<>();
 	private HashMap<String, Customer> customerH = new HashMap<>();
+	private ArrayList<String> mailinglist = new ArrayList<>();
 
 	@Deprecated
 	public ProductRepo(ArrayList<String> productTitles, ArrayList<String> productIds, ArrayList<String> productTypes) {
@@ -73,13 +74,24 @@ public class ProductRepo {
 	public HashMap<String, Customer> getCustomerHashMap() {
 		return customerH;
 	}
-
+	public ArrayList<String> getMailingList(){
+		return mailinglist;
+	}
 	public void setProductsHashMap(HashMap<String, Product> productList) {
 		productH = productList;
 	}
 
 	public void setCustomerHashMap(HashMap<String, Customer> customerH) {
 		this.customerH = customerH;
+	}
+
+	public void subscribeCustomer(String email) {
+		mailinglist.add(email);
+		
+	}
+
+	public void unSubscribeCustomer(String email) {
+		mailinglist.remove(email);
 	}
 
 }

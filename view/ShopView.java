@@ -14,7 +14,7 @@ public class ShopView extends UI {
 	}
 
 	public void run(){
-		String menu = "1. Add product\n2. Show product\n3. Show rental price\n4. Rent Product\n5. List all products \n6. Change persitible option \n7. Loan prodcut\n8. Collect product \n9. Check productstatus\n\n0. Quit";
+		String menu = "1. Add product\n2. Show product\n3. Show rental price\n4. Rent Product\n5. List all products \n6. Change persitible option \n7. Loan prodcut\n8. Collect product \n9. Check productstatus\n10. Subscribe \n11. unSubscribe \n\n0. Quit";
 		int choice = -1;
 		while (choice != 0) {
 			String choiceString = JOptionPane.showInputDialog(menu);
@@ -52,6 +52,11 @@ public class ShopView extends UI {
 					case 9: 
 						getProductStatus();
 						break;
+					case 10:
+						subscribeCustomer();
+						break;
+					case 11:
+						unSubscribeCustomer();
 				case 0:
 						ShopView.saveProducts();
 						break;		

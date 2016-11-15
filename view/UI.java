@@ -5,6 +5,7 @@ import java.util.Random;
 import javax.swing.JOptionPane;
 
 import controller.ShopController;
+import model.client.Customer;
 import model.product.Product;
 
 public class UI {
@@ -112,7 +113,7 @@ public class UI {
 			for (Product product : getController().getProductsHashMap().values()) {
 				output += product.toString() + "\n";
 			}
-			if(output.equals("")){
+			if (output.equals("")) {
 				throw new NullPointerException();
 			}
 			JOptionPane.showMessageDialog(null, output);
@@ -126,15 +127,16 @@ public class UI {
 		if (controller.getProductsHashMap().get(id) != null) {
 			Product product = controller.getProductsHashMap().get(id);
 			String name = AskCustumorsName();
-			if(controller.getCustomerHashMap().containsKey(name)){
+			if (controller.getCustomerHashMap().containsKey(name)) {
 				String email = JOptionPane.showInputDialog("What is the cutomers email?");
-				controller.addCustumor(name,email);
+				controller.addCustumor(name, email);
 
 			}
 			product.rent();
 		}
 	}
-	public String AskCustumorsName(){
+
+	public String AskCustumorsName() {
 		String name = JOptionPane.showInputDialog("What is the customers name?");
 		return name;
 	}
@@ -143,9 +145,10 @@ public class UI {
 		String id = askProductId();
 		if (controller.getProductsHashMap().get(id) != null) {
 			Product product = controller.getProductsHashMap().get(id);
-			int broken = JOptionPane.showConfirmDialog(null, "Is this product broken?", null, JOptionPane.YES_NO_OPTION);
-			Boolean status = broken == 0? true : false;
-			 product.bringBack(status);
+			int broken = JOptionPane.showConfirmDialog(null, "Is this product broken?", null,
+					JOptionPane.YES_NO_OPTION);
+			Boolean status = broken == 0 ? true : false;
+			product.bringBack(status);
 		}
 	}
 
@@ -161,8 +164,30 @@ public class UI {
 	public static void saveProducts() {
 		getController().saveToFile();
 	}
-	public String askPersitibleOption(){
+
+	public String askPersitibleOption() {
 		return JOptionPane.showInputDialog("Which persitible type should you use? Database/file");
+	}
+
+	public void subscribeCustomer() {
+		String name = AskCustumorsName();
+		Customer c = controller.getCustomerHashMap().get(name);
+		if (c != null) {
+			controller.subscribeCustomer(c.getEmail());
+		}else{
+			JOptionPane.showMessageDialog(null, "We can't find a customer with that name. Please rent a product before you can subscribe to our newsletter.");
+		}
+	}
+	public void unSubscribeCustomer() {
+		String name = AskCustumorsName();
+		Customer c = controller.getCustomerHashMap().get(name);
+		//eamil should be in the list for unscrube
+		if(c != null && controller.getMailingList().contains(c.getEmail())){
+			controller.unSubscribeCustomer(c.getEmail());
+		}else{
+			JOptionPane.showMessageDialog(null, "We can't find a customer with that name. Please rent a product before you can subscribe to our newsletter.");
+
+		}
 	}
 
 }

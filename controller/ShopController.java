@@ -6,6 +6,9 @@ import model.product.Product;
 import model.ProductRepo;
 import model.client.Customer;
 import model.persistance.ToFile;
+
+import java.awt.Dialog.ModalExclusionType;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ShopController {
@@ -14,7 +17,9 @@ public class ShopController {
 	public HashMap<String, Customer> getCustomerHashMap() { 
 		return model.getCustomerHashMap();
 	}
-
+	public ArrayList<String> getMailingList(){
+		return model.getMailingList();
+	}
 	public ShopController() {
 		
 	}
@@ -68,5 +73,12 @@ public class ShopController {
 	}
 	public void addCustumor(String name, String email){
 		model.AddCustomer(name,email);
+	}
+
+	public void subscribeCustomer(String email) { 
+		model.subscribeCustomer(email);
+	}
+	public void unSubscribeCustomer(String email) { 
+		model.unSubscribeCustomer(email);
 	}
 }

@@ -93,13 +93,13 @@ public class ShopUI extends UI{
 		subscribe.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("nop");
+				subscribeCustomer();
 			}
 		});
 		unsubscribe.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("hello");
+				unSubscribeCustomer();
 			}
 		});
 		quit.addActionListener(new ActionListener() {
