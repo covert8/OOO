@@ -34,7 +34,6 @@ public class ShopUI extends UI{
 		createElements();
 		addHandlers();
 		addElements();
-		create();
 	}
 
 	private void createElements() {
@@ -123,7 +122,8 @@ public class ShopUI extends UI{
 		frame.add(content);
 	}
 
-	private void create() {
+	@Override
+	public void run() {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
 		frame.setLocationRelativeTo(null);
