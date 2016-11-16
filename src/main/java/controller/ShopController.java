@@ -9,8 +9,10 @@ import model.product.Product;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Observable;
+import java.util.Observer;
 
-public class ShopController {
+public class ShopController implements Subscriber {
 	private final ProductRepo model = new ProductRepo();
 	private Persistable persister;
 	public HashMap<String, Customer> getCustomerHashMap() { 
@@ -79,5 +81,10 @@ public class ShopController {
 	}
 	public void unSubscribeCustomer(String email) { 
 		model.unSubscribeCustomer(email);
+	}
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
 	}
 }

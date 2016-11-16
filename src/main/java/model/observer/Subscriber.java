@@ -1,8 +1,7 @@
 package model.observer;
 
 public interface Subscriber {
+	
+	public void update();
 
-	public void registerObserver();
-	public void removeObserver();
-	public void notifyObservers();
 }

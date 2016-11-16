@@ -15,9 +15,6 @@ import java.util.Scanner;
 import controller.ShopController;
 import model.client.Customer;
 import model.factory.ShopFactory;
-import model.product.CD;
-import model.product.Game;
-import model.product.Movie;
 import model.product.Product;
 
 public class ToFile implements Persistable {

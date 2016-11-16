@@ -28,7 +28,6 @@ public class ProductRepo {
 		customerH.put(customer.getName(), customer);
 	}
 
-	// TODO enum misschien
 	public void addProduct(String title, String id, String type) {
 		if (productH.get(id) == null) {
 			switch (type) {
