@@ -97,7 +97,7 @@ final class dbInterface
 			pst.setString(1, customer.getName());
 			pst.setString(2, customer.getEmail());
 			pst.executeUpdate();
-			JOptionPane.showMessageDialog(null,"Item added");
+			JOptionPane.showMessageDialog(null,"Customer added");
 			pst.close();
 			connexion.close();
 		}
