@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import controller.ShopController;
@@ -25,6 +26,7 @@ public class ShopUI extends UI{
 	private JButton showRentalPrice;
 	private JButton rentProduct;
 	private JButton returnProduct;
+	private JButton createCustomer;
 	private JButton subscribe;
 	private JButton unsubscribe;
 	private JButton quit;
@@ -39,13 +41,14 @@ public class ShopUI extends UI{
 	private void createElements() {
 		frame = new JFrame();
 		content = new JPanel();
-		content.setLayout(new GridLayout(9, 1));
+		content.setLayout(new GridLayout(10, 1));
 		addProduct = new JButton("Add Product");
 		showProduct = new JButton("Show Product");
 		showProducts = new JButton("Show Products");
 		showRentalPrice = new JButton("Show rental price");
 		rentProduct = new JButton("Rent product");
 		returnProduct = new JButton("Return product");
+		createCustomer = new JButton("Create Customer");
 		subscribe = new JButton("Subscripe to newsletter");
 		unsubscribe = new JButton("Unsubscribe");
 		quit = new JButton("Quit");
@@ -88,6 +91,12 @@ public class ShopUI extends UI{
 				returnProduct();
 			}
 		});
+		createCustomer.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				createCustomer();
+			}
+		});
 		subscribe.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -103,7 +112,11 @@ public class ShopUI extends UI{
 		quit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				try{
 				ShopView.saveProducts();
+				} catch (Exception e2){
+					JOptionPane.showMessageDialog(null, e2.getMessage());
+				}
 				frame.dispose();
 			}
 		});
@@ -116,6 +129,7 @@ public class ShopUI extends UI{
 		content.add(showRentalPrice);
 		content.add(rentProduct);
 		content.add(returnProduct);
+		content.add(createCustomer);
 		content.add(subscribe);
 		content.add(unsubscribe);
 		content.add(quit);
