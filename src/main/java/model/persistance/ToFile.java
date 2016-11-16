@@ -14,6 +14,7 @@ import java.util.Scanner;
 
 import controller.ShopController;
 import model.client.Customer;
+import model.factory.ShopFactory;
 import model.product.CD;
 import model.product.Game;
 import model.product.Movie;
@@ -63,13 +64,13 @@ public class ToFile implements Persistable {
 				type = line.next();
 				switch (type) {
 				case "CD":
-					productList.put(id, new CD(title, id));
+					productList.put(id, ShopFactory.createProduct(title, id, "CD"));
 					break;
 				case "Movie":
-					productList.put(id, new Movie(title, id));
+					productList.put(id, ShopFactory.createProduct(title, id, "Movie"));
 					break;
 				case "Game":
-					productList.put(id, new Game(title, id));
+					productList.put(id, ShopFactory.createProduct(title, id, "Game"));
 					break;
 				}
 			}

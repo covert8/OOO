@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import model.client.Customer;
+import model.factory.ShopFactory;
 import model.product.CD;
 import model.product.Game;
 import model.product.Movie;
@@ -32,32 +33,18 @@ public class ProductRepo {
 		if (productH.get(id) == null) {
 			switch (type) {
 			case "M":
-				addMovie(title, id);
+				productH.put(id, ShopFactory.createProduct(title, id, "Movie"));
 				break;
 			case "G":
-				addGame(title, id);
+				productH.put(id, ShopFactory.createProduct(title, id, "Game"));
 				break;
 			case "C":
-				addCD(title, id);
+				productH.put(id, ShopFactory.createProduct(title, id, "CD"));
 				break;
 			}
 		} else {
 			throw new IllegalArgumentException();
 		}
-	}
-
-	public void addMovie(String title, String id) {
-		productH.put(id, new Movie(title, id));
-	}
-
-	public void addCD(String title, String id) {
-		productH.put(id, new CD(title, id));
-
-	}
-
-	public void addGame(String title, String id) {
-		productH.put(id, new Game(title, id));
-
 	}
 
 	public void AddCustomer(String name,String email) {

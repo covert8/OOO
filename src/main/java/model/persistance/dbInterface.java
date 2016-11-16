@@ -12,6 +12,7 @@ import java.util.LinkedList;
 import javax.swing.JOptionPane;
 
 import model.client.Customer;
+import model.factory.ShopFactory;
 import model.product.CD;
 import model.product.Game;
 import model.product.Movie;
@@ -127,19 +128,16 @@ final class dbInterface
 				String id = results.getString(4);
 				String title = results.getString(2);
 				String type = results.getString(3);
-				switch (type)
-				{
-					case "CD":
-						temp.add(new CD(title,id));
-						break;
-					case "Game":
-						temp.add(new Game(title,id));
-						break;
-					case "Movie":
-						temp.add(new Movie(title,id));
-						break;
-					default:
-						throw new IllegalArgumentException("Product type not expected");
+				switch (type) {
+				case "CD":
+					temp.add(ShopFactory.createProduct(title, id, "CD"));
+					break;
+				case "Movie":
+					temp.add(ShopFactory.createProduct(title, id, "Movie"));
+					break;
+				case "Game":
+					temp.add(ShopFactory.createProduct(title, id, "Game"));
+					break;
 				}
 				resultsList.addAll(temp);
 			}
