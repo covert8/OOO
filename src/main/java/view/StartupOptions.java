@@ -22,11 +22,12 @@ public class StartupOptions {
 			selectedString = selected.toString();
 			controller.setPersitible(selectedString);
 			System.out.println(selectedString);
+			controller.reload();
 			switch (selectedString) {
 			case "Text file":
-				controller.reloadFromFile();
 				break;
 			case "Database":
+				
 				break;
 			default:
 				break;
