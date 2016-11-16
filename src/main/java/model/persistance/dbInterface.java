@@ -1,41 +1,34 @@
 package model.persistance;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.LinkedList;
-
-import javax.swing.JOptionPane;
-
 import model.client.Customer;
 import model.product.CD;
 import model.product.Game;
 import model.product.Movie;
 import model.product.Product;
 
+import javax.swing.*;
+import java.sql.*;
+import java.util.LinkedList;
+
 final class dbInterface
 {
 	private static String createTableProductScript =
 			"CREATE TABLE products "
-					+ "( productid INT NOT NULL primary key GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), "
+					+ "( productKey INT NOT NULL primary key GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), "
 					+ " producttitle VARCHAR(100) NOT NULL, "
-					+ " producttype VARCHAR(1) NOT NULL, "
-					+ " productid VARCHAR(1) NOT NULL,"
+					+ " producttype VARCHAR(100) NOT NULL, "
+					+ " productid VARCHAR(100) NOT NULL,"
 					+ " creationdate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ) " ;
 	private static String createTableCustomerScript =
 			"CREATE TABLE customers "
-					+ "( customerid INT NOT NULL primary key GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), "
+					+ "( customerKey INT NOT NULL primary key GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), "
 					+ " customername VARCHAR(100) NOT NULL, "
-					+ " customeremail VARCHAR(1) NOT NULL, "
+					+ " customeremail VARCHAR(100) NOT NULL, "
 					+ " creationdate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ) " ;
 
 	private static String driver = "org.apache.derby.jdbc.ClientDriver";
 	private static String connectionURL = "jdbc:derby:OOODB;create=true";
-	private static Connection connexion = null;
+	private static Connection connexion;
 
 	private static void loadDriver() {
 		try {
@@ -54,7 +47,7 @@ final class dbInterface
 		try {
 			loadDriver();
 			connexion = DriverManager.getConnection(connectionURL);
-			//System.out.println("successfully connected to derbyDB");
+			System.out.println("successfully connected to derbyDB");
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -63,13 +56,14 @@ final class dbInterface
 
 	public static void createTables() {
 		try {
+			makeConnection();
 			Statement sItemTable = connexion.createStatement();
 			System.out.println(" . . . . creating table ItemTable");
 			sItemTable.execute(createTableProductScript);
 			sItemTable.execute(createTableCustomerScript);
 		}
 		catch (SQLException e) {
-			e.printStackTrace();
+
 		}
 	}
 
@@ -79,7 +73,7 @@ final class dbInterface
 		{
 			makeConnection();
 			String requeteAddItem =
-					"insert into products(producttitle,producttype,productid) values (?,?)";
+					"insert into products(producttitle,producttype,productid) values (?,?,?)";
 			PreparedStatement pst = connexion.prepareStatement(requeteAddItem);
 			pst.setString(1, product.getProductTitle());
 			pst.setString(2, product.getProductType());
@@ -113,6 +107,7 @@ final class dbInterface
 
 	static LinkedList<Product> getProducts()
 	{
+		makeConnection();
 		LinkedList<Product> resultsList = new LinkedList<>();
 		try
 		{
@@ -155,6 +150,7 @@ final class dbInterface
 
 	static LinkedList<Customer> getCustomers()
 	{
+		makeConnection();
 		LinkedList<Customer> resultsList = new LinkedList<>();
 		try
 		{
