@@ -1,11 +1,11 @@
 package controller;
-
 import view.ShopUI;
 import view.ShopView;
 import view.StartupOptions;
 import view.UI;
 
-public class Main {
+public class Main
+{
 	private static ShopController controller;
 
 	public static void main(String[] args) {
