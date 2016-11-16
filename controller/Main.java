@@ -3,6 +3,7 @@ package controller;
 import view.ShopUI;
 import view.ShopView;
 import view.StartupOptions;
+import view.UI;
 
 public class Main {
 	private static ShopController controller;
@@ -13,19 +14,18 @@ public class Main {
 		StartupOptions startup = new StartupOptions(controller);
 		startup.askPersistentOption();
 		String inputOption = startup.askInputOption();
-		ShopUI ui;
-		ShopView view;
+		UI ui;
 		switch (inputOption) {
 		case "UI":
 			ui = new ShopUI(controller);
 			break;
 		case "OptionPane":
-			view = new ShopView(controller);
-			view.run();
+			ui = new ShopView(controller);
 			break;
 		default:
-			break;
+			ui = new UI(controller);
 		}
+		ui.run();
 	}
 
 }
