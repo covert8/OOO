@@ -1,8 +1,8 @@
 package view;
 
-import javax.swing.JOptionPane;
-
 import controller.ShopController;
+
+import javax.swing.*;
 
 public class StartupOptions {
 
@@ -22,11 +22,12 @@ public class StartupOptions {
 			selectedString = selected.toString();
 			controller.setPersitible(selectedString);
 			System.out.println(selectedString);
+			controller.reload();
 			switch (selectedString) {
 			case "Text file":
-				controller.reloadFromFile();
 				break;
 			case "Database":
+
 				break;
 			default:
 				break;

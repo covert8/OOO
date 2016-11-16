@@ -1,14 +1,14 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import model.ProductRepo;
 import model.client.Customer;
 import model.persistance.Persistable;
 import model.persistance.ToDatabase;
 import model.persistance.ToFile;
 import model.product.Product;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ShopController {
 	private final ProductRepo model = new ProductRepo();
@@ -42,7 +42,7 @@ public class ShopController {
 	public HashMap<String, Product> getProductsHashMap(){
 		return model.getProductsHashMap();
 	}
-	public void reloadFromFile()
+	public void reload()
 	{
 		model.setProductsHashMap(persister.loadProducts());
 		model.setCustomerHashMap(persister.loadCustomers());
