@@ -1,8 +1,8 @@
 package view;
 
-import javax.swing.JOptionPane;
-
 import controller.ShopController;
+
+import javax.swing.*;
 
 public class StartupOptions {
 
@@ -27,7 +27,7 @@ public class StartupOptions {
 			case "Text file":
 				break;
 			case "Database":
-				
+
 				break;
 			default:
 				break;
