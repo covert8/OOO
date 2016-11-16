@@ -2,6 +2,7 @@ package controller;
 
 import model.ProductRepo;
 import model.client.Customer;
+import model.observer.Subscriber;
 import model.persistance.Persistable;
 import model.persistance.ToDatabase;
 import model.persistance.ToFile;
@@ -82,8 +83,14 @@ public class ShopController implements Subscriber {
 	public void unSubscribeCustomer(String email) { 
 		model.unSubscribeCustomer(email);
 	}
+	
 	@Override
 	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void update() {
 		// TODO Auto-generated method stub
 		
 	}
