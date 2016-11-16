@@ -15,7 +15,7 @@ public class ShopView extends UI {
 
 	@Override
 	public void run(){
-		String menu = "1. Add product\n2. Show product\n3. Show rental price\n4. Rent Product\n5. List all products \n6. Change persitible option \n7. Loan prodcut\n8. Collect product \n9. Check productstatus\n10. Subscribe \n11. unSubscribe \n\n0. Quit";
+		String menu = "1. Add product\n2. Show product\n3. Show rental price\n4. Rent Product\n5. List all products \n6. Change persitible option \n7. Collect product \n8. Check productstatus\n9. Subscribe \n10. unSubscribe \n\n0. Quit";
 		int choice = -1;
 		while (choice != 0) {
 			String choiceString = JOptionPane.showInputDialog(menu);
@@ -35,7 +35,7 @@ public class ShopView extends UI {
 						showPrice();
 						break;
 					case 4:
-						rentProduct();
+						loanProduct();
 						break;
 					case 5:
 						listProducts();
@@ -44,18 +44,15 @@ public class ShopView extends UI {
 						getController().setPersitible(askPersitibleOption());
 						break;
 					case 7:
-						loanProduct();
-						break;
-					case 8:
 						returnProduct();
 						break;
-					case 9: 
+					case 8: 
 						getProductStatus();
 						break;
-					case 10:
+					case 9:
 						subscribeCustomer();
 						break;
-					case 11:
+					case 10:
 						unSubscribeCustomer();
 				case 0:
 						ShopView.saveProducts();

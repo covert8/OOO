@@ -98,6 +98,7 @@ public class UI {
 		}
 	}
 
+	/*
 	public void rentProduct() {
 		String id = askProductId();
 		if (getController().getProductsHashMap().get(id) != null) {
@@ -105,7 +106,7 @@ public class UI {
 		} else {
 			JOptionPane.showMessageDialog(null, "This id doesn't match with a product.");
 		}
-	}
+	}*/
 
 	public static void listProducts() {
 		String output = "";
@@ -128,17 +129,29 @@ public class UI {
 			Product product = controller.getProductsHashMap().get(id);
 			String name = AskCustumorsName();
 			if (controller.getCustomerHashMap().containsKey(name)) {
-				String email = JOptionPane.showInputDialog("What is the cutomers email?");
-				controller.addCustumor(name, email);
-
+				product.rent();
+			}else{
+				JOptionPane.showMessageDialog(null, "User niet gevonden.");
 			}
-			product.rent();
+		}else{
+			JOptionPane.showMessageDialog(null, "Product niet gevonden.");
 		}
 	}
 
 	public String AskCustumorsName() {
 		String name = JOptionPane.showInputDialog("What is the customers name?");
 		return name;
+	}
+	
+	public String AskCustumorsEmail() {
+		String email = JOptionPane.showInputDialog("What is the customers email?");
+		return email;
+	}
+	
+	public void createCustomer(){
+		String name = AskCustumorsName();
+		String email = AskCustumorsEmail();
+		controller.getCustomerHashMap().put(name, new Customer(name, email));
 	}
 
 	public void returnProduct() {
