@@ -89,13 +89,9 @@ public class ShopController implements Subscriber {
 		// TODO Auto-generated method stub
 		
 	}
-<<<<<<< HEAD
 	@Override
-	public void update() {
+	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 		
 	}
-=======
-
->>>>>>> 471209465a3472d4c6cbf19467840e2afa464ef8
 }
