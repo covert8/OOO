@@ -2,9 +2,6 @@ package model.persistance;
 
 import model.client.Customer;
 import model.factory.ShopFactory;
-import model.product.CD;
-import model.product.Game;
-import model.product.Movie;
 import model.product.Product;
 
 import javax.swing.*;
@@ -13,6 +10,10 @@ import java.util.LinkedList;
 
 final class dbInterface
 {
+	private dbInterface()
+	{
+	}
+
 	private static String createTableProductScript =
 			"CREATE TABLE products "
 					+ "( productKey INT NOT NULL primary key GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), "
@@ -55,7 +56,7 @@ final class dbInterface
 		}
 	}
 
-	public static void createTables() {
+	static void createTables() {
 		try {
 			makeConnection();
 			Statement sItemTable = connexion.createStatement();

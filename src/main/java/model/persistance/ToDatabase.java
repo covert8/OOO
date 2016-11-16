@@ -1,14 +1,26 @@
 package model.persistance;
 
-import java.util.HashMap;
-
 import controller.ShopController;
 import model.client.Customer;
 import model.product.Product;
 
-public class ToDatabase implements Persistable{
+import java.util.HashMap;
 
-	private static dbInterface db = new dbInterface();
+
+public class ToDatabase implements Persistable{
+	private volatile static boolean done = true;
+	public synchronized static ToDatabase create()
+	{
+		if (done)
+			done = false;
+			return new ToDatabase();
+	}
+
+	private ToDatabase()
+	{
+	}
+
+	private static dbInterface db;
 	@Override
 	public void init()
 	{

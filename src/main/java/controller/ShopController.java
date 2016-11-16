@@ -55,7 +55,7 @@ public class ShopController {
 
 	public void setPersitible(String option) {
 		if(option.equals("Database")){
-			persister = new ToDatabase();
+			persister = ToDatabase.create();
 		}else{
 			persister = new ToFile();
 		}
