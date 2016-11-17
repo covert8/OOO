@@ -81,11 +81,16 @@ public class ShopController implements Subscriber {
 	public void unSubscribeCustomer(String email) { 
 		model.unSubscribeCustomer(email);
 	}
+	
 	@Override
 	public void update(String productName) {
 		for (String mail : model.getMailingList()) {
 			
 		}
 	}
-
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
+	}
 }
