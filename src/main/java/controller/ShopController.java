@@ -10,8 +10,6 @@ import model.product.Product;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Observable;
-import java.util.Observer;
 
 public class ShopController implements Subscriber {
 	private final ProductRepo model = new ProductRepo();
@@ -85,9 +83,10 @@ public class ShopController implements Subscriber {
 	}
 	
 	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
+	public void update(String productName) {
+		for (String mail : model.getMailingList()) {
+			
+		}
 	}
 	@Override
 	public void update(Observable o, Object arg) {
