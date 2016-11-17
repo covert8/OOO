@@ -1,14 +1,11 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import model.client.Customer;
 import model.factory.ShopFactory;
-import model.product.CD;
-import model.product.Game;
-import model.product.Movie;
 import model.product.Product;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ProductRepo {
 	private HashMap<String, Product> productH = new HashMap<>();
@@ -57,27 +54,20 @@ public class ProductRepo {
 		return productH;
 	}
 
-	public HashMap<String, Customer> getCustomerHashMap() {
-		return customerH;
-	}
-	public ArrayList<String> getMailingList(){
-		return mailinglist;
-	}
 	public void setProductsHashMap(HashMap<String, Product> productList) {
 		productH = productList;
+	}
+
+	public HashMap<String, Customer> getCustomerHashMap() {
+		return customerH;
 	}
 
 	public void setCustomerHashMap(HashMap<String, Customer> customerH) {
 		this.customerH = customerH;
 	}
 
-	public void subscribeCustomer(String email) {
-		mailinglist.add(email);
-		
-	}
-
-	public void unSubscribeCustomer(String email) {
-		mailinglist.remove(email);
+	public ArrayList<String> getMailingList() {
+		return mailinglist;
 	}
 
 	

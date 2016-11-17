@@ -2,7 +2,6 @@ package controller;
 
 import model.ProductRepo;
 import model.client.Customer;
-import model.observer.Subscriber;
 import model.persistance.Persistable;
 import model.persistance.ToDatabase;
 import model.persistance.ToFile;
@@ -10,18 +9,22 @@ import model.product.Product;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Observable;
 
-public class ShopController implements Subscriber {
-	private final ProductRepo model = new ProductRepo();
+public class ShopController implements model.observer.ShopController {
+    private final ProductRepo model = new ProductRepo();
 	private Persistable persister;
-	public HashMap<String, Customer> getCustomerHashMap() { 
-		return model.getCustomerHashMap();
+
+    public ShopController() {
+
+    }
+
+    public HashMap<String, Customer> getCustomerHashMap() {
+        return model.getCustomerHashMap();
 	}
-	public ArrayList<String> getMailingList(){
+
+    public ArrayList<String> getMailingList(){
 		return model.getMailingList();
-	}
-	public ShopController() {
-		
 	}
 	
 	public double getPrice(int productidx, int days) {
@@ -75,14 +78,8 @@ public class ShopController implements Subscriber {
 		model.AddCustomer(name,email);
 	}
 
-	public void subscribeCustomer(String email) { 
-		model.subscribeCustomer(email);
-	}
-	public void unSubscribeCustomer(String email) { 
-		model.unSubscribeCustomer(email);
-	}
-	
-	@Override
+
+    @Override
 	public void update(String productName) {
 		for (String mail : model.getMailingList()) {
 			
