@@ -10,10 +10,6 @@ import java.util.LinkedList;
 
 final class dbInterface
 {
-	private dbInterface()
-	{
-	}
-
 	private static String createTableProductScript =
 			"CREATE TABLE products "
 					+ "( productKey INT NOT NULL primary key GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), "
@@ -27,10 +23,12 @@ final class dbInterface
 					+ " customername VARCHAR(100) NOT NULL, "
 					+ " customeremail VARCHAR(100) NOT NULL, "
 					+ " creationdate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ) " ;
-
 	private static String driver = "org.apache.derby.jdbc.ClientDriver";
 	private static String connectionURL = "jdbc:derby:OOODB;create=true";
-	private static Connection connexion;
+	private static Connection connexion = null;
+
+	private dbInterface() {
+	}
 
 	private static void loadDriver() {
 		try {
