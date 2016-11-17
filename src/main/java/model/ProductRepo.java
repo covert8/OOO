@@ -1,23 +1,24 @@
 package model;
 
 import model.client.Customer;
-import model.factory.ShopFactory;
+import model.facade.ModelFacadeInterface;
+import model.factory.ProductFactory;
 import model.product.Product;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ProductRepo {
+class ProductRepo implements ModelFacadeInterface {
 	private HashMap<String, Product> productH = new HashMap<>();
 	private HashMap<String, Customer> customerH = new HashMap<>();
 	private ArrayList<String> mailinglist = new ArrayList<>();
 
 	@Deprecated
-	public ProductRepo(ArrayList<String> productTitles, ArrayList<String> productIds, ArrayList<String> productTypes) {
+	ProductRepo(ArrayList<String> productTitles, ArrayList<String> productIds, ArrayList<String> productTypes) {
 
 	}
 
-	public ProductRepo() {
+	ProductRepo() {
 		
 	}
 
@@ -29,13 +30,13 @@ public class ProductRepo {
 		if (productH.get(id) == null) {
 			switch (type) {
 			case "M":
-				productH.put(id, ShopFactory.createProduct(title, id, "Movie"));
+				productH.put(id, ProductFactory.createProduct(title, id, "Movie"));
 				break;
 			case "G":
-				productH.put(id, ShopFactory.createProduct(title, id, "Game"));
+				productH.put(id, ProductFactory.createProduct(title, id, "Game"));
 				break;
 			case "C":
-				productH.put(id, ShopFactory.createProduct(title, id, "CD"));
+				productH.put(id, ProductFactory.createProduct(title, id, "CD"));
 				break;
 			}
 		} else {
@@ -68,6 +69,15 @@ public class ProductRepo {
 
 	public ArrayList<String> getMailingList() {
 		return mailinglist;
+	}
+
+	public void subscribeCustomer(String email) {
+		mailinglist.add(email);
+		
+	}
+
+	public void unSubscribeCustomer(String email) {
+		mailinglist.remove(email);
 	}
 
 	

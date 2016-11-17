@@ -1,21 +1,12 @@
 package model.persistance;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
-import java.util.Scanner;
-
 import controller.ShopController;
 import model.client.Customer;
-import model.factory.ShopFactory;
+import model.factory.ProductFactory;
 import model.product.Product;
+
+import java.io.*;
+import java.util.*;
 
 public class ToFile implements Persistable {
 
@@ -61,13 +52,13 @@ public class ToFile implements Persistable {
 				type = line.next();
 				switch (type) {
 				case "CD":
-					productList.put(id, ShopFactory.createProduct(title, id, "CD"));
+					productList.put(id, ProductFactory.createProduct(title, id, "CD"));
 					break;
 				case "Movie":
-					productList.put(id, ShopFactory.createProduct(title, id, "Movie"));
+					productList.put(id, ProductFactory.createProduct(title, id, "Movie"));
 					break;
 				case "Game":
-					productList.put(id, ShopFactory.createProduct(title, id, "Game"));
+					productList.put(id, ProductFactory.createProduct(title, id, "Game"));
 					break;
 				}
 			}

@@ -5,7 +5,7 @@ import model.product.Game;
 import model.product.Movie;
 import model.product.Product;
 
-public class ShopFactory {
+public class ProductFactory {
 
 	public static Product createProduct(String title, String id, String type) {
 		Product product = null;
