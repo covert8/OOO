@@ -1,7 +1,8 @@
 package controller;
 
-import model.ProductRepo;
+import model.ModelFacade;
 import model.client.Customer;
+import model.facade.ModelFacadeInterface;
 import model.observer.Subscriber;
 import model.persistance.Persistable;
 import model.persistance.ToDatabase;
@@ -10,18 +11,22 @@ import model.product.Product;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Observable;
 
 public class ShopController implements Subscriber {
-	private final ProductRepo model = new ProductRepo();
+	private final ModelFacadeInterface model = new ModelFacade();
 	private Persistable persister;
-	public HashMap<String, Customer> getCustomerHashMap() { 
+
+	public ShopController() {
+
+	}
+
+	public HashMap<String, Customer> getCustomerHashMap() {
 		return model.getCustomerHashMap();
 	}
+
 	public ArrayList<String> getMailingList(){
 		return model.getMailingList();
-	}
-	public ShopController() {
-		
 	}
 	
 	public double getPrice(int productidx, int days) {

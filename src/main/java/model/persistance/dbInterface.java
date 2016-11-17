@@ -1,7 +1,7 @@
 package model.persistance;
 
 import model.client.Customer;
-import model.factory.ShopFactory;
+import model.factory.ProductFactory;
 import model.product.Product;
 
 import javax.swing.*;
@@ -124,13 +124,13 @@ final class dbInterface
 				String type = results.getString(3);
 				switch (type) {
 				case "CD":
-					temp.add(ShopFactory.createProduct(title, id, "CD"));
+					temp.add(ProductFactory.createProduct(title, id, "CD"));
 					break;
 				case "Movie":
-					temp.add(ShopFactory.createProduct(title, id, "Movie"));
+					temp.add(ProductFactory.createProduct(title, id, "Movie"));
 					break;
 				case "Game":
-					temp.add(ShopFactory.createProduct(title, id, "Game"));
+					temp.add(ProductFactory.createProduct(title, id, "Game"));
 					break;
 				}
 				resultsList.addAll(temp);
