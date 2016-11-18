@@ -186,7 +186,7 @@ public class UI {
 		String name = AskCustumorsName();
 		Customer c = controller.getCustomerHashMap().get(name);
 		if (c != null) {
-			controller.subscribeCustomer(c.getEmail());
+			controller.registerObserver(c.getEmail());
 		}else{
 			JOptionPane.showMessageDialog(null, "We can't find a customer with that name. Please rent a product before you can subscribe to our newsletter.");
 		}
@@ -194,9 +194,8 @@ public class UI {
 	public void unSubscribeCustomer() {
 		String name = AskCustumorsName();
 		Customer c = controller.getCustomerHashMap().get(name);
-		//eamil should be in the list for unscrube
 		if(c != null && controller.getMailingList().contains(c.getEmail())){
-			controller.unSubscribeCustomer(c.getEmail());
+			controller.removeObserver(c.getEmail());
 		}else{
 			JOptionPane.showMessageDialog(null, "We can't find a customer with that name. Please rent a product before you can subscribe to our newsletter.");
 

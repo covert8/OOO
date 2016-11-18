@@ -5,10 +5,11 @@ import model.facade.ModelFacadeInterface;
 import model.factory.ProductFactory;
 import model.product.Product;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-class ProductRepo implements ModelFacadeInterface {
+public class ProductRepo implements ModelFacadeInterface {
 	private HashMap<String, Product> productH = new HashMap<>();
 	private HashMap<String, Customer> customerH = new HashMap<>();
 	private ArrayList<String> mailinglist = new ArrayList<>();
@@ -18,7 +19,7 @@ class ProductRepo implements ModelFacadeInterface {
 
 	}
 
-	ProductRepo() {
+	public ProductRepo() {
 		
 	}
 
@@ -28,6 +29,7 @@ class ProductRepo implements ModelFacadeInterface {
 
 	public void addProduct(String title, String id, String type) {
 		if (productH.get(id) == null) {
+			sendMailNewProduct(title);
 			switch (type) {
 			case "M":
 				productH.put(id, ProductFactory.createProduct(title, id, "Movie"));
@@ -80,5 +82,10 @@ class ProductRepo implements ModelFacadeInterface {
 		mailinglist.remove(email);
 	}
 
-	
+
+	public void sendMailNewProduct(String productName) {
+		for (String mail : getMailingList()) {
+			JOptionPane.showMessageDialog(null,"We have send an email to " + mail + "With the new product " + productName+".");
+		}
+	}
 }

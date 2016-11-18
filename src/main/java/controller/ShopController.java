@@ -1,31 +1,28 @@
 package controller;
 
-import model.ModelFacade;
+import model.ProductRepo;
 import model.client.Customer;
-import model.facade.ModelFacadeInterface;
-import model.observer.Subscriber;
+import model.observer.Subject;
 import model.persistance.Persistable;
 import model.persistance.ToDatabase;
 import model.persistance.ToFile;
 import model.product.Product;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Observable;
 
-public class ShopController implements Subscriber {
-	private final ModelFacadeInterface model = new ModelFacade();
+public class ShopController implements Subject {
+    private final ProductRepo model = new ProductRepo();
 	private Persistable persister;
 
-	public ShopController() {
+    public ShopController() {
 
+    }
+
+    public HashMap<String, Customer> getCustomerHashMap() {
+        return model.getCustomerHashMap();
 	}
 
-	public HashMap<String, Customer> getCustomerHashMap() {
-		return model.getCustomerHashMap();
-	}
-
-	public ArrayList<String> getMailingList(){
+    public ArrayList<String> getMailingList(){
 		return model.getMailingList();
 	}
 	
@@ -80,22 +77,18 @@ public class ShopController implements Subscriber {
 		model.AddCustomer(name,email);
 	}
 
-	public void subscribeCustomer(String email) { 
+	@Override
+	public void registerObserver(String email) {
 		model.subscribeCustomer(email);
 	}
-	public void unSubscribeCustomer(String email) { 
+
+	@Override
+	public void removeObserver(String email) {
 		model.unSubscribeCustomer(email);
 	}
-	
+
 	@Override
-	public void update(String productName) {
-		for (String mail : model.getMailingList()) {
-			
-		}
-	}
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
+	public void notifyObserver(String ProductName) {
+		model.sendMailNewProduct(ProductName);
 	}
 }

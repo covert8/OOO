@@ -1,8 +1,9 @@
 package model.client;
 
+import model.observer.Subscriber;
 import model.persistance.Dumpable;
 
-public class Customer implements Dumpable {
+public class Customer implements Dumpable, Subscriber {
 	private final String name;
 	private final String email;
 
@@ -33,6 +34,10 @@ public class Customer implements Dumpable {
 		return email;
 	}
 
+	@Override
+	public void update() {
+
+	}
 }
 
 

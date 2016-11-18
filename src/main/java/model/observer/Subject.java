@@ -4,9 +4,9 @@ package model.observer;
  * Created by yanice on 17/11/16.
  */
 public interface Subject {
-    void registerObserver();
+    void registerObserver(String email);
 
-    void removeObserver();
+    void removeObserver(String email);
 
-    void notifyObserver();
+    void notifyObserver(String ProductName);
 }
