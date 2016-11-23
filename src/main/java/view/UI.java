@@ -33,8 +33,12 @@ public class UI {
 			JOptionPane.showMessageDialog(null, "The first character should be uppercase!");
 			throw new IllegalArgumentException("First character has to be uppercase");
 		}
-		String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game/ C for CD):");
-		if (type.isEmpty() || !(type.equals("M") || type.equals("G") || type.equals("C"))) {
+
+		String[] values = { "Movie", "Game", "CD" };
+		String type = (String) JOptionPane.showInputDialog(null, "Which type is the product?", "Selection",
+				JOptionPane.DEFAULT_OPTION, null, values, "Movie");
+		System.out.println(type);
+		if (type.isEmpty() || !(type.equals("Movie") || type.equals("Game") || type.equals("CD"))) {
 			JOptionPane.showMessageDialog(null, "You should enter a valid type!");
 			throw new IllegalArgumentException("Invalid Type");
 		}
@@ -52,6 +56,7 @@ public class UI {
 	}
 
 	public void showProduct() {
+		
 		String idAsString = askProductId();
 		if (getController().getProductsHashMap().get(idAsString) != null) {
 			JOptionPane.showMessageDialog(null,

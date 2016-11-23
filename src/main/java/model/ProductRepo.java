@@ -31,13 +31,13 @@ public class ProductRepo implements ModelFacadeInterface {
 		if (productH.get(id) == null) {
 			sendMailNewProduct(title);
 			switch (type) {
-			case "M":
+			case "Movie":
 				productH.put(id, ProductFactory.createProduct(title, id, "Movie"));
 				break;
-			case "G":
+			case "Game":
 				productH.put(id, ProductFactory.createProduct(title, id, "Game"));
 				break;
-			case "C":
+			case "CD":
 				productH.put(id, ProductFactory.createProduct(title, id, "CD"));
 				break;
 			}
