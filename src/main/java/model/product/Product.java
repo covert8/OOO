@@ -1,14 +1,20 @@
 package model.product;
 
+import model.observer.Observer;
+import model.observer.Subject;
 import model.persistance.Dumpable;
 import model.state.AvailableState;
 import model.state.ProductState;
 
-public abstract class Product implements Dumpable
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Product implements Dumpable, Subject
 {
 	private final String productTitles;
 	private final String productId;
 	private ProductState state;
+	private List<Observer> observers = new ArrayList<Observer>();
 
 	Product(String productTitles, String productIds) {
 		this.productTitles = productTitles;
@@ -50,6 +56,7 @@ public abstract class Product implements Dumpable
 	}
 	public void setCurrentProductState(ProductState state){
 		this.state = state;
+		notifyObservers();
 	}
 	public void repair(){
 		getCurrentProductState().repair();
@@ -73,5 +80,20 @@ public abstract class Product implements Dumpable
 			return true;
 		}
 		return false;
+	}
+
+	public void addObserver(Observer observer){
+		observers.add(observer);
+	}
+
+	public void notifyObservers(){
+		for (Observer observer : observers) {
+			observer.update();
+		}
+	}
+
+	public void removeObserver(Observer observer) {
+		observers.remove(observer);
+
 	}
 }

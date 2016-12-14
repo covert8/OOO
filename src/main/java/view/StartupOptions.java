@@ -15,7 +15,7 @@ public class StartupOptions {
 	public void askPersistentOption() {
 		//TODO zou via view moeten.
 		String selectedString = "";
-		String[] values = { "Database", "Text file" };
+		String[] values = { "Database", "Text file", "Excel sheet" };
 		Object selected = JOptionPane.showInputDialog(null, "Which persitible option doe you want to use?", "Selection",
 				JOptionPane.DEFAULT_OPTION, null, values, "Database");
 		if (selected != null) {
@@ -23,13 +23,15 @@ public class StartupOptions {
 			controller.setPersitible(selectedString);
 			System.out.println(selectedString);
 			switch (selectedString) {
-			case "Text file":
-				controller.reloadFromFile();
-				break;
-			case "Database":
-				break;
-			default:
-				break;
+				case "Text file":
+					controller.reloadFromFile();
+					break;
+				case "Database":
+					break;
+				case "Excel sheet":
+					break;
+				default:
+					break;
 			}
 		} else {
 			JOptionPane.showMessageDialog(null, "You need to select an option!");
