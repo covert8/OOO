@@ -1,8 +1,5 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import model.ProductRepo;
 import model.client.Customer;
 import model.persistance.Persistable;
@@ -10,19 +7,27 @@ import model.persistance.ToDatabase;
 import model.persistance.ToFile;
 import model.product.Product;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class ShopController {
 	private final ProductRepo model = new ProductRepo();
 	private Persistable persister;
-	public HashMap<String, Customer> getCustomerHashMap() { 
+
+	public ShopController()
+	{
+
+	}
+
+	public HashMap<String, Customer> getCustomerHashMap()
+	{
 		return model.getCustomerHashMap();
 	}
+
 	public ArrayList<String> getMailingList(){
 		return model.getMailingList();
 	}
-	public ShopController() {
-		
-	}
-	
+
 	public double getPrice(int productidx, int days) {
 		double fine = getFine(days);
 		return fine + 1.5*days;
@@ -33,7 +38,7 @@ public class ShopController {
 		}
 		return 0;
 	}
-	
+
 	public void addProduct(String title, String id, String type)
 	{
 		model.addProduct(title,id,type);
@@ -42,13 +47,14 @@ public class ShopController {
 	public HashMap<String, Product> getProductsHashMap(){
 		return model.getProductsHashMap();
 	}
-	public void reloadFromFile()
+
+	public void reloadFromPersister()
 	{
 		model.setProductsHashMap(persister.loadProducts());
 		model.setCustomerHashMap(persister.loadCustomers());
 	}
 
-	public void saveToFile()
+	public void saveToPersister()
 	{
 		persister.save(this);
 	}
@@ -61,6 +67,7 @@ public class ShopController {
 		}
 	}
 
+	@Deprecated
 	public void loadProducts()
 	{
 		persister.loadProducts();
@@ -74,10 +81,13 @@ public class ShopController {
 		model.AddCustomer(name,email);
 	}
 
-	public void subscribeCustomer(String email) { 
+	public void subscribeCustomer(String email)
+	{
 		model.subscribeCustomer(email);
 	}
-	public void unSubscribeCustomer(String email) { 
+
+	public void unSubscribeCustomer(String email)
+	{
 		model.unSubscribeCustomer(email);
 	}
 }

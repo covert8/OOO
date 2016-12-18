@@ -15,9 +15,7 @@ final class dbInterface
 	private static String createTableProductScript =
 			"CREATE TABLE products "
 					+ "( productid INT NOT NULL primary key GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), "
-					+ " producttitle VARCHAR(100) NOT NULL, "
-					+ " producttype VARCHAR(1) NOT NULL, "
-					+ " productid VARCHAR(1) NOT NULL,"
+					+ " producttitle VARCHAR(100) NOT NULL, " + " producttype VARCHAR(100) NOT NULL, " + " pid VARCHAR(100) NOT NULL,"
 					+ " creationdate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ) " ;
 	private static String createTableCustomerScript =
 			"CREATE TABLE customers "
@@ -56,13 +54,13 @@ final class dbInterface
 
 	public static void createTables() {
 		try {
+			makeConnection();
 			Statement sItemTable = connexion.createStatement();
 			System.out.println(" . . . . creating table ItemTable");
 			sItemTable.execute(createTableProductScript);
 			sItemTable.execute(createTableCustomerScript);
-		}
-		catch (SQLException e) {
-			e.printStackTrace();
+		} catch (SQLException ignored)
+		{
 		}
 	}
 
@@ -71,8 +69,7 @@ final class dbInterface
 		try
 		{
 			makeConnection();
-			String requeteAddItem =
-					"insert into products(producttitle,producttype,productid) values (?,?)";
+			String requeteAddItem = "insert into products(producttitle,producttype,pid) values (?,?,?)";
 			PreparedStatement pst = connexion.prepareStatement(requeteAddItem);
 			pst.setString(1, product.getProductTitle());
 			pst.setString(2, product.getProductType());
@@ -106,6 +103,7 @@ final class dbInterface
 
 	static LinkedList<Product> getProducts()
 	{
+		makeConnection();
 		LinkedList<Product> resultsList = new LinkedList<>();
 		try
 		{
@@ -148,6 +146,7 @@ final class dbInterface
 
 	static LinkedList<Customer> getCustomers()
 	{
+		makeConnection();
 		LinkedList<Customer> resultsList = new LinkedList<>();
 		try
 		{

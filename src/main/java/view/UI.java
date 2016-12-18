@@ -1,16 +1,20 @@
 package view;
 
-import java.util.Random;
-
-import javax.swing.JOptionPane;
-
 import controller.ShopController;
 import model.client.Customer;
 import model.product.Product;
 
+import javax.swing.*;
+import java.util.Random;
+
 public class UI {
 
 	private static ShopController controller;
+
+	public UI(ShopController controller)
+	{
+		setController(controller);
+	}
 
 	public static ShopController getController() {
 		return controller;
@@ -20,8 +24,29 @@ public class UI {
 		UI.controller = controller;
 	}
 
-	public UI(ShopController controller) {
-		setController(controller);
+	public static void listProducts()
+	{
+		String output = "";
+		try
+		{
+			for (Product product : getController().getProductsHashMap().values())
+			{
+				output += product.toString() + "\n";
+			}
+			if (output.equals(""))
+			{
+				throw new NullPointerException();
+			}
+			JOptionPane.showMessageDialog(null, output);
+		} catch (NullPointerException e)
+		{
+			JOptionPane.showMessageDialog(null, "Geen producten aanwezig.");
+		}
+	}
+
+	public static void saveProducts()
+	{
+		getController().saveToPersister();
 	}
 
 	public void addProduct() {
@@ -107,21 +132,6 @@ public class UI {
 		}
 	}
 
-	public static void listProducts() {
-		String output = "";
-		try {
-			for (Product product : getController().getProductsHashMap().values()) {
-				output += product.toString() + "\n";
-			}
-			if (output.equals("")) {
-				throw new NullPointerException();
-			}
-			JOptionPane.showMessageDialog(null, output);
-		} catch (NullPointerException e) {
-			JOptionPane.showMessageDialog(null, "Geen producten aanwezig.");
-		}
-	}
-
 	public void loanProduct() {
 		String id = askProductId();
 		if (controller.getProductsHashMap().get(id) != null) {
@@ -147,7 +157,7 @@ public class UI {
 			Product product = controller.getProductsHashMap().get(id);
 			int broken = JOptionPane.showConfirmDialog(null, "Is this product broken?", null,
 					JOptionPane.YES_NO_OPTION);
-			Boolean status = broken == 0 ? true : false;
+			Boolean status = broken == 0;
 			product.bringBack(status);
 		}
 	}
@@ -159,10 +169,6 @@ public class UI {
 			JOptionPane.showMessageDialog(null, "The product status of "
 					+ getController().getProductsHashMap().get(id).getProductTitle() + " is " + status);
 		}
-	}
-
-	public static void saveProducts() {
-		getController().saveToFile();
 	}
 
 	public String askPersitibleOption() {
@@ -189,7 +195,7 @@ public class UI {
 
 		}
 	}
-	
+
 	public void run(){
 	}
 

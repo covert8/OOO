@@ -1,15 +1,15 @@
 package view;
 
-import javax.swing.JOptionPane;
-
 import controller.ShopController;
+
+import javax.swing.*;
 
 public class StartupOptions {
 
 	private static ShopController controller;
 
 	public StartupOptions(ShopController controller) {
-		this.controller = controller;
+		StartupOptions.controller = controller;
 	}
 
 	public void askPersistentOption() {
@@ -24,7 +24,7 @@ public class StartupOptions {
 			System.out.println(selectedString);
 			switch (selectedString) {
 				case "Text file":
-					controller.reloadFromFile();
+					controller.reloadFromPersister();
 					break;
 				case "Database":
 					break;
@@ -37,9 +37,9 @@ public class StartupOptions {
 			JOptionPane.showMessageDialog(null, "You need to select an option!");
 			askPersistentOption();
 		}
-		
+
 	}
-	
+
 	public String askInputOption(){
 		String selectedString = "";
 		String[] values = { "UI", "OptionPane" };
